@@ -181,7 +181,7 @@ export default function BookingWidget() {
             </svg>
           </div>
           <h2 className="text-xl font-bold">Booking request sent!</h2>
-          <p className="mt-2 text-sm text-white/90">We&apos;ll confirm your appointment shortly.</p>
+          <p className="mt-2 text-sm text-white/90">We&apos;ll confirm your appointment shortly. Check your email for confirmation.</p>
         </div>
         <div className="space-y-4 p-6">
           <div className="rounded-lg bg-[#0f766e]/10 p-4">
