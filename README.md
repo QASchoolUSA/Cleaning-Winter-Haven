@@ -40,13 +40,18 @@ This project uses [@opennextjs/cloudflare](https://opennext.js.org/cloudflare) t
 | Deploy command | `npx wrangler deploy` |
 | Branch | `main` |
 
-Set environment variables in the Cloudflare dashboard (Settings → Environment variables):
+Set environment variables in the Cloudflare dashboard:
 
-- `NEXT_PUBLIC_SITE_URL`
-- `NEXT_PUBLIC_PHONE`
-- `NEXT_PUBLIC_EMAIL`
-- `BOOKING_BROOM_URL`
-- `BOOKING_BROOM_API_KEY`
+**Build variables** (Settings → Builds → Build variables):
+- `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_PHONE`, `NEXT_PUBLIC_EMAIL`
+
+**Runtime variables** (Settings → Variables and secrets):
+- `BOOKING_BROOM_URL` — also in `wrangler.jsonc` `vars` (non-secret, safe in git)
+- `BOOKING_BROOM_API_KEY` — add as **Secret** in dashboard only; do **not** put in `wrangler.jsonc`
+
+For local Wrangler preview (`npm run preview`), copy `.dev.vars.example` → `.dev.vars` and add your API key.
+
+After changing env vars, redeploy (Retry deployment or push to `main`).
 
 **Note:** Next.js must be `>=16.2.6` for `@opennextjs/cloudflare` compatibility.
 

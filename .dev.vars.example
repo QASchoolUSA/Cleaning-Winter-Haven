@@ -1,0 +1,4 @@
+# Local Wrangler secrets (copy to .dev.vars — never commit .dev.vars)
+# Used when running: npm run preview  or  npx wrangler dev
+
+BOOKING_BROOM_API_KEY=your-api-key-here
