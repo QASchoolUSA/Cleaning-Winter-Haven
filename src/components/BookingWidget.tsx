@@ -1,6 +1,7 @@
 "use client";
 import { useMemo, useState } from "react";
 import { computeQuote, type ServiceType } from "@/lib/pricing";
+import { formatPhoneInput, phoneDigits } from "@/lib/phone";
 import { site } from "@/lib/site";
 
 type SizeOption = { key: string; label: string };
@@ -53,7 +54,7 @@ function validateContact(name: string, email: string, phone: string, address: st
   }
   if (!phone.trim()) {
     errors.phone = "Phone is required so we can confirm your appointment.";
-  } else if (phone.replace(/\D/g, "").length < 10) {
+  } else if (phoneDigits(phone).replace(/^1/, "").length < 10) {
     errors.phone = "Please enter a valid 10-digit phone number.";
   }
   if (!address.trim()) errors.address = "Service address is required so our team knows where to go.";
@@ -331,7 +332,18 @@ export default function BookingWidget() {
             </label>
             <label className="block">
               <span className="mb-2 block text-sm font-medium text-slate-700">Phone <span className="text-[#0f766e]">*</span></span>
-              <input type="tel" className={`input-field ${contactErrors.phone ? "ring-2 ring-red-400" : ""}`} value={phone} onChange={(e) => { setPhone(e.target.value); setContactErrors((p) => ({ ...p, phone: undefined })); }} placeholder="(863) 555-0123" required autoComplete="tel" />
+              <input
+                type="tel"
+                className={`input-field ${contactErrors.phone ? "ring-2 ring-red-400" : ""}`}
+                value={phone}
+                onChange={(e) => {
+                  setPhone(formatPhoneInput(e.target.value));
+                  setContactErrors((p) => ({ ...p, phone: undefined }));
+                }}
+                placeholder="(863) 555-0123"
+                required
+                autoComplete="tel"
+              />
               {contactErrors.phone && <p className="mt-1 text-xs text-red-600">{contactErrors.phone}</p>}
             </label>
             <label className="block sm:col-span-2">

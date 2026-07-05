@@ -1,18 +1,15 @@
-function formatPhoneTel(display: string): string {
-  const digits = display.replace(/\D/g, "");
-  if (digits.length === 10) return `+1${digits}`;
-  if (digits.length === 11 && digits.startsWith("1")) return `+${digits}`;
-  return `+${digits}`;
-}
+import { formatPhoneDisplay, formatPhoneTel } from "./phone";
+
+const rawPhone = process.env.NEXT_PUBLIC_PHONE ?? "(863) 000-0000";
 
 export const site = {
   name: "Cleaning Winter Haven",
   shortName: "Cleaning Winter Haven",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://cleaningwinterhaven.com",
-  phone: process.env.NEXT_PUBLIC_PHONE ?? "(863) 000-0000",
+  phone: formatPhoneDisplay(rawPhone),
   email: process.env.NEXT_PUBLIC_EMAIL ?? "hello@cleaningwinterhaven.com",
   get phoneTel() {
-    return formatPhoneTel(this.phone);
+    return formatPhoneTel(rawPhone);
   },
   address: {
     locality: "Winter Haven",
