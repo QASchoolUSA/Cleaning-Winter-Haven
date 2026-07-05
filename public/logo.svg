@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" fill="none">
+  <rect x="2" y="8" width="32" height="32" rx="8" fill="#0F766E"/>
+  <text x="10" y="30" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="white">CW</text>
+  <text x="44" y="22" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#0F172A">Cleaning</text>
+  <text x="44" y="38" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#0F766E">Winter Haven</text>
+</svg>
