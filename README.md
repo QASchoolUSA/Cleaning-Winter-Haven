@@ -36,9 +36,9 @@ This project uses [@opennextjs/cloudflare](https://opennext.js.org/cloudflare) t
 
 | Setting | Value |
 |---------|-------|
-| Build command | `npm run build:cloudflare` |
-| Deploy command | `npx wrangler deploy` (if prompted) |
-| Branch | `main` (not `cloudflare/workers-autoconfig`) |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Branch | `main` |
 
 Set environment variables in the Cloudflare dashboard (Settings → Environment variables):
 
