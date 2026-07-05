@@ -28,7 +28,28 @@ npm run dev
 | `BOOKING_BROOM_URL` | Booking Broom API base URL |
 | `BOOKING_BROOM_API_KEY` | API key for winter-haven site slug |
 
-## Pre-launch checklist
+## Deploy to Cloudflare Workers
+
+This project uses [@opennextjs/cloudflare](https://opennext.js.org/cloudflare) to run Next.js (including `/api/book`) on Cloudflare Workers.
+
+**Cloudflare Pages / Workers build settings:**
+
+| Setting | Value |
+|---------|-------|
+| Build command | `npm run build:cloudflare` |
+| Deploy command | `npx wrangler deploy` (if prompted) |
+| Branch | `main` (not `cloudflare/workers-autoconfig`) |
+
+Set environment variables in the Cloudflare dashboard (Settings → Environment variables):
+
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_PHONE`
+- `NEXT_PUBLIC_EMAIL`
+- `BOOKING_BROOM_URL`
+- `BOOKING_BROOM_API_KEY`
+
+**Note:** Next.js must be `>=16.2.6` for `@opennextjs/cloudflare` compatibility.
+
 
 1. Set real phone and email in `.env.local`
 2. Register `winter-haven` site in Booking Broom
