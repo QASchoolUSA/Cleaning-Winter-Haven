@@ -1,13 +1,17 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePageParts";
 import { site } from "@/lib/site";
 import { RESIDENTIAL_PRICES, ADDON_PRICES } from "@/lib/pricing";
 
+const GUIDE_PATH = "/guides/how-much-does-house-cleaning-cost-winter-haven";
+const HERO_IMAGE = "/images/guides/guide-hero-winter-haven-home.jpg";
+
 export const metadata = {
   title: "House Cleaning Cost in Winter Haven, FL (2026 Price Guide)",
   description:
     "How much does house cleaning cost in Winter Haven? Studio from $99, 2-bed from $139. Deep cleaning +40%, move-in/out +20%. Transparent local pricing from Cleaning Winter Haven.",
-  alternates: { canonical: "/guides/how-much-does-house-cleaning-cost-winter-haven" },
+  alternates: { canonical: GUIDE_PATH },
   keywords: [
     "how much does house cleaning cost in winter haven",
     "house cleaning prices winter haven fl",
@@ -15,6 +19,13 @@ export const metadata = {
     "deep cleaning cost polk county",
     "cleaning rates chain of lakes",
   ],
+  openGraph: {
+    title: "House Cleaning Cost in Winter Haven, FL (2026 Price Guide)",
+    description:
+      "Studio from $99, 2-bed from $139. Deep cleaning +40%, move-in/out +20%. Transparent local pricing from Cleaning Winter Haven.",
+    url: GUIDE_PATH,
+    images: [{ url: HERO_IMAGE, width: 1536, height: 1024, alt: "Freshly cleaned Winter Haven living room with lake light" }],
+  },
 };
 
 const sizeRows = [
@@ -55,13 +66,52 @@ const faqs = [
 const aiOverviewBlock =
   "House cleaning in Winter Haven, FL starts at $99 for a studio and scales by bedroom count: $119 for one bedroom, $139 for two bedrooms, $169 for three bedrooms, and $199 for four-or-more bedrooms. Deep cleaning adds 40 percent. Move-in and move-out cleaning adds 20 percent. Cleaning Winter Haven publishes fixed totals with no upfront payment required.";
 
+function GuideFigure({
+  src,
+  alt,
+  caption,
+  priority = false,
+  aspect = "video",
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  priority?: boolean;
+  aspect?: "video" | "photo";
+}) {
+  return (
+    <figure className="not-prose my-8 overflow-hidden rounded-xl border border-slate-200 bg-slate-50 shadow-sm">
+      <div className={`relative w-full ${aspect === "photo" ? "aspect-[4/3]" : "aspect-[16/10]"}`}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority={priority}
+          sizes="(max-width: 768px) 100vw, 768px"
+          className="object-cover"
+        />
+      </div>
+      <figcaption className="border-t border-slate-100 px-4 py-3 text-sm leading-relaxed text-slate-600">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
 export default function HouseCleaningCostGuidePage() {
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
     headline: "House Cleaning Cost in Winter Haven, FL: 2026 Price Guide",
     description: metadata.description,
-    url: `${site.url}/guides/how-much-does-house-cleaning-cost-winter-haven`,
+    url: `${site.url}${GUIDE_PATH}`,
+    image: [
+      `${site.url}${HERO_IMAGE}`,
+      `${site.url}/images/guides/guide-kitchen-after-clean.jpg`,
+      `${site.url}/images/guides/guide-bathroom-deep-clean.jpg`,
+      `${site.url}/images/guides/guide-lakefront-lanai.jpg`,
+      `${site.url}/images/guides/guide-cleaning-crew.jpg`,
+    ],
     datePublished: "2026-07-10",
     dateModified: "2026-07-10",
     inLanguage: "en-US",
@@ -77,7 +127,7 @@ export default function HouseCleaningCostGuidePage() {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${site.url}/guides/how-much-does-house-cleaning-cost-winter-haven`,
+      "@id": `${site.url}${GUIDE_PATH}`,
     },
     about: [
       { "@type": "Thing", name: "House cleaning cost in Winter Haven FL" },
@@ -107,7 +157,7 @@ export default function HouseCleaningCostGuidePage() {
         items={[
           { name: "Home", path: "/" },
           { name: "House Cleaning", path: "/house-cleaning" },
-          { name: "Cost Guide", path: "/guides/how-much-does-house-cleaning-cost-winter-haven" },
+          { name: "Cost Guide", path: GUIDE_PATH },
         ]}
       />
 
@@ -121,6 +171,13 @@ export default function HouseCleaningCostGuidePage() {
             Transparent bedroom-tier rates from Cleaning Winter Haven — the same numbers powering our online quote tool.
           </p>
         </header>
+
+        <GuideFigure
+          src={HERO_IMAGE}
+          alt="Bright, freshly cleaned Winter Haven living room with lake light through large windows"
+          caption="A guest-ready Winter Haven living room after professional house cleaning — the result behind every published rate on this page."
+          priority
+        />
 
         <h2>How Much Does House Cleaning Cost in Winter Haven?</h2>
         <p className="ai-overview-target text-base leading-relaxed text-slate-800 not-prose border-l-4 border-[#0f766e] bg-slate-50 px-4 py-3 rounded-r-lg">
@@ -165,6 +222,11 @@ export default function HouseCleaningCostGuidePage() {
         </p>
 
         <h3>Standard vs Deep vs Move Cleaning: What Changes the Price</h3>
+        <GuideFigure
+          src="/images/guides/guide-kitchen-after-clean.jpg"
+          alt="Spotless modern kitchen with gleaming counters and appliances after standard house cleaning"
+          caption="Standard cleaning keeps kitchens guest-ready — counters, appliance fronts, sinks, and floors. Deep and move levels add interior and detail work beyond this baseline."
+        />
         <p>
           <strong>Standard house cleaning</strong> maintains already-tidy Winter Haven homes: surfaces, floors, bathrooms, and kitchen fronts.{" "}
           <strong>Deep cleaning</strong> adds baseboards, light fixtures, fans, and detailed grout work at a fixed +40% multiplier.{" "}
@@ -176,6 +238,12 @@ export default function HouseCleaningCostGuidePage() {
         </p>
 
         <h3>How Florida Humidity Affects Cleaning Frequency and Cost</h3>
+        <GuideFigure
+          src="/images/guides/guide-bathroom-deep-clean.jpg"
+          alt="Pristine Florida bathroom with sparkling glass shower and chrome fixtures after deep cleaning"
+          caption="Florida humidity hits bathrooms first. Deep cleans target grout, silicone, and hard-water film that build up between standard visits in Winter Haven homes."
+          aspect="photo"
+        />
         <p>
           Winter Haven&apos;s humidity and Chain of Lakes pollen change how often homes need service. Bathroom grout and silicone can show mold risk within 7–14 days in poorly ventilated baths. Lake-facing glass and lanais collect pollen and mineral film each spring. Sealed homes recirculate AC vent dust every 2–3 weeks.
         </p>
@@ -192,11 +260,21 @@ export default function HouseCleaningCostGuidePage() {
         </ul>
 
         <h3>How Long a House Cleaning Takes in Winter Haven</h3>
+        <GuideFigure
+          src="/images/guides/guide-cleaning-crew.jpg"
+          alt="Two professional cleaners working as a team in a bright Florida home living room"
+          caption="A two-person crew typically finishes a standard 2-bedroom Winter Haven home in 2–3 hours. Deep cleans for the same size often take 4–5 hours."
+        />
         <p>
           A standard 2-bedroom home typically takes 2–3 hours with a 2-person crew. Deep cleans for the same size often take 4–5 hours. Move-out cleans run 3–5 hours depending on appliance interiors and vacancy condition. Duration drives crew scheduling — not a separate hourly surcharge on top of the bedroom-tier total.
         </p>
 
         <h3>What Affects Quotes for Lakefront and Chain of Lakes Homes</h3>
+        <GuideFigure
+          src="/images/guides/guide-lakefront-lanai.jpg"
+          alt="Chain of Lakes lakefront home lanai with sparkling glass doors overlooking calm water at golden hour"
+          caption="Lakefront and Cypress Gardens homes often need window, lanai, or baseboard add-ons because of pollen, boat-gear mud, and hard-water scale — priced separately from the bedroom base rate."
+        />
         <p>
           Bedroom count sets the base. Cypress Gardens and lakefront properties often add windows, lanais, or baseboards because of pollen, boat-gear mud, and hard-water scale. Cluttered rooms slow crews and may require a condition adjustment after the first visit. Pets and eco-product requests do not change the published base rates.
         </p>
