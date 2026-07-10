@@ -1,9 +1,20 @@
 import Accordion from "./Accordion";
+import Link from "next/link";
 
 const faqs = [
   {
     q: "How much does house cleaning cost in Winter Haven?",
-    a: "Standard residential cleaning starts at $99 for a studio and scales by bedroom count. Deep cleans add 40%, and move-in/out services add 20%. Use our online quote tool for an instant estimate tailored to your home.",
+    a: (
+      <>
+        Standard residential cleaning starts at $99 for a studio and scales by bedroom count ($119–$199). Deep cleans add 40%, and move-in/out services add 20%. See our{" "}
+        <Link href="/guides/how-much-does-house-cleaning-cost-winter-haven" className="font-medium text-[#0f766e] hover:underline">
+          full Winter Haven price guide
+        </Link>{" "}
+        or use the online quote tool for an instant estimate.
+      </>
+    ),
+    schemaText:
+      "Standard residential cleaning starts at $99 for a studio and scales by bedroom count ($119–$199). Deep cleans add 40%, and move-in/out services add 20%. See our full Winter Haven price guide or use the online quote tool for an instant estimate.",
   },
   {
     q: "Do I need to be home during the cleaning?",
@@ -30,7 +41,10 @@ export default function HomeFAQ() {
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "schemaText" in f && f.schemaText ? f.schemaText : (f.a as string),
+      },
     })),
   };
 

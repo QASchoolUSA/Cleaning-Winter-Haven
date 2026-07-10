@@ -1,51 +1,180 @@
 import { site } from "@/lib/site";
 
+/**
+ * Phase 4 technical entity schema: Organization + WebSite + ProfessionalService
+ * Optimized for entity discovery, Local Pack, and LLM/RAG ingestion.
+ * Replace sameAs placeholders with verified live profile URLs before launch.
+ */
 export default function JsonLd() {
-  const jsonLdBusiness = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: site.name,
-    image: `${site.url}/logo.svg`,
-    logo: `${site.url}/logo.svg`,
-    "@id": site.url,
-    url: site.url,
-    telephone: site.phoneTel,
-    email: site.email,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "",
-      addressLocality: site.address.locality,
-      addressRegion: site.address.region,
-      postalCode: site.address.postalCode,
-      addressCountry: site.address.country,
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: site.geo.latitude,
-      longitude: site.geo.longitude,
-    },
-    areaServed: site.areaServed.map((name) => ({ "@type": "City", name })),
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: site.hoursSchema.opens,
-      closes: site.hoursSchema.closes,
-    },
-    priceRange: "$$",
-  };
+  const orgId = `${site.url}/#organization`;
+  const websiteId = `${site.url}/#website`;
+  const serviceId = `${site.url}/#professionalservice`;
 
-  const jsonLdWebsite = {
+  const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: site.name,
-    alternateName: "cleaningwinterhaven.com",
-    url: site.url,
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": orgId,
+        name: site.name,
+        legalName: site.name,
+        url: site.url,
+        logo: {
+          "@type": "ImageObject",
+          url: `${site.url}/logo.svg`,
+          width: 200,
+          height: 44,
+        },
+        image: `${site.url}/icons/android-chrome-512x512.png`,
+        email: site.email,
+        telephone: site.phoneTel,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "",
+          addressLocality: site.address.locality,
+          addressRegion: site.address.region,
+          postalCode: site.address.postalCode,
+          addressCountry: site.address.country,
+        },
+        sameAs: [
+          "https://www.facebook.com/YOUR_PAGE",
+          "https://www.instagram.com/YOUR_HANDLE",
+          "https://www.yelp.com/biz/YOUR_BIZ",
+          "https://www.bbb.org/us/fl/winter-haven/profile/YOUR_PROFILE",
+          "https://g.page/YOUR_GOOGLE_BUSINESS_PROFILE",
+        ],
+        knowsAbout: [
+          "House cleaning",
+          "Residential cleaning",
+          "Apartment cleaning",
+          "Move-out cleaning",
+          "Move-in cleaning",
+          "Turnover cleaning",
+          "Airbnb cleaning",
+          "Commercial cleaning",
+          "Office cleaning",
+          "Restaurant cleaning",
+          "Post-construction cleaning",
+          "Winter Haven FL",
+          "Chain of Lakes",
+          "Polk County cleaning services",
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        name: site.name,
+        alternateName: ["cleaningwinterhaven.com", "Cleaning Winter Haven FL"],
+        url: site.url,
+        publisher: { "@id": orgId },
+        inLanguage: "en-US",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${site.url}/?q={search_term_string}`,
+          },
+          "query-input": "required name=search_term_string",
+        },
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": serviceId,
+        name: site.name,
+        description:
+          "Professional house cleaning, apartment cleaning, move-out and move-in cleaning, Airbnb turnover, commercial office and restaurant cleaning, and post-construction cleaning in Winter Haven, FL and the Chain of Lakes.",
+        url: site.url,
+        image: `${site.url}/icons/android-chrome-512x512.png`,
+        logo: `${site.url}/logo.svg`,
+        telephone: site.phoneTel,
+        email: site.email,
+        priceRange: "$$",
+        currenciesAccepted: "USD",
+        paymentAccepted: "Cash, Credit Card, Debit Card",
+        parentOrganization: { "@id": orgId },
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "",
+          addressLocality: site.address.locality,
+          addressRegion: site.address.region,
+          postalCode: site.address.postalCode,
+          addressCountry: site.address.country,
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: site.geo.latitude,
+          longitude: site.geo.longitude,
+        },
+        areaServed: site.areaServed.map((name) => ({
+          "@type": "City",
+          name,
+          containedInPlace: {
+            "@type": "AdministrativeArea",
+            name: "Polk County",
+          },
+        })),
+        openingHoursSpecification: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          opens: site.hoursSchema.opens,
+          closes: site.hoursSchema.closes,
+        },
+        sameAs: [
+          "https://www.facebook.com/YOUR_PAGE",
+          "https://www.instagram.com/YOUR_HANDLE",
+          "https://www.yelp.com/biz/YOUR_BIZ",
+          "https://www.bbb.org/us/fl/winter-haven/profile/YOUR_PROFILE",
+          "https://g.page/YOUR_GOOGLE_BUSINESS_PROFILE",
+        ],
+        about: [
+          { "@type": "Thing", name: "Cleaning Services in Winter Haven, FL" },
+          { "@type": "Service", name: "House Cleaning", serviceType: "Residential house cleaning" },
+          { "@type": "Service", name: "Residential Cleaning", serviceType: "Recurring home cleaning" },
+          { "@type": "Service", name: "Move-Out Cleaning", serviceType: "Vacancy and deposit-protect cleaning" },
+          { "@type": "Service", name: "Airbnb Cleaning", serviceType: "Short-term rental turnover cleaning" },
+          { "@type": "Service", name: "Commercial Cleaning", serviceType: "Office and business janitorial" },
+          { "@type": "Service", name: "Post-Construction Cleaning", serviceType: "Construction dust and debris cleanup" },
+        ],
+        mentions: [
+          { "@type": "Place", name: "Winter Haven", address: { "@type": "PostalAddress", addressLocality: "Winter Haven", addressRegion: "FL", addressCountry: "US" } },
+          { "@type": "Place", name: "Chain of Lakes" },
+          { "@type": "Place", name: "Cypress Gardens" },
+          { "@type": "Place", name: "Florence Villa" },
+          { "@type": "Place", name: "Eagle Lake" },
+          { "@type": "Place", name: "Inwood" },
+          { "@type": "Place", name: "Auburndale" },
+          { "@type": "Place", name: "Haines City" },
+          { "@type": "Place", name: "Lake Alfred" },
+          { "@type": "AdministrativeArea", name: "Polk County" },
+          { "@type": "Thing", name: "Apartment Cleaning" },
+          { "@type": "Thing", name: "Turnover Cleaning" },
+          { "@type": "Thing", name: "Office Cleaning" },
+          { "@type": "Thing", name: "Restaurant Cleaning" },
+          { "@type": "Thing", name: "Cafe Cleaning" },
+          { "@type": "Audience", audienceType: "Homeowners" },
+          { "@type": "Audience", audienceType: "Apartment Owners" },
+          { "@type": "Audience", audienceType: "Property Managers" },
+          { "@type": "Audience", audienceType: "Office Owners" },
+          { "@type": "Audience", audienceType: "Restaurant and Cafe Operators" },
+          { "@type": "Audience", audienceType: "Airbnb Hosts" },
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Cleaning Winter Haven Services",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "House Cleaning", url: `${site.url}/house-cleaning` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Residential Cleaning", url: `${site.url}/residential-cleaning` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Move-Out Cleaning", url: `${site.url}/move-out-cleaning` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Move-In Cleaning", url: `${site.url}/move-in-cleaning` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Cleaning", url: `${site.url}/commercial-cleaning` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Post-Construction Cleaning", url: `${site.url}/post-construction-cleaning` } },
+          ],
+        },
+      },
+    ],
   };
 
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBusiness) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebsite) }} />
-    </>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
   );
 }

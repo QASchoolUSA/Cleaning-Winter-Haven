@@ -23,6 +23,10 @@ export default function HouseCleaningContent() {
       </p>
 
       <p>
+        Wondering about rates? Read our{" "}
+        <a href="/guides/how-much-does-house-cleaning-cost-winter-haven">Winter Haven house cleaning cost guide</a> for bedroom-tier prices, deep-clean multipliers, and Florida humidity frequency tips.
+      </p>
+      <p>
         Popular searches: <em>house cleaning near me Winter Haven</em>, <em>deep cleaning service FL</em>, <em>one time maid service Polk County</em>, <em>home cleaning Chain of Lakes</em>.
       </p>
     </article>
