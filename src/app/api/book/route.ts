@@ -1,27 +1,68 @@
 import { NextResponse } from "next/server";
+import { normalizeBookingPayload, validateBookingPayload } from "@/lib/booking";
 import { site } from "@/lib/site";
 
 export async function POST(request: Request) {
-  const form = await request.json();
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
 
-  const res = await fetch(`${process.env.BOOKING_BROOM_URL}/api/bookings`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      site_slug: site.bookingSlug,
-      api_key: process.env.BOOKING_BROOM_API_KEY,
-      customer_name: form.customer_name,
-      email: form.email,
-      phone: form.phone,
-      address: form.address,
-      service_type: form.service_type,
-      preferred_date: form.preferred_date,
-      preferred_time: form.preferred_time,
-      notes: form.notes,
-    }),
-  });
+  if (!body || typeof body !== "object") {
+    return NextResponse.json({ error: "Invalid booking payload" }, { status: 400 });
+  }
 
-  const data = await res.json();
+  const form = normalizeBookingPayload(body as Record<string, string>);
+  const fieldErrors = validateBookingPayload(form);
+  if (Object.keys(fieldErrors).length > 0) {
+    return NextResponse.json(
+      { error: "Please fix the highlighted fields and try again.", fieldErrors },
+      { status: 400 }
+    );
+  }
+
+  const bookingUrl = process.env.BOOKING_BROOM_URL;
+  const apiKey = process.env.BOOKING_BROOM_API_KEY;
+  if (!bookingUrl || !apiKey) {
+    return NextResponse.json(
+      { error: "Booking is temporarily unavailable. Please call us or try again later." },
+      { status: 503 }
+    );
+  }
+
+  let res: Response;
+  try {
+    res = await fetch(`${bookingUrl}/api/bookings`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        site_slug: site.bookingSlug,
+        api_key: apiKey,
+        customer_name: form.customer_name,
+        email: form.email,
+        phone: form.phone,
+        address: form.address,
+        service_type: form.service_type,
+        preferred_date: form.preferred_date,
+        preferred_time: form.preferred_time,
+        notes: form.notes,
+      }),
+    });
+  } catch {
+    return NextResponse.json(
+      { error: "Could not reach the booking service. Please try again or call us." },
+      { status: 502 }
+    );
+  }
+
+  let data: { error?: string; id?: string; message?: string } = {};
+  try {
+    data = await res.json();
+  } catch {
+    data = {};
+  }
 
   if (!res.ok) {
     return NextResponse.json({ error: data.error ?? "Booking failed" }, { status: res.status });

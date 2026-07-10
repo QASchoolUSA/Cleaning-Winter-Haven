@@ -1,7 +1,8 @@
 "use client";
 import { useMemo, useState } from "react";
+import { validateBookingPayload } from "@/lib/booking";
 import { computeQuote, type ServiceType } from "@/lib/pricing";
-import { formatPhoneInput, phoneDigits } from "@/lib/phone";
+import { formatPhoneInput } from "@/lib/phone";
 import { site } from "@/lib/site";
 
 type SizeOption = { key: string; label: string };
@@ -45,20 +46,19 @@ const STEPS = ["Service", "Options", "Schedule", "Contact", "Review"] as const;
 type ContactErrors = Partial<Record<"name" | "email" | "phone" | "address", string>>;
 
 function validateContact(name: string, email: string, phone: string, address: string): ContactErrors {
-  const errors: ContactErrors = {};
-  if (!name.trim()) errors.name = "Please enter your full name.";
-  if (!email.trim()) {
-    errors.email = "Email is required so we can send your quote and confirmation.";
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-    errors.email = "Please enter a valid email address.";
-  }
-  if (!phone.trim()) {
-    errors.phone = "Phone is required so we can confirm your appointment.";
-  } else if (phoneDigits(phone).replace(/^1/, "").length < 10) {
-    errors.phone = "Please enter a valid 10-digit phone number.";
-  }
-  if (!address.trim()) errors.address = "Service address is required so our team knows where to go.";
-  return errors;
+  const errors = validateBookingPayload({
+    customer_name: name,
+    email,
+    phone,
+    address,
+    service_type: "placeholder",
+  });
+  const mapped: ContactErrors = {};
+  if (errors.customer_name) mapped.name = errors.customer_name;
+  if (errors.email) mapped.email = errors.email;
+  if (errors.phone) mapped.phone = errors.phone;
+  if (errors.address) mapped.address = errors.address;
+  return mapped;
 }
 
 export default function BookingWidget() {
@@ -379,11 +379,11 @@ export default function BookingWidget() {
         <button type="button" className="btn-ghost" onClick={prev} disabled={step === 0}>Back</button>
         {submitError && <p className="absolute left-6 right-6 bottom-20 rounded-lg bg-red-50 px-3 py-2 text-xs text-red-700">{submitError}</p>}
         {step < STEPS.length - 1 ? (
-          <button type="button" className="btn-primary px-5 py-2.5" onClick={next}>Continue</button>
+          <button type="button" className="btn-primary px-5 py-2.5" data-testid="booking-continue" onClick={next}>Continue</button>
         ) : (
           <div className="flex flex-wrap justify-end gap-2">
             <button type="button" className="btn-ghost px-4 py-2.5 text-xs sm:text-sm" disabled={submitting} onClick={() => { const errors = validateContact(name, email, phone, address); if (Object.keys(errors).length > 0) { setContactErrors(errors); setStep(3); return; } window.location.href = mailto; }}>Email quote</button>
-            <button type="button" className="btn-primary px-4 py-2.5 text-xs sm:text-sm disabled:opacity-60" onClick={handleBook} disabled={submitting}>{submitting ? "Sending…" : "Book cleaning"}</button>
+            <button type="button" className="btn-primary px-4 py-2.5 text-xs sm:text-sm disabled:opacity-60" data-testid="booking-submit" onClick={handleBook} disabled={submitting}>{submitting ? "Sending…" : "Book cleaning"}</button>
           </div>
         )}
       </div>

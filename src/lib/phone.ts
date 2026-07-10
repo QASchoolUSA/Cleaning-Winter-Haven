@@ -13,7 +13,7 @@ export function formatPhoneDisplay(value: string): string {
 
 /** Format for tel: links: 8631233212 → +18631233212 */
 export function formatPhoneTel(value: string): string {
-  let digits = phoneDigits(value);
+  const digits = phoneDigits(value);
   if (digits.length === 10) return `+1${digits}`;
   if (digits.length === 11 && digits.startsWith("1")) return `+${digits}`;
   return digits ? `+${digits}` : "";
