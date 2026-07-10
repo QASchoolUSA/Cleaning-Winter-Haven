@@ -1,15 +1,21 @@
 import Link from "next/link";
 import Icon, { type IconName } from "@/components/Icon";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
+import SectionImage from "@/components/SectionImage";
 import MoveOutCleaningContent from "@/components/content/MoveOutCleaningContent";
 import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePageParts";
 import { site } from "@/lib/site";
+
+const PAGE_IMAGE = "/images/services/service-move-out-vacancy.jpg";
 
 export const metadata = {
   title: "Move Out Cleaning in Winter Haven",
   description: "Move-out cleaning in Winter Haven, FL. Vacancy-ready cleaning to help secure your security deposit. Landlord checklist coverage.",
   alternates: { canonical: "/move-out-cleaning" },
   keywords: ["move out cleaning winter haven", "end of lease cleaning fl", "vacate cleaning polk county", "security deposit cleaning"],
+  openGraph: {
+    images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Vacancy-ready apartment after move-out cleaning" }],
+  },
 };
 
 const checklist: { icon: IconName; text: string }[] = [
@@ -31,7 +37,12 @@ const faqs = [
 export default function MoveOutCleaningPage() {
   return (
     <main className="mx-auto max-w-7xl px-4 pt-12 pb-0 sm:px-6 lg:px-8">
-      <ServiceJsonLd name="Move Out Cleaning Services" description="Vacancy-ready move-out cleaning in Winter Haven, FL." url={`${site.url}/move-out-cleaning`} />
+      <ServiceJsonLd
+        name="Move Out Cleaning Services"
+        description="Vacancy-ready move-out cleaning in Winter Haven, FL."
+        url={`${site.url}/move-out-cleaning`}
+        image={`${site.url}${PAGE_IMAGE}`}
+      />
       <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Move Out Cleaning", path: "/move-out-cleaning" }]} />
 
       <div className="grid gap-12 lg:grid-cols-2">
@@ -44,6 +55,14 @@ export default function MoveOutCleaningPage() {
             </p>
             <Link href="/#booking" className="btn-primary mt-6 inline-flex">Get a fast quote</Link>
           </header>
+
+          <SectionImage
+            src={PAGE_IMAGE}
+            alt="Empty Florida apartment with sparkling floors ready for landlord walkthrough"
+            caption="Vacancy-ready spaces that address the items landlords flag on final walkthroughs."
+            priority
+            className="mt-10"
+          />
 
           <div className="mt-10">
             <MoveOutCleaningContent />

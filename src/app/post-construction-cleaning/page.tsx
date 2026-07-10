@@ -1,15 +1,21 @@
 import Link from "next/link";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
+import SectionImage from "@/components/SectionImage";
 import PostConstructionCleaningContent from "@/components/content/PostConstructionCleaningContent";
 import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePageParts";
 import { POST_PRICES } from "@/lib/pricing";
 import { site } from "@/lib/site";
+
+const PAGE_IMAGE = "/images/services/service-post-construction.jpg";
 
 export const metadata = {
   title: "Post-Construction Cleaning in Winter Haven",
   description: "Post-construction and renovation cleanup in Winter Haven, FL. Dust removal, detailing, and handover-ready finishing cleans from $299.",
   alternates: { canonical: "/post-construction-cleaning" },
   keywords: ["post construction cleaning winter haven", "renovation cleanup fl", "construction dust removal polk county", "builder final clean"],
+  openGraph: {
+    images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Dust-free renovated kitchen after post-construction cleaning" }],
+  },
 };
 
 const phases = [
@@ -28,7 +34,12 @@ const faqs = [
 export default function PostConstructionCleaningPage() {
   return (
     <main className="mx-auto max-w-7xl px-4 pt-12 pb-0 sm:px-6 lg:px-8">
-      <ServiceJsonLd name="Post-Construction Cleaning Services" description="Renovation and construction cleanup in Winter Haven, FL." url={`${site.url}/post-construction-cleaning`} />
+      <ServiceJsonLd
+        name="Post-Construction Cleaning Services"
+        description="Renovation and construction cleanup in Winter Haven, FL."
+        url={`${site.url}/post-construction-cleaning`}
+        image={`${site.url}${PAGE_IMAGE}`}
+      />
       <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Post-Construction Cleaning", path: "/post-construction-cleaning" }]} />
 
       <header className="max-w-3xl">
@@ -39,6 +50,14 @@ export default function PostConstructionCleaningPage() {
         </p>
         <Link href="/#booking" className="btn-primary mt-6 inline-flex">Get a fast quote</Link>
       </header>
+
+      <SectionImage
+        src={PAGE_IMAGE}
+        alt="Newly renovated kitchen completely dust-free after post-construction cleaning"
+        caption="White-glove handover cleans remove fine dust so renovations are move-in or listing ready."
+        priority
+        className="mt-10"
+      />
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold text-slate-900">Three-phase cleaning process</h2>

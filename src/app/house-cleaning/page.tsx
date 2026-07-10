@@ -1,15 +1,21 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
+import SectionImage from "@/components/SectionImage";
 import HouseCleaningContent from "@/components/content/HouseCleaningContent";
 import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePageParts";
 import { site } from "@/lib/site";
+
+const PAGE_IMAGE = "/images/services/service-house-cleaning.jpg";
 
 export const metadata = {
   title: "House Cleaning in Winter Haven",
   description: "Professional house cleaning in Winter Haven, FL. Standard and deep cleaning for homes across the Chain of Lakes. Instant online quotes from $99.",
   alternates: { canonical: "/house-cleaning" },
   keywords: ["house cleaning winter haven", "deep cleaning winter haven fl", "maid service near me", "one time house cleaning polk county"],
+  openGraph: {
+    images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Freshly cleaned Winter Haven living room" }],
+  },
 };
 
 const comparison = [
@@ -40,7 +46,12 @@ const faqs = [
 export default function HouseCleaningPage() {
   return (
     <main className="mx-auto max-w-7xl px-4 pt-12 pb-0 sm:px-6 lg:px-8">
-      <ServiceJsonLd name="House Cleaning Services" description="Standard and deep house cleaning in Winter Haven, FL." url={`${site.url}/house-cleaning`} />
+      <ServiceJsonLd
+        name="House Cleaning Services"
+        description="Standard and deep house cleaning in Winter Haven, FL."
+        url={`${site.url}/house-cleaning`}
+        image={`${site.url}${PAGE_IMAGE}`}
+      />
       <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "House Cleaning", path: "/house-cleaning" }]} />
 
       <header className="max-w-3xl">
@@ -56,6 +67,14 @@ export default function HouseCleaningPage() {
           </Link>
         </div>
       </header>
+
+      <SectionImage
+        src={PAGE_IMAGE}
+        alt="Bright, freshly cleaned Winter Haven living room with lake light through large windows"
+        caption="Guest-ready living spaces after a professional house cleaning across the Chain of Lakes."
+        priority
+        className="mt-10"
+      />
 
       <div className="mt-12 grid gap-5 sm:grid-cols-3">
         {benefits.map((b) => (
@@ -88,6 +107,14 @@ export default function HouseCleaningPage() {
           </tbody>
         </table>
       </div>
+
+      <SectionImage
+        src="/images/services/service-bathroom.jpg"
+        alt="Pristine Florida bathroom with sparkling glass shower after deep cleaning"
+        caption="Deep cleans target bathroom grout, silicone, and hard-water film common in humid Winter Haven homes."
+        className="mt-12"
+        aspect="photo"
+      />
 
       <div className="mt-12">
         <HouseCleaningContent />

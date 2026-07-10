@@ -4,6 +4,7 @@ import Benefits from "@/components/Benefits";
 import PricingTable from "@/components/PricingTable";
 import Testimonials from "@/components/Testimonials";
 import HomeFAQ from "@/components/HomeFAQ";
+import SectionImage from "@/components/SectionImage";
 import Link from "next/link";
 
 export default function Home() {
@@ -31,29 +32,31 @@ export default function Home() {
 
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="card-accent overflow-hidden">
-            <div className="grid lg:grid-cols-5">
-              <div className="border-b border-slate-100 bg-gradient-to-br from-[#0f766e]/10 to-white p-8 lg:col-span-2 lg:border-b-0 lg:border-r">
-                <p className="section-eyebrow">Local experts</p>
-                <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-                  Professional Cleaning Across Winter Haven
-                </h2>
-              </div>
-              <div className="p-8 lg:col-span-3">
-                <p className="leading-relaxed text-slate-600">
-                  Cleaning Winter Haven provides trusted <strong className="font-semibold text-slate-800">house cleaning in Winter Haven, FL</strong> for lakefront properties, downtown condos, and family homes. Explore our{" "}
-                  <Link href="/house-cleaning" className="font-medium text-[#0f766e] hover:underline">house cleaning</Link>,{" "}
-                  <Link href="/residential-cleaning" className="font-medium text-[#0f766e] hover:underline">residential cleaning</Link>,{" "}
-                  <Link href="/commercial-cleaning" className="font-medium text-[#0f766e] hover:underline">commercial cleaning</Link>,{" "}
-                  <Link href="/move-out-cleaning" className="font-medium text-[#0f766e] hover:underline">move-out cleaning</Link>,{" "}
-                  <Link href="/move-in-cleaning" className="font-medium text-[#0f766e] hover:underline">move-in cleaning</Link>, and{" "}
-                  <Link href="/post-construction-cleaning" className="font-medium text-[#0f766e] hover:underline">post-construction cleaning</Link> services.
-                </p>
-                <p className="mt-4 leading-relaxed text-slate-600">
-                  Serving the Chain of Lakes, Cypress Gardens area, Eagle Lake, and all of Polk County with reliable scheduling and vetted local cleaners.
-                </p>
-                <Link href="/service-areas" className="mt-4 inline-block text-sm font-semibold text-[#0f766e] hover:underline">View service areas →</Link>
-              </div>
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+            <SectionImage
+              src="/images/services/service-crew.jpg"
+              alt="Two professional cleaners working as a team in a bright Florida home"
+              caption="Vetted local cleaners who treat Winter Haven homes and offices like their own."
+              className="rounded-none"
+            />
+            <div>
+              <p className="section-eyebrow">Local experts</p>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Professional Cleaning Across Winter Haven
+              </h2>
+              <p className="mt-4 leading-relaxed text-slate-600">
+                Cleaning Winter Haven provides trusted <strong className="font-semibold text-slate-800">house cleaning in Winter Haven, FL</strong> for lakefront properties, downtown condos, and family homes. Explore our{" "}
+                <Link href="/house-cleaning" className="font-medium text-[#0f766e] hover:underline">house cleaning</Link>,{" "}
+                <Link href="/residential-cleaning" className="font-medium text-[#0f766e] hover:underline">residential cleaning</Link>,{" "}
+                <Link href="/commercial-cleaning" className="font-medium text-[#0f766e] hover:underline">commercial cleaning</Link>,{" "}
+                <Link href="/move-out-cleaning" className="font-medium text-[#0f766e] hover:underline">move-out cleaning</Link>,{" "}
+                <Link href="/move-in-cleaning" className="font-medium text-[#0f766e] hover:underline">move-in cleaning</Link>, and{" "}
+                <Link href="/post-construction-cleaning" className="font-medium text-[#0f766e] hover:underline">post-construction cleaning</Link> services.
+              </p>
+              <p className="mt-4 leading-relaxed text-slate-600">
+                Serving the Chain of Lakes, Cypress Gardens area, Eagle Lake, and all of Polk County with reliable scheduling and vetted local cleaners.
+              </p>
+              <Link href="/service-areas" className="mt-4 inline-block text-sm font-semibold text-[#0f766e] hover:underline">View service areas →</Link>
             </div>
           </div>
         </div>

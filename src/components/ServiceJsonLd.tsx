@@ -5,21 +5,24 @@ export default function ServiceJsonLd({
   description,
   url,
   type = "Service",
+  image = `${site.url}/images/services/service-house-cleaning.jpg`,
 }: {
   name: string;
   description: string;
   url: string;
   type?: string;
+  image?: string;
 }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": type,
     name,
     description,
+    image,
     provider: {
       "@type": "LocalBusiness",
       name: site.name,
-      image: `${site.url}/logo.svg`,
+      image,
       telephone: site.phoneTel,
       address: {
         "@type": "PostalAddress",
