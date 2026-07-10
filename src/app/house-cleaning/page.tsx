@@ -30,6 +30,7 @@ const benefits = [
 ];
 
 const faqs = [
+  { q: "How much does house cleaning cost in Winter Haven?", a: "Studios start at $99; 2-bedroom homes start at $139. Deep cleaning adds 40% and move cleaning adds 20%. See the full Winter Haven house cleaning cost guide for the complete price table." },
   { q: "How long does a house cleaning take?", a: "A standard 2-bedroom home typically takes 2–3 hours. Deep cleans may take 4–5 hours depending on size and condition." },
   { q: "What's the difference between standard and deep?", a: "Standard maintains tidy homes. Deep cleaning adds baseboards, fixtures, detailed grout work, and neglected areas." },
   { q: "Do you clean lake houses and vacation rentals?", a: "Yes. We regularly service properties along Lake Howard, Lake Cannon, and throughout the Chain of Lakes." },
@@ -48,7 +49,12 @@ export default function HouseCleaningPage() {
         <p className="mt-4 text-lg text-slate-600">
           One-time standard or deep cleans for every room — from downtown bungalows to lakefront estates on the Chain of Lakes.
         </p>
-        <Link href="/#booking" className="btn-primary mt-6 inline-flex">Get a fast quote</Link>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link href="/#booking" className="btn-primary inline-flex">Get a fast quote</Link>
+          <Link href="/guides/how-much-does-house-cleaning-cost-winter-haven" className="inline-flex items-center text-sm font-semibold text-[#0f766e] hover:underline">
+            View 2026 cost guide →
+          </Link>
+        </div>
       </header>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-3">

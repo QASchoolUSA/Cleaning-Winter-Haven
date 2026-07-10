@@ -33,6 +33,7 @@ export default function Footer() {
                 <li key={link.href}><Link href={link.href} className="text-slate-600 transition hover:text-[#0f766e]">{link.label}</Link></li>
               ))}
               <li><Link href="/pricing" className="text-slate-600 transition hover:text-[#0f766e]">Transparent Pricing</Link></li>
+              <li><Link href="/guides/how-much-does-house-cleaning-cost-winter-haven" className="text-slate-600 transition hover:text-[#0f766e]">House Cleaning Cost Guide</Link></li>
             </ul>
           </div>
 
