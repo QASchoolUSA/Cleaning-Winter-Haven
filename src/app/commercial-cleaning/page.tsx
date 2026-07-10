@@ -1,16 +1,22 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
+import SectionImage from "@/components/SectionImage";
 import CommercialCleaningContent from "@/components/content/CommercialCleaningContent";
 import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePageParts";
 import { COMMERCIAL_PRICES } from "@/lib/pricing";
 import { site } from "@/lib/site";
+
+const PAGE_IMAGE = "/images/services/service-commercial-office.jpg";
 
 export const metadata = {
   title: "Commercial Cleaning in Winter Haven",
   description: "Commercial and office cleaning in Winter Haven, FL. Professional janitorial service for offices, retail, and medical spaces. From $149.",
   alternates: { canonical: "/commercial-cleaning" },
   keywords: ["commercial cleaning winter haven", "office cleaning polk county", "janitorial service winter haven fl", "retail cleaning"],
+  openGraph: {
+    images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Polished office after commercial cleaning" }],
+  },
 };
 
 const industries = [
@@ -29,7 +35,12 @@ const faqs = [
 export default function CommercialCleaningPage() {
   return (
     <main className="mx-auto max-w-7xl px-4 pt-12 pb-0 sm:px-6 lg:px-8">
-      <ServiceJsonLd name="Commercial Cleaning Services" description="Office and commercial janitorial cleaning in Winter Haven, FL." url={`${site.url}/commercial-cleaning`} />
+      <ServiceJsonLd
+        name="Commercial Cleaning Services"
+        description="Office and commercial janitorial cleaning in Winter Haven, FL."
+        url={`${site.url}/commercial-cleaning`}
+        image={`${site.url}${PAGE_IMAGE}`}
+      />
       <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Commercial Cleaning", path: "/commercial-cleaning" }]} />
 
       <header className="max-w-3xl">
@@ -43,6 +54,14 @@ export default function CommercialCleaningPage() {
           <a href={`tel:${site.phoneTel}`} className="btn-secondary">Call {site.phone}</a>
         </div>
       </header>
+
+      <SectionImage
+        src={PAGE_IMAGE}
+        alt="Modern Winter Haven office with polished desks and glass conference room after commercial cleaning"
+        caption="Client-ready offices and shared workspaces maintained on daily or weekly schedules."
+        priority
+        className="mt-10"
+      />
 
       <div className="mt-12 grid gap-5 md:grid-cols-3">
         {industries.map((ind) => (

@@ -1,13 +1,19 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
+import SectionImage from "@/components/SectionImage";
 import { BreadcrumbJsonLd, ServiceCTA } from "@/components/ServicePageParts";
 import { site, SERVICE_LINKS } from "@/lib/site";
+
+const PAGE_IMAGE = "/images/services/service-lakefront.jpg";
 
 export const metadata = {
   title: "Service Areas — Winter Haven & Polk County",
   description: "Cleaning Winter Haven serves Downtown, Chain of Lakes, Cypress Gardens, Eagle Lake, Florence Villa, Inwood, and nearby Polk County communities.",
   alternates: { canonical: "/service-areas" },
   keywords: ["cleaning service areas winter haven", "house cleaning chain of lakes", "maid service polk county fl", "cleaning eagle lake"],
+  openGraph: {
+    images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Chain of Lakes lakefront home lanai" }],
+  },
 };
 
 const areaLinks: Record<string, string> = {
@@ -41,6 +47,15 @@ export default function ServiceAreasPage() {
           Local cleaning teams serving Winter Haven neighborhoods and surrounding Polk County communities — with fast response times and neighborhood-specific expertise.
         </p>
       </header>
+
+      <SectionImage
+        src={PAGE_IMAGE}
+        alt="Chain of Lakes lakefront home lanai with sparkling glass doors overlooking calm water"
+        caption="From lakefront lanais to downtown storefronts — local crews who know Winter Haven neighborhoods."
+        priority
+        className="mt-10"
+        aspect="hero"
+      />
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {site.neighborhoods.map((area) => (

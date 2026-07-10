@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import BookingWidget from "./BookingWidget";
 
@@ -7,15 +8,27 @@ const TRUST_ITEMS = [
   "Local Winter Haven Team",
 ];
 
+const HERO_IMAGE = "/images/services/service-house-cleaning.jpg";
+
 export default function Hero() {
   return (
-    <section className="gradient-hero relative overflow-hidden">
-      <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#14b8a6]/15 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-[#f59e0b]/10 blur-3xl" />
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0">
+        <Image
+          src={HERO_IMAGE}
+          alt="Freshly cleaned Winter Haven living room with lake light through large windows"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center image-reveal"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/92 to-white/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-white/40" />
+      </div>
 
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-5 lg:gap-16">
-          <div className="max-w-xl lg:col-span-2 lg:pt-4">
+          <div className="max-w-xl fade-up lg:col-span-2 lg:pt-4">
             <p className="section-eyebrow">Winter Haven, FL · Chain of Lakes</p>
             <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[3rem] lg:leading-[1.1]">
               Winter Haven&apos;s Trusted Cleaning Professionals

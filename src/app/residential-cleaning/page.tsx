@@ -1,16 +1,22 @@
 import Link from "next/link";
 import Icon, { type IconName } from "@/components/Icon";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
+import SectionImage from "@/components/SectionImage";
 import ResidentialCleaningContent from "@/components/content/ResidentialCleaningContent";
 import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePageParts";
 import { RESIDENTIAL_PRICES } from "@/lib/pricing";
 import { site } from "@/lib/site";
+
+const PAGE_IMAGE = "/images/services/service-residential.jpg";
 
 export const metadata = {
   title: "Residential Cleaning in Winter Haven",
   description: "Recurring residential cleaning in Winter Haven, FL. Weekly, bi-weekly, and monthly home maintenance by local professionals. Transparent pricing from $99.",
   alternates: { canonical: "/residential-cleaning" },
   keywords: ["residential cleaning winter haven", "maid service winter haven", "recurring house cleaning", "apartment cleaning winter haven fl", "home cleaning chain of lakes"],
+  openGraph: {
+    images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Spotless kitchen after residential cleaning" }],
+  },
 };
 
 const whatsIncluded: { icon: IconName; text: string }[] = [
@@ -37,7 +43,12 @@ const faqs = [
 export default function ResidentialCleaningPage() {
   return (
     <main className="mx-auto max-w-7xl px-4 pt-12 pb-0 sm:px-6 lg:px-8">
-      <ServiceJsonLd name="Residential Cleaning Services" description="Professional recurring residential cleaning in Winter Haven, FL." url={`${site.url}/residential-cleaning`} />
+      <ServiceJsonLd
+        name="Residential Cleaning Services"
+        description="Professional recurring residential cleaning in Winter Haven, FL."
+        url={`${site.url}/residential-cleaning`}
+        image={`${site.url}${PAGE_IMAGE}`}
+      />
       <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Residential Cleaning", path: "/residential-cleaning" }]} />
 
       <div className="grid gap-12 lg:grid-cols-3">
@@ -50,6 +61,14 @@ export default function ResidentialCleaningPage() {
             </p>
             <Link href="/#booking" className="btn-primary mt-6 inline-flex">Get a fast quote</Link>
           </header>
+
+          <SectionImage
+            src={PAGE_IMAGE}
+            alt="Spotless modern kitchen with gleaming counters after residential cleaning"
+            caption="Recurring residential cleans keep Winter Haven kitchens guest-ready between visits."
+            priority
+            className="mt-10"
+          />
 
           <div className="mt-10 rounded-xl bg-[#0f766e]/5 p-6">
             <h2 className="font-semibold text-slate-900">What&apos;s included</h2>

@@ -57,13 +57,13 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: "Cleaning Winter Haven | Professional Cleaning Services",
     description: "Expert residential and commercial cleaning in Winter Haven, FL. Book your trusted local cleaners today.",
-    images: [{ url: "/icons/android-chrome-512x512.png", width: 512, height: 512, alt: site.name }],
+    images: [{ url: "/images/services/service-house-cleaning.jpg", width: 1536, height: 1024, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cleaning Winter Haven | Professional Cleaning Services",
     description: "Expert residential and commercial cleaning in Winter Haven, FL.",
-    images: ["/icons/android-chrome-512x512.png"],
+    images: ["/images/services/service-house-cleaning.jpg"],
   },
 };
 

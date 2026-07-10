@@ -1,15 +1,21 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
+import SectionImage from "@/components/SectionImage";
 import MoveInCleaningContent from "@/components/content/MoveInCleaningContent";
 import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePageParts";
 import { site } from "@/lib/site";
+
+const PAGE_IMAGE = "/images/services/service-move-in-ready.jpg";
 
 export const metadata = {
   title: "Move In Cleaning in Winter Haven",
   description: "Move-in cleaning in Winter Haven, FL. Sanitize your new home before unpacking. Professional deep clean for cabinets, bathrooms, kitchens, and floors.",
   alternates: { canonical: "/move-in-cleaning" },
   keywords: ["move in cleaning winter haven", "new home cleaning fl", "sanitize home before moving", "move in deep clean polk county"],
+  openGraph: {
+    images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Sanitized bedroom ready for move-in day" }],
+  },
 };
 
 const timeline = [
@@ -28,7 +34,12 @@ const faqs = [
 export default function MoveInCleaningPage() {
   return (
     <main className="mx-auto max-w-7xl px-4 pt-12 pb-0 sm:px-6 lg:px-8">
-      <ServiceJsonLd name="Move In Cleaning Services" description="Professional move-in cleaning and sanitization in Winter Haven, FL." url={`${site.url}/move-in-cleaning`} />
+      <ServiceJsonLd
+        name="Move In Cleaning Services"
+        description="Professional move-in cleaning and sanitization in Winter Haven, FL."
+        url={`${site.url}/move-in-cleaning`}
+        image={`${site.url}${PAGE_IMAGE}`}
+      />
       <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Move In Cleaning", path: "/move-in-cleaning" }]} />
 
       <header className="max-w-3xl">
@@ -39,6 +50,14 @@ export default function MoveInCleaningPage() {
         </p>
         <Link href="/#booking" className="btn-primary mt-6 inline-flex">Get a fast quote</Link>
       </header>
+
+      <SectionImage
+        src={PAGE_IMAGE}
+        alt="Freshly sanitized empty bedroom with sparkling windows ready for move-in"
+        caption="Start unpacking in a sanitized home — every surface cleaned before your boxes arrive."
+        priority
+        className="mt-10"
+      />
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold text-slate-900">Your move-in timeline</h2>

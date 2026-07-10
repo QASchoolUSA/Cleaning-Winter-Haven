@@ -25,7 +25,7 @@ export default function JsonLd() {
           width: 200,
           height: 44,
         },
-        image: `${site.url}/icons/android-chrome-512x512.png`,
+        image: `${site.url}/images/services/service-house-cleaning.jpg`,
         email: site.email,
         telephone: site.phoneTel,
         address: {
@@ -84,7 +84,7 @@ export default function JsonLd() {
         description:
           "Professional house cleaning, apartment cleaning, move-out and move-in cleaning, Airbnb turnover, commercial office and restaurant cleaning, and post-construction cleaning in Winter Haven, FL and the Chain of Lakes.",
         url: site.url,
-        image: `${site.url}/icons/android-chrome-512x512.png`,
+        image: `${site.url}/images/services/service-house-cleaning.jpg`,
         logo: `${site.url}/logo.svg`,
         telephone: site.phoneTel,
         email: site.email,

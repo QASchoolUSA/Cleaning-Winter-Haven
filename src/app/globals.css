@@ -87,3 +87,33 @@ h1, h2, h3, h4 {
 .cta-band {
   @apply relative overflow-hidden bg-gradient-to-r from-[#0f766e] to-[#115e59];
 }
+
+@keyframes image-reveal {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.image-reveal {
+  animation: image-reveal 0.9s ease-out both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
