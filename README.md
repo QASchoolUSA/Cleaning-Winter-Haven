@@ -40,13 +40,18 @@ Covers booking validation, `/api/book` request handling (with a mocked Booking B
 
 This project uses [@opennextjs/cloudflare](https://opennext.js.org/cloudflare) to run Next.js (including `/api/book`) on Cloudflare Workers.
 
-**Cloudflare Pages / Workers build settings:**
+**Cloudflare Workers build settings:**
 
 | Setting | Value |
 |---------|-------|
-| Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` |
-| Branch | `main` |
+| Production branch | `main` |
+| Build command | `npm run build` **or** `npx opennextjs-cloudflare build` |
+| Deploy command | `npx opennextjs-cloudflare deploy` (preferred) **or** `npx wrangler deploy` |
+| Non-production deploy | `npx opennextjs-cloudflare upload` |
+
+`npm run build` runs the full OpenNext Workers bundle (via `build:next` for the Next.js compile). Prefer `npx opennextjs-cloudflare deploy` over bare `wrangler deploy` so the OpenNext deploy step always runs after a successful build.
+
+Ignore / close the bot PR from `cloudflare/workers-autoconfig` — that branch was generated with Next.js `16.0.7`, which is incompatible with `@opennextjs/cloudflare` (needs `>=16.2.6`). Config already lives on `main`.
 
 Set environment variables in the Cloudflare dashboard:
 
