@@ -18,6 +18,14 @@ cp .env.example .env.local
 npm run dev
 ```
 
+## Tests
+
+```bash
+npm test
+```
+
+Covers booking validation, `/api/book` request handling (with a mocked Booking Broom upstream), and a demo-text walkthrough of the booking widget.
+
 ## Environment variables
 
 | Variable | Description |
