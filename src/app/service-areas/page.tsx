@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
 import SectionImage from "@/components/SectionImage";
-import { BreadcrumbJsonLd, ServiceCTA } from "@/components/ServicePageParts";
+import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePageParts";
 import { site, SERVICE_LINKS } from "@/lib/site";
 
 const PAGE_IMAGE = "/images/services/service-lakefront.jpg";
@@ -12,6 +12,8 @@ export const metadata = {
   alternates: { canonical: "/service-areas" },
   keywords: ["cleaning service areas winter haven", "house cleaning chain of lakes", "maid service polk county fl", "cleaning eagle lake"],
   openGraph: {
+    title: "Service Areas — Winter Haven & Polk County",
+    description: "Local cleaning routes across Downtown, Chain of Lakes, Cypress Gardens, Eagle Lake, Florence Villa, and Inwood.",
     images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Chain of Lakes lakefront home lanai" }],
   },
 };
@@ -24,6 +26,13 @@ const areaLinks: Record<string, string> = {
   "Eagle Lake": "/residential-cleaning",
   Inwood: "/house-cleaning",
 };
+
+const areaFaqs = [
+  { q: "Which communities near Winter Haven do you serve?", a: "The regular service area includes Winter Haven, Florence Villa, Eagle Lake, Inwood, Cypress Gardens, Haines City, Auburndale, and Lake Alfred. Exact availability depends on the address and route schedule." },
+  { q: "Do you clean lakefront homes and vacation rentals?", a: "Yes. Share access, parking, turnover windows, linen responsibilities, and any outdoor-adjacent areas that need attention when requesting a quote." },
+  { q: "Can you enter gated communities around Winter Haven?", a: "Yes, when the customer provides gate-list, call-box, parking, and vendor-access instructions before the appointment." },
+  { q: "Does every service area offer the same cleaning options?", a: "Core residential and move-related services are broadly available, while commercial, post-construction, and time-sensitive turnover work depends on crew capacity and the exact property." },
+];
 
 export default function ServiceAreasPage() {
   const jsonLd = {
@@ -92,6 +101,29 @@ export default function ServiceAreasPage() {
           ))}
         </ul>
       </section>
+
+      <section className="mt-16 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+        <div>
+          <h2 className="text-2xl font-bold text-slate-900">Local details that shape a cleaning plan</h2>
+          <p className="mt-4 leading-relaxed text-slate-600">
+            Winter Haven housing ranges from downtown apartments and established neighborhoods to newer subdivisions and lakefront properties. Homes near the Chain of Lakes may see more patio and sliding-door traffic, while busy family households near Cypress Gardens often prioritize kitchens, bathrooms, floors, and guest-ready living areas.
+          </p>
+          <p className="mt-4 leading-relaxed text-slate-600">
+            Summer rain, pollen, and year-round air-conditioning also influence routine care. Entry floors, window tracks, ceiling fans, return vents, and humidity-prone bathrooms can be added to a rotating checklist without turning every visit into a full deep clean.
+          </p>
+        </div>
+        <aside className="card p-6">
+          <h3 className="text-lg font-bold text-slate-900">Before booking outside central Winter Haven</h3>
+          <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-relaxed text-slate-600">
+            <li>Provide the full address or ZIP code for route confirmation.</li>
+            <li>Note gated entry, condo elevators, stairs, or limited parking.</li>
+            <li>Identify pets and any surface-specific product requirements.</li>
+            <li>For rentals, include the true checkout-to-check-in window.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <FAQSection faqs={areaFaqs} />
 
       <ServiceCTA title="Book cleaning in your neighborhood" />
     </main>

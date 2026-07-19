@@ -14,6 +14,8 @@ export const metadata = {
   alternates: { canonical: "/move-out-cleaning" },
   keywords: ["move out cleaning winter haven", "end of lease cleaning fl", "vacate cleaning polk county", "security deposit cleaning"],
   openGraph: {
+    title: "Move Out Cleaning in Winter Haven, FL",
+    description: "Vacancy-ready move-out cleaning in Winter Haven to help protect your security deposit.",
     images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Vacancy-ready apartment after move-out cleaning" }],
   },
 };

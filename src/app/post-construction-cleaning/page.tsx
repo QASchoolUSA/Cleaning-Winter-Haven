@@ -14,6 +14,8 @@ export const metadata = {
   alternates: { canonical: "/post-construction-cleaning" },
   keywords: ["post construction cleaning winter haven", "renovation cleanup fl", "construction dust removal polk county", "builder final clean"],
   openGraph: {
+    title: "Post-Construction Cleaning in Winter Haven, FL",
+    description: "Phased renovation cleanup in Winter Haven — rough, detail, and final handover cleans from $299.",
     images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Dust-free renovated kitchen after post-construction cleaning" }],
   },
 };
@@ -32,6 +34,19 @@ const faqs = [
 ];
 
 export default function PostConstructionCleaningPage() {
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Three-phase post-construction cleaning in Winter Haven",
+    description: "How Cleaning Winter Haven sequences rough, detail, and final handover cleans after renovation or new construction.",
+    step: phases.map((p, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: `${p.phase}: ${p.name}`,
+      text: p.desc,
+    })),
+  };
+
   return (
     <main className="mx-auto max-w-7xl px-4 pt-12 pb-0 sm:px-6 lg:px-8">
       <ServiceJsonLd
@@ -41,6 +56,7 @@ export default function PostConstructionCleaningPage() {
         image={`${site.url}${PAGE_IMAGE}`}
       />
       <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Post-Construction Cleaning", path: "/post-construction-cleaning" }]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
 
       <header className="max-w-3xl">
         <p className="section-eyebrow">Winter Haven, FL</p>
@@ -61,16 +77,16 @@ export default function PostConstructionCleaningPage() {
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold text-slate-900">Three-phase cleaning process</h2>
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
+        <ol className="mt-6 grid gap-4 md:grid-cols-3">
           {phases.map((p) => (
-            <div key={p.phase} className="card-accent flex flex-col p-6">
+            <li key={p.phase} className="card-accent flex flex-col p-6">
               <span className="text-xs font-bold uppercase tracking-widest text-[#f59e0b]">{p.phase}</span>
               <h3 className="mt-2 text-lg font-semibold text-slate-900">{p.name}</h3>
               <p className="mt-2 flex-1 text-sm text-slate-600">{p.desc}</p>
               <p className="mt-4 text-sm font-semibold text-[#0f766e]">{p.price}</p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-3">

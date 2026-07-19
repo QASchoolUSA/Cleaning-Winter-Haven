@@ -21,7 +21,10 @@ export default function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-900">Contact</h3>
             <ul className="mt-4 space-y-3 text-sm text-slate-600">
               <li><a href={`mailto:${site.email}`} className="font-medium text-[#0f766e] hover:underline">{site.email}</a></li>
-              <li><a href={`tel:${site.phoneTel}`} className="font-medium text-[#0f766e] hover:underline">{site.phone}</a></li>
+              {site.phone && site.phoneTel ? (
+                <li><a href={`tel:${site.phoneTel}`} className="font-medium text-[#0f766e] hover:underline">{site.phone}</a></li>
+              ) : null}
+              <li className="text-xs leading-relaxed text-slate-500">{site.serviceAreaPolicy}</li>
               <li>Hours: {site.hours}</li>
             </ul>
           </div>
@@ -33,6 +36,7 @@ export default function Footer() {
                 <li key={link.href}><Link href={link.href} className="text-slate-600 transition hover:text-[#0f766e]">{link.label}</Link></li>
               ))}
               <li><Link href="/pricing" className="text-slate-600 transition hover:text-[#0f766e]">Transparent Pricing</Link></li>
+              <li><Link href="/about" className="text-slate-600 transition hover:text-[#0f766e]">About Us</Link></li>
               <li><Link href="/guides/how-much-does-house-cleaning-cost-winter-haven" className="text-slate-600 transition hover:text-[#0f766e]">House Cleaning Cost Guide</Link></li>
             </ul>
           </div>

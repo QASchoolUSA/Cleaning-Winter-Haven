@@ -1,15 +1,29 @@
 import { formatPhoneDisplay, formatPhoneTel } from "./phone";
 
-const rawPhone = process.env.NEXT_PUBLIC_PHONE ?? "(863) 000-0000";
+/** Treat missing / placeholder env values as no public phone. */
+function resolvePhone(): string | null {
+  const raw = process.env.NEXT_PUBLIC_PHONE?.trim();
+  if (!raw) return null;
+  const digits = raw.replace(/\D/g, "");
+  const national =
+    digits.length === 11 && digits.startsWith("1") ? digits.slice(1) : digits;
+  // Reject placeholders like 000-0000 or all-zero patterns
+  if (national.length !== 10 || /^0+$/.test(national) || /^(\d)\1{9}$/.test(national)) {
+    return null;
+  }
+  return raw;
+}
+
+const rawPhone = resolvePhone();
 
 export const site = {
   name: "Cleaning Winter Haven",
   shortName: "Cleaning Winter Haven",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://cleaningwinterhaven.com",
-  phone: formatPhoneDisplay(rawPhone),
+  phone: rawPhone ? formatPhoneDisplay(rawPhone) : null,
   email: process.env.NEXT_PUBLIC_EMAIL ?? "hello@cleaningwinterhaven.com",
   get phoneTel() {
-    return formatPhoneTel(rawPhone);
+    return rawPhone ? formatPhoneTel(rawPhone) : null;
   },
   address: {
     locality: "Winter Haven",
@@ -17,10 +31,15 @@ export const site = {
     postalCode: "33880",
     country: "US",
   },
+  /** Service-area business: no public street address */
+  serviceAreaPolicy:
+    "Cleaning Winter Haven is a mobile, service-area business serving Winter Haven and the Chain of Lakes. We do not publish a public storefront address.",
   geo: { latitude: 28.0222, longitude: -81.7329 },
   hours: "Mon–Sat 8:00 AM – 6:00 PM",
   hoursSchema: { opens: "08:00", closes: "18:00" },
   bookingSlug: "winter-haven",
+  /** Verified profile URLs only — empty until profiles exist */
+  sameAs: [] as readonly string[],
   areaServed: [
     "Winter Haven",
     "Florence Villa",

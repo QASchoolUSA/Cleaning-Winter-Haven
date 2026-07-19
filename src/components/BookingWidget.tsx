@@ -191,8 +191,16 @@ export default function BookingWidget() {
             </p>
           </div>
           <p className="text-sm text-slate-600">
-            Questions? Call us at{" "}
-            <a href={`tel:${site.phoneTel}`} className="font-semibold text-[#0f766e] hover:underline">{site.phone}</a>.
+            Questions?{" "}
+            {site.phone && site.phoneTel ? (
+              <>
+                Call us at{" "}
+                <a href={`tel:${site.phoneTel}`} className="font-semibold text-[#0f766e] hover:underline">{site.phone}</a>
+                {" or "}
+              </>
+            ) : null}
+            email{" "}
+            <a href={`mailto:${site.email}`} className="font-semibold text-[#0f766e] hover:underline">{site.email}</a>.
           </p>
           <button type="button" className="btn-ghost w-full" onClick={() => { setBooked(false); setStep(0); setSubmitError(null); }}>
             Book another cleaning

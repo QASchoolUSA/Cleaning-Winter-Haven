@@ -14,6 +14,8 @@ export const metadata = {
   alternates: { canonical: "/move-in-cleaning" },
   keywords: ["move in cleaning winter haven", "new home cleaning fl", "sanitize home before moving", "move in deep clean polk county"],
   openGraph: {
+    title: "Move In Cleaning in Winter Haven, FL",
+    description: "Sanitize your new Winter Haven home before unpacking — cabinets, bathrooms, kitchens, and floors.",
     images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Sanitized bedroom ready for move-in day" }],
   },
 };

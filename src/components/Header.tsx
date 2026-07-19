@@ -63,12 +63,17 @@ export default function Header() {
             </div>
             <Link href="/pricing" className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-[#0f766e]">Pricing</Link>
             <Link href="/service-areas" className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-[#0f766e]">Areas</Link>
+            <Link href="/about" className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-[#0f766e]">About</Link>
             <Link href="#benefits" className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-[#0f766e]">Why Us</Link>
             <Link href="#contact" className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-[#0f766e]">Contact</Link>
           </nav>
 
           <div className="hidden items-center gap-3 md:flex">
-            <a href={`tel:${site.phoneTel}`} className="text-sm font-medium text-slate-600 transition hover:text-[#0f766e]">{site.phone}</a>
+            {site.phone && site.phoneTel ? (
+              <a href={`tel:${site.phoneTel}`} className="text-sm font-medium text-slate-600 transition hover:text-[#0f766e]">{site.phone}</a>
+            ) : (
+              <a href={`mailto:${site.email}`} className="text-sm font-medium text-slate-600 transition hover:text-[#0f766e]">{site.email}</a>
+            )}
             <Link href="#booking" className="btn-primary px-5 py-2.5 text-sm">Get a Quote</Link>
           </div>
 
@@ -90,8 +95,9 @@ export default function Header() {
                 <div className="my-2 h-px bg-slate-100" />
                 <Link href="/pricing" className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" onClick={() => setOpen(false)}>Pricing</Link>
                 <Link href="/service-areas" className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" onClick={() => setOpen(false)}>Service Areas</Link>
+                <Link href="/about" className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" onClick={() => setOpen(false)}>About</Link>
                 <Link href="#benefits" className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" onClick={() => setOpen(false)}>Why Us</Link>
-                <a href={`tel:${site.phoneTel}`} className="rounded-lg px-3 py-2 text-sm font-medium text-[#0f766e]">{site.phone}</a>
+                <a href={`mailto:${site.email}`} className="rounded-lg px-3 py-2 text-sm font-medium text-[#0f766e]">{site.email}</a>
                 <Link href="#booking" className="btn-primary mt-2 text-center" onClick={() => setOpen(false)}>Get a Quote</Link>
               </nav>
             </div>

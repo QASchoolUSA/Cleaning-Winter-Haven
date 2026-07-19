@@ -15,6 +15,8 @@ export const metadata = {
   alternates: { canonical: "/commercial-cleaning" },
   keywords: ["commercial cleaning winter haven", "office cleaning polk county", "janitorial service winter haven fl", "retail cleaning"],
   openGraph: {
+    title: "Commercial Cleaning in Winter Haven, FL",
+    description: "Office, retail, and medical janitorial cleaning in Winter Haven from $149.",
     images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Polished office after commercial cleaning" }],
   },
 };
@@ -51,7 +53,11 @@ export default function CommercialCleaningPage() {
         </p>
         <div className="mt-6 flex flex-wrap gap-4">
           <Link href="/#booking" className="btn-primary">Request a quote</Link>
-          <a href={`tel:${site.phoneTel}`} className="btn-secondary">Call {site.phone}</a>
+          {site.phone && site.phoneTel ? (
+            <a href={`tel:${site.phoneTel}`} className="btn-secondary">Call {site.phone}</a>
+          ) : (
+            <a href={`mailto:${site.email}`} className="btn-secondary">Email us</a>
+          )}
         </div>
       </header>
 

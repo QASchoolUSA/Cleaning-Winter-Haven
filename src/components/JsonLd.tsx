@@ -1,14 +1,21 @@
 import { site } from "@/lib/site";
 
 /**
- * Phase 4 technical entity schema: Organization + WebSite + ProfessionalService
- * Optimized for entity discovery, Local Pack, and LLM/RAG ingestion.
- * Replace sameAs placeholders with verified live profile URLs before launch.
+ * Organization + WebSite + ProfessionalService entity graph.
+ * Omits phone/sameAs/streetAddress until verified values exist.
  */
 export default function JsonLd() {
   const orgId = `${site.url}/#organization`;
   const websiteId = `${site.url}/#website`;
   const serviceId = `${site.url}/#professionalservice`;
+
+  const postalAddress = {
+    "@type": "PostalAddress" as const,
+    addressLocality: site.address.locality,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  };
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -27,22 +34,10 @@ export default function JsonLd() {
         },
         image: `${site.url}/images/services/service-house-cleaning.jpg`,
         email: site.email,
-        telephone: site.phoneTel,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "",
-          addressLocality: site.address.locality,
-          addressRegion: site.address.region,
-          postalCode: site.address.postalCode,
-          addressCountry: site.address.country,
-        },
-        sameAs: [
-          "https://www.facebook.com/YOUR_PAGE",
-          "https://www.instagram.com/YOUR_HANDLE",
-          "https://www.yelp.com/biz/YOUR_BIZ",
-          "https://www.bbb.org/us/fl/winter-haven/profile/YOUR_PROFILE",
-          "https://g.page/YOUR_GOOGLE_BUSINESS_PROFILE",
-        ],
+        ...(site.phoneTel ? { telephone: site.phoneTel } : {}),
+        address: postalAddress,
+        ...(site.sameAs.length > 0 ? { sameAs: [...site.sameAs] } : {}),
+        description: site.serviceAreaPolicy,
         knowsAbout: [
           "House cleaning",
           "Residential cleaning",
@@ -68,14 +63,6 @@ export default function JsonLd() {
         url: site.url,
         publisher: { "@id": orgId },
         inLanguage: "en-US",
-        potentialAction: {
-          "@type": "SearchAction",
-          target: {
-            "@type": "EntryPoint",
-            urlTemplate: `${site.url}/?q={search_term_string}`,
-          },
-          "query-input": "required name=search_term_string",
-        },
       },
       {
         "@type": "ProfessionalService",
@@ -86,20 +73,13 @@ export default function JsonLd() {
         url: site.url,
         image: `${site.url}/images/services/service-house-cleaning.jpg`,
         logo: `${site.url}/logo.svg`,
-        telephone: site.phoneTel,
+        ...(site.phoneTel ? { telephone: site.phoneTel } : {}),
         email: site.email,
         priceRange: "$$",
         currenciesAccepted: "USD",
         paymentAccepted: "Cash, Credit Card, Debit Card",
         parentOrganization: { "@id": orgId },
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "",
-          addressLocality: site.address.locality,
-          addressRegion: site.address.region,
-          postalCode: site.address.postalCode,
-          addressCountry: site.address.country,
-        },
+        address: postalAddress,
         geo: {
           "@type": "GeoCoordinates",
           latitude: site.geo.latitude,
@@ -119,13 +99,7 @@ export default function JsonLd() {
           opens: site.hoursSchema.opens,
           closes: site.hoursSchema.closes,
         },
-        sameAs: [
-          "https://www.facebook.com/YOUR_PAGE",
-          "https://www.instagram.com/YOUR_HANDLE",
-          "https://www.yelp.com/biz/YOUR_BIZ",
-          "https://www.bbb.org/us/fl/winter-haven/profile/YOUR_PROFILE",
-          "https://g.page/YOUR_GOOGLE_BUSINESS_PROFILE",
-        ],
+        ...(site.sameAs.length > 0 ? { sameAs: [...site.sameAs] } : {}),
         about: [
           { "@type": "Thing", name: "Cleaning Services in Winter Haven, FL" },
           { "@type": "Service", name: "House Cleaning", serviceType: "Residential house cleaning" },

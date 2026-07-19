@@ -14,6 +14,8 @@ export const metadata = {
   alternates: { canonical: "/house-cleaning" },
   keywords: ["house cleaning winter haven", "deep cleaning winter haven fl", "maid service near me", "one time house cleaning polk county"],
   openGraph: {
+    title: "House Cleaning in Winter Haven, FL",
+    description: "Standard and deep house cleaning across the Chain of Lakes. Instant online quotes from $99.",
     images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Freshly cleaned Winter Haven living room" }],
   },
 };

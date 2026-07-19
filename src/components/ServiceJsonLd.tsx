@@ -23,10 +23,10 @@ export default function ServiceJsonLd({
       "@type": "LocalBusiness",
       name: site.name,
       image,
-      telephone: site.phoneTel,
+      ...(site.phoneTel ? { telephone: site.phoneTel } : {}),
+      email: site.email,
       address: {
         "@type": "PostalAddress",
-        streetAddress: "",
         addressLocality: site.address.locality,
         addressRegion: site.address.region,
         postalCode: site.address.postalCode,
