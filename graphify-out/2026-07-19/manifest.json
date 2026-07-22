@@ -1,0 +1,392 @@
+{
+  "eslint.config.mjs": {
+    "mtime": 1783237789.7405365,
+    "ast_hash": "a28251ba62e169d583f4f218cc6ba5ef",
+    "semantic_hash": ""
+  },
+  "next.config.ts": {
+    "mtime": 1783287605.9184873,
+    "ast_hash": "275cfd8b1df1026618fd4b02d8abc7d3",
+    "semantic_hash": ""
+  },
+  "open-next.config.ts": {
+    "mtime": 1783763970.2917638,
+    "ast_hash": "3e413151108d71c08c75c328c85eb6e0",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1783763970.291937,
+    "ast_hash": "a59617d015229777c71ef3176d7b9aba",
+    "semantic_hash": ""
+  },
+  "postcss.config.mjs": {
+    "mtime": 1783237789.1117258,
+    "ast_hash": "239f3ebf717465dc636818a1a619398d",
+    "semantic_hash": ""
+  },
+  "public/manifest.json": {
+    "mtime": 1783237989.358708,
+    "ast_hash": "5d4b9eb3a76f9ffdf9762cefbaadcda5",
+    "semantic_hash": ""
+  },
+  "scripts/generate-icons.mjs": {
+    "mtime": 1783237998.8885648,
+    "ast_hash": "4ff474014919675b3c50a960497c8693",
+    "semantic_hash": ""
+  },
+  "src/app/about/page.tsx": {
+    "mtime": 1784480223.097563,
+    "ast_hash": "a510fe2879e68100a7984f1ce07e402c",
+    "semantic_hash": ""
+  },
+  "src/app/api/book/route.test.ts": {
+    "mtime": 1783763970.2786455,
+    "ast_hash": "e28007305d62a2e26af55758d6bceab6",
+    "semantic_hash": ""
+  },
+  "src/app/api/book/route.ts": {
+    "mtime": 1783763970.2791092,
+    "ast_hash": "177bfc10f00c39dc58280bc7314e0d0d",
+    "semantic_hash": ""
+  },
+  "src/app/commercial-cleaning/page.tsx": {
+    "mtime": 1784480103.2851229,
+    "ast_hash": "95279f98d9aee48dad87ecf28a612c07",
+    "semantic_hash": ""
+  },
+  "src/app/guides/how-much-does-house-cleaning-cost-winter-haven/page.tsx": {
+    "mtime": 1783763970.280525,
+    "ast_hash": "405de7a9c9caaa41aed7bb0fc45c196d",
+    "semantic_hash": ""
+  },
+  "src/app/house-cleaning/page.tsx": {
+    "mtime": 1783763970.2808714,
+    "ast_hash": "0bbfa731f550dd7d59f2d6e2cb49ca67",
+    "semantic_hash": ""
+  },
+  "src/app/layout.tsx": {
+    "mtime": 1783763970.2811203,
+    "ast_hash": "c8522d0d70e287ae2e2d9f0a1078ecfb",
+    "semantic_hash": ""
+  },
+  "src/app/move-in-cleaning/page.tsx": {
+    "mtime": 1783763970.2813573,
+    "ast_hash": "27ab1dc02cb8b4da1f1398b2f5cf4149",
+    "semantic_hash": ""
+  },
+  "src/app/move-out-cleaning/page.tsx": {
+    "mtime": 1783763970.2815895,
+    "ast_hash": "3ae1ad932bf77c323b6d04ebbee50a54",
+    "semantic_hash": ""
+  },
+  "src/app/page.tsx": {
+    "mtime": 1783763970.2818084,
+    "ast_hash": "41b481aea1e306ab11c9a4875db5ce81",
+    "semantic_hash": ""
+  },
+  "src/app/post-construction-cleaning/page.tsx": {
+    "mtime": 1783763970.28202,
+    "ast_hash": "06c00d747ef34f422b923b751ee73df7",
+    "semantic_hash": ""
+  },
+  "src/app/pricing/page.tsx": {
+    "mtime": 1784480334.0972629,
+    "ast_hash": "fed1718fcc002243032ae89fe3a41d85",
+    "semantic_hash": ""
+  },
+  "src/app/residential-cleaning/page.tsx": {
+    "mtime": 1783763970.2822082,
+    "ast_hash": "97c9feddaf417b3b1a0a2ed1fedc54dd",
+    "semantic_hash": ""
+  },
+  "src/app/robots.ts": {
+    "mtime": 1784479741.3394873,
+    "ast_hash": "c249c7cfb228553b0635a08ff526afee",
+    "semantic_hash": ""
+  },
+  "src/app/service-areas/page.tsx": {
+    "mtime": 1784480346.0114803,
+    "ast_hash": "4d4b208232651eea93b858d9f81d0d85",
+    "semantic_hash": ""
+  },
+  "src/app/sitemap.ts": {
+    "mtime": 1784480251.643987,
+    "ast_hash": "91348e7e1aae476c9fe579875b9d8910",
+    "semantic_hash": ""
+  },
+  "src/components/Accordion.tsx": {
+    "mtime": 1783237818.4730492,
+    "ast_hash": "ba6969b037bd7c1ec3b4fc4e31e6624e",
+    "semantic_hash": ""
+  },
+  "src/components/Benefits.tsx": {
+    "mtime": 1783237865.299939,
+    "ast_hash": "16b4793d2158490e4c262e01b9530326",
+    "semantic_hash": ""
+  },
+  "src/components/BookingWidget.test.tsx": {
+    "mtime": 1783763970.282778,
+    "ast_hash": "41793a25dc1f9be08c56eda0e7aa78cc",
+    "semantic_hash": ""
+  },
+  "src/components/BookingWidget.tsx": {
+    "mtime": 1784480102.4200075,
+    "ast_hash": "81d77a29b624a329d7dcff84576a37c9",
+    "semantic_hash": ""
+  },
+  "src/components/Footer.tsx": {
+    "mtime": 1784480251.413993,
+    "ast_hash": "d1a2a29285c1c48b4fd4d209ef2d8781",
+    "semantic_hash": ""
+  },
+  "src/components/Header.tsx": {
+    "mtime": 1784480249.5203598,
+    "ast_hash": "6a5478e41945cb6efea5aac0a34aab58",
+    "semantic_hash": ""
+  },
+  "src/components/Hero.tsx": {
+    "mtime": 1783763970.2835226,
+    "ast_hash": "7f5980c89d4a3bd5c9a0a4b4d7d4725c",
+    "semantic_hash": ""
+  },
+  "src/components/HomeFAQ.tsx": {
+    "mtime": 1783763970.2837408,
+    "ast_hash": "9efc2d033beca0fcc1b7502f4c38cd65",
+    "semantic_hash": ""
+  },
+  "src/components/Icon.tsx": {
+    "mtime": 1783237816.8737562,
+    "ast_hash": "f0df9b414182bdd4d3c91d4a4e9fe0cd",
+    "semantic_hash": ""
+  },
+  "src/components/JsonLd.tsx": {
+    "mtime": 1784479736.124597,
+    "ast_hash": "9b63ea395020a3653ff9b4274b001ba4",
+    "semantic_hash": ""
+  },
+  "src/components/PricingTable.tsx": {
+    "mtime": 1783238038.4967315,
+    "ast_hash": "c1df2531e9b19a38f70c351166b52071",
+    "semantic_hash": ""
+  },
+  "src/components/SectionImage.tsx": {
+    "mtime": 1783763970.2840354,
+    "ast_hash": "38c4d7b84b55e4ea0c9cf0f3fb7d46d9",
+    "semantic_hash": ""
+  },
+  "src/components/ServiceJsonLd.tsx": {
+    "mtime": 1784479737.327567,
+    "ast_hash": "3653361259442edf38a7ca2ca65e0317",
+    "semantic_hash": ""
+  },
+  "src/components/ServicePageParts.tsx": {
+    "mtime": 1783237894.8466718,
+    "ast_hash": "586af0d9d16064f05f26c8634d095e79",
+    "semantic_hash": ""
+  },
+  "src/components/Services.tsx": {
+    "mtime": 1783763970.2844422,
+    "ast_hash": "84f2dd4020c9b8dde3e07e20187ed1eb",
+    "semantic_hash": ""
+  },
+  "src/components/Testimonials.tsx": {
+    "mtime": 1783237868.9077253,
+    "ast_hash": "06ea09197cc8c769b966987ef80b4b76",
+    "semantic_hash": ""
+  },
+  "src/components/content/CommercialCleaningContent.tsx": {
+    "mtime": 1783237915.0188606,
+    "ast_hash": "aa4e17a83a1c7a632770feb971413173",
+    "semantic_hash": ""
+  },
+  "src/components/content/HouseCleaningContent.tsx": {
+    "mtime": 1783763970.2845957,
+    "ast_hash": "9df3ee118c881b7f73b98ff5ead96162",
+    "semantic_hash": ""
+  },
+  "src/components/content/MoveInCleaningContent.tsx": {
+    "mtime": 1783237908.524882,
+    "ast_hash": "9c15f583168f949f276f98b6812c60dd",
+    "semantic_hash": ""
+  },
+  "src/components/content/MoveOutCleaningContent.tsx": {
+    "mtime": 1783237911.841814,
+    "ast_hash": "b6a0801e2b61f2ebf1e781121f06d763",
+    "semantic_hash": ""
+  },
+  "src/components/content/PostConstructionCleaningContent.tsx": {
+    "mtime": 1783237919.0854828,
+    "ast_hash": "11b94034ed1cb9a537e5ccd39b20b337",
+    "semantic_hash": ""
+  },
+  "src/components/content/ResidentialCleaningContent.tsx": {
+    "mtime": 1783237900.0837593,
+    "ast_hash": "704f50ab51114a79291490639aa43eea",
+    "semantic_hash": ""
+  },
+  "src/lib/booking.test.ts": {
+    "mtime": 1783763970.2846777,
+    "ast_hash": "1e39561091ed3f9046b3c36f963d22a7",
+    "semantic_hash": ""
+  },
+  "src/lib/booking.ts": {
+    "mtime": 1783763970.2847552,
+    "ast_hash": "2294fa6e51861cbaff7b0fd134761544",
+    "semantic_hash": ""
+  },
+  "src/lib/phone.ts": {
+    "mtime": 1783763970.2850077,
+    "ast_hash": "c03dcd079abef63ac89c50999fa92ce6",
+    "semantic_hash": ""
+  },
+  "src/lib/pricing.ts": {
+    "mtime": 1783237795.401078,
+    "ast_hash": "d462a0b7b9b32a8a92d9a4cc62a150c6",
+    "semantic_hash": ""
+  },
+  "src/lib/site.ts": {
+    "mtime": 1784479717.4072704,
+    "ast_hash": "2da5b33170068db30fc81e35defd99ad",
+    "semantic_hash": ""
+  },
+  "src/middleware.ts": {
+    "mtime": 1784479738.9739666,
+    "ast_hash": "20cf08212fd1cbdd2a0909753245235e",
+    "semantic_hash": ""
+  },
+  "src/test/setup.ts": {
+    "mtime": 1783763970.2851315,
+    "ast_hash": "3709e3aa95abf0544678f0f2d9b46702",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1783237788.7905974,
+    "ast_hash": "47e3bf149953bb0964085a42ffe8c814",
+    "semantic_hash": ""
+  },
+  "vitest.config.ts": {
+    "mtime": 1783763970.2852135,
+    "ast_hash": "b98c2471143741f0cef07447de583d1a",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1783763970.2916033,
+    "ast_hash": "1363ceda56c12e4a97dad21c5d5c5df5",
+    "semantic_hash": ""
+  },
+  "docs/SEO-AEO-GEO-BLUEPRINT.md": {
+    "mtime": 1783763970.2694461,
+    "ast_hash": "54437200f1441030dc9767b245047bf4",
+    "semantic_hash": ""
+  },
+  "public/favicon.svg": {
+    "mtime": 1783237991.300353,
+    "ast_hash": "150fa615847beab8825fd92b19f49d73",
+    "semantic_hash": ""
+  },
+  "public/icons/android-chrome-192x192.png": {
+    "mtime": 1783238019.8471928,
+    "ast_hash": "76eff958fc79a37973e0d18ff7af720c",
+    "semantic_hash": ""
+  },
+  "public/icons/android-chrome-512x512.png": {
+    "mtime": 1783238019.8789043,
+    "ast_hash": "51e75e1d63e1348dc855fb9bdf4c55cf",
+    "semantic_hash": ""
+  },
+  "public/icons/apple-touch-icon.png": {
+    "mtime": 1783238019.8130221,
+    "ast_hash": "6aa84c420b6a95c57fb0532a8a97d2ea",
+    "semantic_hash": ""
+  },
+  "public/icons/favicon-16x16.png": {
+    "mtime": 1783238019.8016944,
+    "ast_hash": "e0c10ce6aa22d93a6f4187683dd02edb",
+    "semantic_hash": ""
+  },
+  "public/icons/favicon-32x32.png": {
+    "mtime": 1783238019.804839,
+    "ast_hash": "d5413977cee5d907e9b677ec2a08afae",
+    "semantic_hash": ""
+  },
+  "public/icons/favicon-48x48.png": {
+    "mtime": 1783238019.8084195,
+    "ast_hash": "4e4778c8bfd9102241953f38ee742905",
+    "semantic_hash": ""
+  },
+  "public/images/guides/guide-bathroom-deep-clean.jpg": {
+    "mtime": 1783763970.2715774,
+    "ast_hash": "3df30965bec90fbfa6d50ed0b34645e3",
+    "semantic_hash": ""
+  },
+  "public/images/guides/guide-cleaning-crew.jpg": {
+    "mtime": 1783763970.2721803,
+    "ast_hash": "4300014c27a41008e73a943f39bdc1e8",
+    "semantic_hash": ""
+  },
+  "public/images/guides/guide-hero-winter-haven-home.jpg": {
+    "mtime": 1783763970.2728012,
+    "ast_hash": "1d7b283a20a706a7d1ea0f4851b825d9",
+    "semantic_hash": ""
+  },
+  "public/images/guides/guide-kitchen-after-clean.jpg": {
+    "mtime": 1783763970.2733335,
+    "ast_hash": "989ed9ae31d4f0a70aefee6685b62e6f",
+    "semantic_hash": ""
+  },
+  "public/images/guides/guide-lakefront-lanai.jpg": {
+    "mtime": 1783763970.2739534,
+    "ast_hash": "42805fe20e6c97548cd9b9b5f132fe73",
+    "semantic_hash": ""
+  },
+  "public/images/services/service-bathroom.jpg": {
+    "mtime": 1783763970.2744029,
+    "ast_hash": "3df30965bec90fbfa6d50ed0b34645e3",
+    "semantic_hash": ""
+  },
+  "public/images/services/service-commercial-office.jpg": {
+    "mtime": 1783763970.2749453,
+    "ast_hash": "c2c491e91b3b8a884dab5b833f787b3f",
+    "semantic_hash": ""
+  },
+  "public/images/services/service-crew.jpg": {
+    "mtime": 1783763970.2754836,
+    "ast_hash": "4300014c27a41008e73a943f39bdc1e8",
+    "semantic_hash": ""
+  },
+  "public/images/services/service-house-cleaning.jpg": {
+    "mtime": 1783763970.276024,
+    "ast_hash": "1d7b283a20a706a7d1ea0f4851b825d9",
+    "semantic_hash": ""
+  },
+  "public/images/services/service-lakefront.jpg": {
+    "mtime": 1783763970.276571,
+    "ast_hash": "42805fe20e6c97548cd9b9b5f132fe73",
+    "semantic_hash": ""
+  },
+  "public/images/services/service-move-in-ready.jpg": {
+    "mtime": 1783763970.2770615,
+    "ast_hash": "2ec2e86d37e3894edd267c697525e307",
+    "semantic_hash": ""
+  },
+  "public/images/services/service-move-out-vacancy.jpg": {
+    "mtime": 1783763970.277569,
+    "ast_hash": "8acc0911e5cd8661de58014f736bdea7",
+    "semantic_hash": ""
+  },
+  "public/images/services/service-post-construction.jpg": {
+    "mtime": 1783763970.2780435,
+    "ast_hash": "1f6c3c6d6252cf1089b381e315b2442c",
+    "semantic_hash": ""
+  },
+  "public/images/services/service-residential.jpg": {
+    "mtime": 1783763970.2785115,
+    "ast_hash": "989ed9ae31d4f0a70aefee6685b62e6f",
+    "semantic_hash": ""
+  },
+  "public/logo.svg": {
+    "mtime": 1783237990.6628108,
+    "ast_hash": "dd60638231355eafa03f6962df9c8e6d",
+    "semantic_hash": ""
+  }
+}

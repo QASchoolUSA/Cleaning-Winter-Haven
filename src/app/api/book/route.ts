@@ -1,6 +1,22 @@
 import { NextResponse } from "next/server";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { normalizeBookingPayload, validateBookingPayload } from "@/lib/booking";
 import { site } from "@/lib/site";
+
+function readEnv(name: string): string | undefined {
+  const fromProcess = process.env[name];
+  if (fromProcess) return fromProcess;
+
+  try {
+    const { env } = getCloudflareContext();
+    const fromWorker = env[name as keyof typeof env];
+    if (typeof fromWorker === "string") return fromWorker;
+  } catch {
+    // Not running inside the Cloudflare worker (e.g. next dev).
+  }
+
+  return undefined;
+}
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -23,8 +39,8 @@ export async function POST(request: Request) {
     );
   }
 
-  const bookingUrl = process.env.BOOKING_BROOM_URL;
-  const apiKey = process.env.BOOKING_BROOM_API_KEY;
+  const bookingUrl = readEnv("BOOKING_BROOM_URL");
+  const apiKey = readEnv("BOOKING_BROOM_API_KEY");
   if (!bookingUrl || !apiKey) {
     return NextResponse.json(
       { error: "Booking is temporarily unavailable. Please call us or try again later." },
