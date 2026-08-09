@@ -1,9 +1,9 @@
 import { defineCloudflareConfig } from "@opennextjs/cloudflare";
 
-// Cloudflare Workers Builds often runs `npm run build`, then `wrangler deploy`.
-// OpenNext defaults to calling `npm run build` itself, so point it at `build:next`
-// to avoid recursion while still producing the `.open-next` worker bundle.
+// OpenNext defaults to calling the package manager's `build` script, which would
+// recurse back into this config. Invoking Next directly avoids that and keeps the
+// command package-manager agnostic.
 export default {
   ...defineCloudflareConfig(),
-  buildCommand: "npm run build:next",
+  buildCommand: "next build",
 };

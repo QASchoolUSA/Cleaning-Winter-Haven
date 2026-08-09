@@ -12,16 +12,16 @@ Professional cleaning services website for Winter Haven, FL.
 ## Setup
 
 ```bash
-npm install
+pnpm install
 cp .env.example .env.local
 # Edit .env.local with your phone, email, and Booking Broom API key
-npm run dev
+pnpm dev
 ```
 
 ## Tests
 
 ```bash
-npm test
+pnpm test
 ```
 
 Covers booking validation, `/api/book` request handling (with a mocked Booking Broom upstream), and a demo-text walkthrough of the booking widget.
@@ -45,11 +45,12 @@ This project uses [@opennextjs/cloudflare](https://opennext.js.org/cloudflare) t
 | Setting | Value |
 |---------|-------|
 | Production branch | `main` |
-| Build command | `npm run build` **or** `npx opennextjs-cloudflare build` |
-| Deploy command | `npx opennextjs-cloudflare deploy` (preferred) **or** `npx wrangler deploy` |
-| Non-production deploy | `npx opennextjs-cloudflare upload` |
+| Install command | `pnpm install` |
+| Build command | `pnpm build` **or** `pnpm exec opennextjs-cloudflare build` |
+| Deploy command | `pnpm exec opennextjs-cloudflare deploy` (preferred) **or** `pnpm exec wrangler deploy` |
+| Non-production deploy | `pnpm exec opennextjs-cloudflare upload` |
 
-`npm run build` runs the full OpenNext Workers bundle (via `build:next` for the Next.js compile). Prefer `npx opennextjs-cloudflare deploy` over bare `wrangler deploy` so the OpenNext deploy step always runs after a successful build.
+`pnpm build` runs the full OpenNext Workers bundle (via `build:next` for the Next.js compile). Prefer `pnpm exec opennextjs-cloudflare deploy` over bare `wrangler deploy` so the OpenNext deploy step always runs after a successful build.
 
 Ignore / close the bot PR from `cloudflare/workers-autoconfig` — that branch was generated with Next.js `16.0.7`, which is incompatible with `@opennextjs/cloudflare` (needs `>=16.2.6`). Config already lives on `main`.
 
@@ -62,7 +63,7 @@ Set environment variables in the Cloudflare dashboard:
 - `BOOKING_BROOM_URL` — also in `wrangler.jsonc` `vars` (non-secret, safe in git)
 - `BOOKING_BROOM_API_KEY` — add as **Secret** in dashboard only; do **not** put in `wrangler.jsonc`
 
-For local Wrangler preview (`npm run preview`), copy `.dev.vars.example` → `.dev.vars` and add your API key.
+For local Wrangler preview (`pnpm preview`), copy `.dev.vars.example` → `.dev.vars` and add your API key.
 
 After changing env vars, redeploy (Retry deployment or push to `main`).
 
