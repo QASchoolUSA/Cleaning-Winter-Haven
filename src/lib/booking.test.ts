@@ -56,7 +56,9 @@ describe("demo booking quote", () => {
   it("matches the residential 2-bed standard + fridge estimate used in UI tests", () => {
     const base = computeQuote({
       serviceType: "residential",
-      sizeKey: "2bed",
+      bedrooms: 2,
+      bathrooms: 1,
+      sqftBand: "1000-1500",
       level: "standard",
       addOns: {},
     });
@@ -64,12 +66,34 @@ describe("demo booking quote", () => {
 
     const quote = computeQuote({
       serviceType: "residential",
-      sizeKey: "2bed",
+      bedrooms: 2,
+      bathrooms: 1,
+      sqftBand: "1000-1500",
       level: "standard",
       addOns: { fridge: true },
     });
     expect(quote.price).toBe(165);
     expect(quote.range.low).toBe(149);
     expect(quote.range.high).toBe(182);
+  });
+
+  it("charges for each bathroom past the first", () => {
+    const oneBath = computeQuote({
+      serviceType: "residential",
+      bedrooms: 2,
+      bathrooms: 1,
+      sqftBand: "1000-1500",
+      level: "standard",
+      addOns: {},
+    });
+    const twoBath = computeQuote({
+      serviceType: "residential",
+      bedrooms: 2,
+      bathrooms: 2,
+      sqftBand: "1000-1500",
+      level: "standard",
+      addOns: {},
+    });
+    expect(twoBath.price - oneBath.price).toBe(20);
   });
 });

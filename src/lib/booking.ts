@@ -1,5 +1,25 @@
 import { phoneDigits } from "./phone";
 
+/** Structured fields Booking Broom stores outside of the free-text notes. */
+export type BookingProperty = {
+  bedrooms?: number;
+  bathrooms?: number;
+  square_feet?: number;
+  size_label?: string;
+  home_type?: string;
+};
+
+export type BookingQuote = {
+  estimate?: number;
+  estimate_low?: number;
+  estimate_high?: number;
+  currency?: string;
+  service_level?: string;
+  frequency?: string;
+  add_ons?: { label: string; price?: number }[];
+  payment_terms?: string;
+};
+
 export type BookingPayload = {
   customer_name: string;
   email: string;
@@ -9,6 +29,8 @@ export type BookingPayload = {
   preferred_date?: string;
   preferred_time?: string;
   notes?: string;
+  property?: BookingProperty;
+  quote?: BookingQuote;
 };
 
 export type BookingFieldErrors = Partial<
@@ -53,6 +75,8 @@ export function normalizeBookingPayload(input: Partial<BookingPayload>): Booking
     preferred_date: input.preferred_date?.trim() || undefined,
     preferred_time: input.preferred_time?.trim() || undefined,
     notes: input.notes?.trim() || undefined,
+    property: input.property,
+    quote: input.quote,
   };
 }
 
@@ -62,15 +86,23 @@ export const DEMO_BOOKING_PAYLOAD: BookingPayload = {
   email: "demo.booking.test@example.com",
   phone: "(863) 555-0199",
   address: "123 Lake Howard Dr, Winter Haven, FL 33880",
-  service_type: "Residential — Standard (2 Bedroom)",
+  service_type: "Residential — Standard",
   preferred_date: "2026-07-20",
   preferred_time: "10:00",
-  notes: [
-    "Size: 2 Bedroom",
-    "Level: Standard",
-    "Add-ons: Inside fridge",
-    "Estimated price: $165 (range $149–$182)",
-    "Payment: Due after cleaning is complete",
-    "DEMO/TEST booking — please ignore",
-  ].join("\n"),
+  notes: "DEMO/TEST booking — please ignore",
+  property: {
+    bedrooms: 2,
+    bathrooms: 2,
+    size_label: "1,000–1,500 sq ft",
+    home_type: "Residential",
+  },
+  quote: {
+    estimate: 185,
+    estimate_low: 167,
+    estimate_high: 204,
+    currency: "USD",
+    service_level: "Standard",
+    add_ons: [{ label: "Inside fridge", price: 25 }],
+    payment_terms: "Due after cleaning is complete",
+  },
 };

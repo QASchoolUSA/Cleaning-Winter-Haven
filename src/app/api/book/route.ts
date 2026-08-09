@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { normalizeBookingPayload, validateBookingPayload } from "@/lib/booking";
+import {
+  normalizeBookingPayload,
+  validateBookingPayload,
+  type BookingPayload,
+} from "@/lib/booking";
 import { site } from "@/lib/site";
 
 function readEnv(name: string): string | undefined {
@@ -30,7 +34,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid booking payload" }, { status: 400 });
   }
 
-  const form = normalizeBookingPayload(body as Record<string, string>);
+  const form = normalizeBookingPayload(body as Partial<BookingPayload>);
   const fieldErrors = validateBookingPayload(form);
   if (Object.keys(fieldErrors).length > 0) {
     return NextResponse.json(
@@ -64,6 +68,8 @@ export async function POST(request: Request) {
         preferred_date: form.preferred_date,
         preferred_time: form.preferred_time,
         notes: form.notes,
+        property: form.property,
+        quote: form.quote,
       }),
     });
   } catch {
