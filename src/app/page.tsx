@@ -5,9 +5,12 @@ import PricingTable from "@/components/PricingTable";
 import Testimonials from "@/components/Testimonials";
 import HomeFAQ from "@/components/HomeFAQ";
 import SectionImage from "@/components/SectionImage";
+import { getPricingConfig } from "@/lib/pricing-config";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const config = await getPricingConfig();
+
   return (
     <main>
       <Hero />
@@ -22,7 +25,7 @@ export default function Home() {
             <p className="section-subtitle">No hidden fees. Know your estimate before you book.</p>
           </div>
           <div className="mt-12">
-            <PricingTable compact />
+            <PricingTable compact config={config} />
           </div>
         </div>
       </section>

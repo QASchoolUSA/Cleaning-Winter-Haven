@@ -1,17 +1,39 @@
 import Link from "next/link";
-import { RESIDENTIAL_PRICES, COMMERCIAL_PRICES, POST_PRICES, ADDON_PRICES } from "@/lib/pricing";
+import {
+  DEFAULT_PRICING_CONFIG,
+  addOnPrices,
+  commercialPrices,
+  levelAdjustments,
+  postPrices,
+  residentialPrices,
+  type PricingConfig,
+} from "@/lib/pricing";
 
 type PricingTableProps = {
   compact?: boolean;
+  config?: PricingConfig;
 };
 
-export default function PricingTable({ compact = false }: PricingTableProps) {
+export default function PricingTable({
+  compact = false,
+  config = DEFAULT_PRICING_CONFIG,
+}: PricingTableProps) {
+  const residential = residentialPrices(config);
+  const commercial = commercialPrices(config);
+  const post = postPrices(config);
+  const addOns = addOnPrices(config);
+  const levels = levelAdjustments(config);
+  const deepUplift =
+    levels.find((l) => l.label.toLowerCase().includes("deep"))?.uplift ?? 0;
+  const moveUplift =
+    levels.find((l) => l.label.toLowerCase().includes("move"))?.uplift ?? 0;
+
   return (
     <div className="space-y-8">
       <div>
         <h3 className="text-lg font-semibold text-slate-900">Residential (standard clean)</h3>
         <div className={`mt-4 grid gap-3 ${compact ? "grid-cols-2 sm:grid-cols-3" : "grid-cols-2 sm:grid-cols-5"}`}>
-          {Object.entries(RESIDENTIAL_PRICES).map(([key, price]) => (
+          {Object.entries(residential).map(([key, price]) => (
             <div key={key} className="card-accent p-4 text-center">
               <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{key === "4plus" ? "4+ BR" : key.replace("bed", " BR").replace("studio", "Studio")}</p>
               <p className="mt-1 text-2xl font-bold text-[#0f766e]">${price}</p>
@@ -32,7 +54,7 @@ export default function PricingTable({ compact = false }: PricingTableProps) {
               ].map(({ key, label }) => (
                 <div key={key} className="card-accent p-4 text-center">
                   <p className="text-xs font-medium text-slate-500">{label}</p>
-                  <p className="mt-1 text-2xl font-bold text-[#0f766e]">${COMMERCIAL_PRICES[key]}</p>
+                  <p className="mt-1 text-2xl font-bold text-[#0f766e]">${commercial[key]}</p>
                 </div>
               ))}
             </div>
@@ -48,7 +70,7 @@ export default function PricingTable({ compact = false }: PricingTableProps) {
               ].map(({ key, label }) => (
                 <div key={key} className="card-accent p-4 text-center">
                   <p className="text-xs font-medium text-slate-500">{label}</p>
-                  <p className="mt-1 text-2xl font-bold text-[#0f766e]">${POST_PRICES[key]}</p>
+                  <p className="mt-1 text-2xl font-bold text-[#0f766e]">${post[key]}</p>
                 </div>
               ))}
             </div>
@@ -58,24 +80,20 @@ export default function PricingTable({ compact = false }: PricingTableProps) {
             <div className="card p-6">
               <h3 className="font-semibold text-slate-900">Cleaning level adjustments</h3>
               <ul className="mt-4 space-y-2 text-sm text-slate-600">
-                <li><strong>Deep clean:</strong> +40% on base price</li>
-                <li><strong>Move-in / move-out:</strong> +20% on base price</li>
-                <li><strong>Post-construction detailing:</strong> +30% on base price</li>
+                {levels.map((level) => (
+                  <li key={level.label}>
+                    <strong>{level.label}:</strong> +{level.uplift}% on base price
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="card p-6">
               <h3 className="font-semibold text-slate-900">Optional add-ons</h3>
               <ul className="mt-4 space-y-2 text-sm text-slate-600">
-                {[
-                  { label: "Inside fridge", price: ADDON_PRICES.fridge },
-                  { label: "Inside oven", price: ADDON_PRICES.oven },
-                  { label: "Interior windows", price: ADDON_PRICES.windows },
-                  { label: "Inside cabinets", price: ADDON_PRICES.cabinets },
-                  { label: "Baseboards", price: ADDON_PRICES.baseboards },
-                ].map((item) => (
-                  <li key={item.label} className="flex justify-between">
-                    <span>{item.label}</span>
-                    <span className="font-semibold text-[#0f766e]">+${item.price}</span>
+                {config.addOns.map((addOn) => (
+                  <li key={addOn.key} className="flex justify-between">
+                    <span>{addOn.label}</span>
+                    <span className="font-semibold text-[#0f766e]">+${addOns[addOn.key]}</span>
                   </li>
                 ))}
               </ul>
@@ -86,7 +104,7 @@ export default function PricingTable({ compact = false }: PricingTableProps) {
 
       {compact && (
         <p className="text-center text-sm text-slate-600">
-          Deep clean (+40%), move-in/out (+20%), and add-ons available.{" "}
+          Deep clean (+{deepUplift}%), move-in/out (+{moveUplift}%), and add-ons available.{" "}
           <Link href="/pricing" className="font-semibold text-[#0f766e] hover:underline">See full pricing →</Link>
         </p>
       )}

@@ -4,7 +4,8 @@ import ServiceJsonLd from "@/components/ServiceJsonLd";
 import SectionImage from "@/components/SectionImage";
 import ResidentialCleaningContent from "@/components/content/ResidentialCleaningContent";
 import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePageParts";
-import { RESIDENTIAL_PRICES } from "@/lib/pricing";
+import { levelAdjustments, residentialPrices } from "@/lib/pricing";
+import { getPricingConfig } from "@/lib/pricing-config";
 import { site } from "@/lib/site";
 
 const PAGE_IMAGE = "/images/services/service-residential.jpg";
@@ -42,7 +43,14 @@ const faqs = [
   { q: "Which neighborhoods do you cover?", a: "All of Winter Haven including Downtown, Chain of Lakes, Cypress Gardens, Florence Villa, Inwood, and Eagle Lake." },
 ];
 
-export default function ResidentialCleaningPage() {
+export default async function ResidentialCleaningPage() {
+  const config = await getPricingConfig();
+  const prices = residentialPrices(config);
+  const upliftSummary = levelAdjustments(config)
+    .filter((level) => !level.label.toLowerCase().includes("post"))
+    .map((level) => `${level.label} +${level.uplift}%`)
+    .join(" · ");
+
   return (
     <main className="mx-auto max-w-7xl px-4 pt-12 pb-0 sm:px-6 lg:px-8">
       <ServiceJsonLd
@@ -109,14 +117,14 @@ export default function ResidentialCleaningPage() {
             <h2 className="font-semibold text-slate-900">Starting prices</h2>
             <p className="mt-1 text-xs text-slate-500">Standard clean · Winter Haven rates</p>
             <ul className="mt-4 space-y-2">
-              {Object.entries(RESIDENTIAL_PRICES).map(([key, price]) => (
+              {Object.entries(prices).map(([key, price]) => (
                 <li key={key} className="flex justify-between text-sm">
                   <span className="text-slate-600">{key === "4plus" ? "4+ Bedroom" : key.replace("bed", " Bedroom").replace("studio", "Studio")}</span>
                   <span className="font-bold text-[#0f766e]">${price}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-xs text-slate-500">Deep clean +40% · Move-in/out +20%</p>
+            <p className="mt-4 text-xs text-slate-500">{upliftSummary}</p>
             <Link href="/pricing" className="mt-4 block text-sm font-semibold text-[#0f766e] hover:underline">Full pricing details →</Link>
             <Link href="/#booking" className="btn-primary mt-6 w-full text-center">Book now</Link>
           </div>

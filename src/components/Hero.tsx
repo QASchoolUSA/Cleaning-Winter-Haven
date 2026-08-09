@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import BookingWidget from "./BookingWidget";
+import BookingWidgetServer from "./BookingWidgetServer";
 
 const TRUST_ITEMS = [
   "Licensed & Insured",
@@ -55,7 +55,7 @@ export default function Hero() {
           </div>
 
           <div id="booking" className="lg:col-span-3 lg:sticky lg:top-24">
-            <BookingWidget />
+            <BookingWidgetServer />
           </div>
         </div>
       </div>

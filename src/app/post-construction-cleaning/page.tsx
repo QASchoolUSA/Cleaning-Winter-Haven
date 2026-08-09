@@ -3,7 +3,8 @@ import ServiceJsonLd from "@/components/ServiceJsonLd";
 import SectionImage from "@/components/SectionImage";
 import PostConstructionCleaningContent from "@/components/content/PostConstructionCleaningContent";
 import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePageParts";
-import { POST_PRICES } from "@/lib/pricing";
+import { postPrices } from "@/lib/pricing";
+import { getPricingConfig } from "@/lib/pricing-config";
 import { site } from "@/lib/site";
 
 const PAGE_IMAGE = "/images/services/service-post-construction.jpg";
@@ -33,7 +34,9 @@ const faqs = [
   { q: "Can you handle drywall dust in HVAC systems?", a: "We clean vent covers and surrounding areas. HVAC duct cleaning requires a specialized contractor." },
 ];
 
-export default function PostConstructionCleaningPage() {
+export default async function PostConstructionCleaningPage() {
+  const prices = postPrices(await getPricingConfig());
+
   const howToJsonLd = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -90,7 +93,7 @@ export default function PostConstructionCleaningPage() {
       </div>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
-        {Object.entries(POST_PRICES).map(([key, price]) => (
+        {Object.entries(prices).map(([key, price]) => (
           <div key={key} className="card p-4 text-center">
             <p className="text-xs text-slate-500">{key === "under1k" ? "Under 1000 sqft" : key === "1k-2k" ? "1000–2000 sqft" : "2000+ sqft"}</p>
             <p className="mt-1 text-2xl font-bold text-[#0f766e]">From ${price}</p>

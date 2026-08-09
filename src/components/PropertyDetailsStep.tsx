@@ -1,25 +1,28 @@
 "use client";
 
 import {
-  MAX_BATHROOMS,
-  MAX_BEDROOMS,
-  SQFT_BANDS,
+  DEFAULT_PRICING_CONFIG,
+  type PricingConfig,
   type ServiceType,
   type SqftBand,
 } from "@/lib/pricing";
 
-const BEDROOM_CHOICES = [
-  { value: 0, label: "Studio" },
-  ...Array.from({ length: MAX_BEDROOMS }, (_, i) => ({
-    value: i + 1,
-    label: i + 1 === MAX_BEDROOMS ? `${MAX_BEDROOMS}+` : String(i + 1),
-  })),
-];
+function bedroomChoices(max: number) {
+  return [
+    { value: 0, label: "Studio" },
+    ...Array.from({ length: max }, (_, i) => ({
+      value: i + 1,
+      label: i + 1 === max ? `${max}+` : String(i + 1),
+    })),
+  ];
+}
 
-const BATHROOM_CHOICES = Array.from({ length: MAX_BATHROOMS }, (_, i) => ({
-  value: i + 1,
-  label: i + 1 === MAX_BATHROOMS ? `${MAX_BATHROOMS}+` : String(i + 1),
-}));
+function bathroomChoices(max: number) {
+  return Array.from({ length: max }, (_, i) => ({
+    value: i + 1,
+    label: i + 1 === max ? `${max}+` : String(i + 1),
+  }));
+}
 
 function Pill({
   selected,
@@ -54,6 +57,7 @@ export default function PropertyDetailsStep({
   onBedroomsChange,
   onBathroomsChange,
   onSqftBandChange,
+  config = DEFAULT_PRICING_CONFIG,
 }: {
   serviceType: ServiceType;
   bedrooms: number;
@@ -62,8 +66,11 @@ export default function PropertyDetailsStep({
   onBedroomsChange: (value: number) => void;
   onBathroomsChange: (value: number) => void;
   onSqftBandChange: (value: SqftBand | null) => void;
+  config?: PricingConfig;
 }) {
   const isResidential = serviceType === "residential";
+  const BEDROOM_CHOICES = bedroomChoices(config.maxBedrooms);
+  const BATHROOM_CHOICES = bathroomChoices(config.maxBathrooms);
 
   return (
     <div className="space-y-5">
@@ -107,7 +114,7 @@ export default function PropertyDetailsStep({
           <span className="font-normal text-slate-400">(optional)</span>
         </p>
         <div className="flex flex-wrap gap-2">
-          {SQFT_BANDS.map((band) => (
+          {config.sqftBands.map((band) => (
             <Pill
               key={band.key}
               selected={sqftBand === band.key}

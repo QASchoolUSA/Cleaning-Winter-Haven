@@ -1,26 +1,11 @@
 import { NextResponse } from "next/server";
-import { getCloudflareContext } from "@opennextjs/cloudflare";
 import {
   normalizeBookingPayload,
   validateBookingPayload,
   type BookingPayload,
 } from "@/lib/booking";
+import { readEnv } from "@/lib/env";
 import { site } from "@/lib/site";
-
-function readEnv(name: string): string | undefined {
-  const fromProcess = process.env[name];
-  if (fromProcess) return fromProcess;
-
-  try {
-    const { env } = getCloudflareContext();
-    const fromWorker = env[name as keyof typeof env];
-    if (typeof fromWorker === "string") return fromWorker;
-  } catch {
-    // Not running inside the Cloudflare worker (e.g. next dev).
-  }
-
-  return undefined;
-}
 
 export async function POST(request: Request) {
   let body: unknown;

@@ -4,7 +4,8 @@ import ServiceJsonLd from "@/components/ServiceJsonLd";
 import SectionImage from "@/components/SectionImage";
 import CommercialCleaningContent from "@/components/content/CommercialCleaningContent";
 import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePageParts";
-import { COMMERCIAL_PRICES } from "@/lib/pricing";
+import { commercialPrices } from "@/lib/pricing";
+import { getPricingConfig } from "@/lib/pricing-config";
 import { site } from "@/lib/site";
 
 const PAGE_IMAGE = "/images/services/service-commercial-office.jpg";
@@ -34,7 +35,9 @@ const faqs = [
   { q: "Will we get the same cleaning team?", a: "Yes. We assign consistent crews who learn your layout, access codes, and facility requirements." },
 ];
 
-export default function CommercialCleaningPage() {
+export default async function CommercialCleaningPage() {
+  const prices = commercialPrices(await getPricingConfig());
+
   return (
     <main className="mx-auto max-w-7xl px-4 pt-12 pb-0 sm:px-6 lg:px-8">
       <ServiceJsonLd
@@ -86,9 +89,9 @@ export default function CommercialCleaningPage() {
         <div className="card-accent h-fit p-6">
           <h2 className="font-semibold text-slate-900">Commercial rates</h2>
           <ul className="mt-4 space-y-3">
-            <li className="flex justify-between text-sm"><span>Small (≤1000 sqft)</span><span className="font-bold text-[#0f766e]">From ${COMMERCIAL_PRICES.small}</span></li>
-            <li className="flex justify-between text-sm"><span>Medium (1000–3000)</span><span className="font-bold text-[#0f766e]">From ${COMMERCIAL_PRICES.medium}</span></li>
-            <li className="flex justify-between text-sm"><span>Large (3000+)</span><span className="font-bold text-[#0f766e]">From ${COMMERCIAL_PRICES.large}</span></li>
+            <li className="flex justify-between text-sm"><span>Small (≤1000 sqft)</span><span className="font-bold text-[#0f766e]">From ${prices.small}</span></li>
+            <li className="flex justify-between text-sm"><span>Medium (1000–3000)</span><span className="font-bold text-[#0f766e]">From ${prices.medium}</span></li>
+            <li className="flex justify-between text-sm"><span>Large (3000+)</span><span className="font-bold text-[#0f766e]">From ${prices.large}</span></li>
           </ul>
           <Link href="/pricing" className="mt-4 block text-sm font-semibold text-[#0f766e] hover:underline">View full pricing →</Link>
         </div>

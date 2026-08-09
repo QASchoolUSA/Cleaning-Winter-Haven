@@ -1,6 +1,7 @@
 import Link from "next/link";
 import PricingTable from "@/components/PricingTable";
 import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePageParts";
+import { getPricingConfig } from "@/lib/pricing-config";
 import { site } from "@/lib/site";
 
 export const metadata = {
@@ -31,7 +32,10 @@ const pricingFaqs = [
   { q: "Which tasks may need an add-on or separate quote?", a: "Appliance interiors, interior windows, heavy buildup, post-construction dust, and unusually large properties may require extra time. Hazardous materials, active mold remediation, and major debris removal require specialist services." },
 ];
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const config = await getPricingConfig();
+  const rangePercent = Math.round(config.rangeSpread * 100);
+
   return (
     <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }} />
@@ -47,14 +51,14 @@ export default function PricingPage() {
       </header>
 
       <div className="mt-12">
-        <PricingTable />
+        <PricingTable config={config} />
       </div>
 
       <div className="mt-12 card p-6">
         <h2 className="text-lg font-semibold text-slate-900">How pricing works</h2>
         <p className="mt-3 text-sm leading-relaxed text-slate-600">
           Your final quote combines a base price (by home or business size), a cleaning level multiplier, and any optional add-ons.
-          Estimates are rounded to the nearest $5 and shown as a range (±10%). Payment is due after your cleaning is complete — no upfront charge to book.
+          Estimates are rounded to the nearest ${config.roundToNearest} and shown as a range (±{rangePercent}%). Payment is due after your cleaning is complete — no upfront charge to book.
         </p>
       </div>
 
