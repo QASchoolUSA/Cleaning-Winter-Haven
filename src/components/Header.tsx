@@ -38,15 +38,15 @@ export default function Header() {
   return (
     <header className={`sticky top-0 z-40 w-full transition duration-300 ${scrolled ? "border-b border-slate-200/80 bg-white/90 shadow-sm backdrop-blur-md" : "bg-white/70 backdrop-blur-sm"}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between lg:h-[4.5rem]">
-          <Link href="/" className="flex shrink-0 items-center">
+        <div className="flex h-20 items-center justify-between md:h-16 lg:h-[4.5rem]">
+          <Link href="/" className="flex min-w-0 shrink items-center">
             <Image
               src="/logo.svg"
               alt={site.name}
-              width={200}
-              height={80}
+              width={280}
+              height={120}
               priority
-              className="h-12 w-auto object-contain lg:h-14"
+              className="h-[4.25rem] w-auto max-w-[min(72vw,280px)] object-contain md:h-12 lg:h-14"
             />
           </Link>
 
