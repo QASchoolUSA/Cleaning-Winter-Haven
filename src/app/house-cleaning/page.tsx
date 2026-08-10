@@ -64,7 +64,7 @@ export default function HouseCleaningPage() {
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Link href="/#booking" className="btn-primary inline-flex">Get a fast quote</Link>
-          <Link href="/guides/how-much-does-house-cleaning-cost-winter-haven" className="inline-flex items-center text-sm font-semibold text-[#0f766e] hover:underline">
+          <Link href="/guides/how-much-does-house-cleaning-cost-winter-haven" className="inline-flex items-center text-sm font-semibold text-[#00a8bc] hover:underline">
             View 2026 cost guide →
           </Link>
         </div>
@@ -81,7 +81,7 @@ export default function HouseCleaningPage() {
       <div className="mt-12 grid gap-5 sm:grid-cols-3">
         {benefits.map((b) => (
           <div key={b.title} className="card-accent p-6">
-            <Icon name="sparkles" className="h-6 w-6 text-[#0f766e]" />
+            <Icon name="sparkles" className="h-6 w-6 text-[#00a8bc]" />
             <h2 className="mt-3 font-semibold text-slate-900">{b.title}</h2>
             <p className="mt-2 text-sm text-slate-600">{b.desc}</p>
           </div>
@@ -94,8 +94,8 @@ export default function HouseCleaningPage() {
           <thead>
             <tr className="border-b border-slate-200 text-left">
               <th className="pb-3 font-semibold text-slate-900">Feature</th>
-              <th className="pb-3 font-semibold text-[#0f766e]">Standard</th>
-              <th className="pb-3 font-semibold text-[#0f766e]">Deep (+40%)</th>
+              <th className="pb-3 font-semibold text-[#00a8bc]">Standard</th>
+              <th className="pb-3 font-semibold text-[#00a8bc]">Deep (+40%)</th>
             </tr>
           </thead>
           <tbody>

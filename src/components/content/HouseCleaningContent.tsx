@@ -1,6 +1,6 @@
 export default function HouseCleaningContent() {
   return (
-    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#0f766e]">
+    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#00a8bc]">
       <h2>House Cleaning That Matches Winter Haven Homes</h2>
       <p>
         Whether you need a refresh before family visits or a thorough scrub after months of busy weekdays, our house cleaning service covers every room with methodical attention. Winter Haven&apos;s mix of historic downtown properties, mid-century lake cottages, and modern subdivisions each present unique cleaning needs — and our local team has experience with all of them.

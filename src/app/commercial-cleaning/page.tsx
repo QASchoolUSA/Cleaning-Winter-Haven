@@ -75,7 +75,7 @@ export default async function CommercialCleaningPage() {
       <div className="mt-12 grid gap-5 md:grid-cols-3">
         {industries.map((ind) => (
           <div key={ind.title} className="card-accent p-6">
-            <Icon name={ind.icon} className="h-7 w-7 text-[#0f766e]" />
+            <Icon name={ind.icon} className="h-7 w-7 text-[#00a8bc]" />
             <h2 className="mt-4 text-lg font-semibold text-slate-900">{ind.title}</h2>
             <p className="mt-2 text-sm text-slate-600">{ind.desc}</p>
           </div>
@@ -89,11 +89,11 @@ export default async function CommercialCleaningPage() {
         <div className="card-accent h-fit p-6">
           <h2 className="font-semibold text-slate-900">Commercial rates</h2>
           <ul className="mt-4 space-y-3">
-            <li className="flex justify-between text-sm"><span>Small (≤1000 sqft)</span><span className="font-bold text-[#0f766e]">From ${prices.small}</span></li>
-            <li className="flex justify-between text-sm"><span>Medium (1000–3000)</span><span className="font-bold text-[#0f766e]">From ${prices.medium}</span></li>
-            <li className="flex justify-between text-sm"><span>Large (3000+)</span><span className="font-bold text-[#0f766e]">From ${prices.large}</span></li>
+            <li className="flex justify-between text-sm"><span>Small (≤1000 sqft)</span><span className="font-bold text-[#00a8bc]">From ${prices.small}</span></li>
+            <li className="flex justify-between text-sm"><span>Medium (1000–3000)</span><span className="font-bold text-[#00a8bc]">From ${prices.medium}</span></li>
+            <li className="flex justify-between text-sm"><span>Large (3000+)</span><span className="font-bold text-[#00a8bc]">From ${prices.large}</span></li>
           </ul>
-          <Link href="/pricing" className="mt-4 block text-sm font-semibold text-[#0f766e] hover:underline">View full pricing →</Link>
+          <Link href="/pricing" className="mt-4 block text-sm font-semibold text-[#00a8bc] hover:underline">View full pricing →</Link>
         </div>
       </div>
 

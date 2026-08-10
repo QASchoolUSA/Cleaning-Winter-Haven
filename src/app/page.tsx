@@ -49,17 +49,17 @@ export default async function Home() {
               </h2>
               <p className="mt-4 leading-relaxed text-slate-600">
                 Cleaning Winter Haven provides trusted <strong className="font-semibold text-slate-800">house cleaning in Winter Haven, FL</strong> for lakefront properties, downtown condos, and family homes. Explore our{" "}
-                <Link href="/house-cleaning" className="font-medium text-[#0f766e] hover:underline">house cleaning</Link>,{" "}
-                <Link href="/residential-cleaning" className="font-medium text-[#0f766e] hover:underline">residential cleaning</Link>,{" "}
-                <Link href="/commercial-cleaning" className="font-medium text-[#0f766e] hover:underline">commercial cleaning</Link>,{" "}
-                <Link href="/move-out-cleaning" className="font-medium text-[#0f766e] hover:underline">move-out cleaning</Link>,{" "}
-                <Link href="/move-in-cleaning" className="font-medium text-[#0f766e] hover:underline">move-in cleaning</Link>, and{" "}
-                <Link href="/post-construction-cleaning" className="font-medium text-[#0f766e] hover:underline">post-construction cleaning</Link> services.
+                <Link href="/house-cleaning" className="font-medium text-[#00a8bc] hover:underline">house cleaning</Link>,{" "}
+                <Link href="/residential-cleaning" className="font-medium text-[#00a8bc] hover:underline">residential cleaning</Link>,{" "}
+                <Link href="/commercial-cleaning" className="font-medium text-[#00a8bc] hover:underline">commercial cleaning</Link>,{" "}
+                <Link href="/move-out-cleaning" className="font-medium text-[#00a8bc] hover:underline">move-out cleaning</Link>,{" "}
+                <Link href="/move-in-cleaning" className="font-medium text-[#00a8bc] hover:underline">move-in cleaning</Link>, and{" "}
+                <Link href="/post-construction-cleaning" className="font-medium text-[#00a8bc] hover:underline">post-construction cleaning</Link> services.
               </p>
               <p className="mt-4 leading-relaxed text-slate-600">
                 Serving the Chain of Lakes, Cypress Gardens area, Eagle Lake, and all of Polk County with reliable scheduling and vetted local cleaners.
               </p>
-              <Link href="/service-areas" className="mt-4 inline-block text-sm font-semibold text-[#0f766e] hover:underline">View service areas →</Link>
+              <Link href="/service-areas" className="mt-4 inline-block text-sm font-semibold text-[#00a8bc] hover:underline">View service areas →</Link>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default async function Home() {
               <h3 className="text-2xl font-bold text-white">Ready for a spotless space?</h3>
               <p className="mt-2 text-sm text-white/85">Book now — pay only after your cleaning is complete.</p>
             </div>
-            <a href="#booking" className="shrink-0 rounded-lg bg-[#f59e0b] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-[#d97706]">
+            <a href="#booking" className="shrink-0 rounded-lg bg-[#e38051] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-[#d06a3d]">
               Get a quote
             </a>
           </div>

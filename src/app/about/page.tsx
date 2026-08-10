@@ -83,14 +83,14 @@ export default function AboutPage() {
         </p>
         <p>
           You can reach us at{" "}
-          <a href={`mailto:${site.email}`} className="font-medium text-[#0f766e] hover:underline">
+          <a href={`mailto:${site.email}`} className="font-medium text-[#00a8bc] hover:underline">
             {site.email}
           </a>
           {site.phone && site.phoneTel ? (
             <>
               {" "}
               or{" "}
-              <a href={`tel:${site.phoneTel}`} className="font-medium text-[#0f766e] hover:underline">
+              <a href={`tel:${site.phoneTel}`} className="font-medium text-[#00a8bc] hover:underline">
                 {site.phone}
               </a>
             </>
@@ -138,7 +138,7 @@ export default function AboutPage() {
         <p>{site.serviceAreaPolicy}</p>
         <p>
           Primary coverage includes {site.areaServed.join(", ")}. For neighborhood detail, see our{" "}
-          <Link href="/service-areas" className="font-medium text-[#0f766e] hover:underline">
+          <Link href="/service-areas" className="font-medium text-[#00a8bc] hover:underline">
             service areas
           </Link>{" "}
           page. If your address is just outside the usual route, ask when you request a quote—we will
@@ -153,7 +153,7 @@ export default function AboutPage() {
             <li key={s.href}>
               <Link
                 href={s.href}
-                className="card-hover flex items-center gap-3 p-4 text-sm font-medium text-slate-700 hover:text-[#0f766e]"
+                className="card-hover flex items-center gap-3 p-4 text-sm font-medium text-slate-700 hover:text-[#00a8bc]"
               >
                 {s.label}
               </Link>

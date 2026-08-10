@@ -36,7 +36,7 @@ export default function PricingTable({
           {Object.entries(residential).map(([key, price]) => (
             <div key={key} className="card-accent p-4 text-center">
               <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{key === "4plus" ? "4+ BR" : key.replace("bed", " BR").replace("studio", "Studio")}</p>
-              <p className="mt-1 text-2xl font-bold text-[#0f766e]">${price}</p>
+              <p className="mt-1 text-2xl font-bold text-[#00a8bc]">${price}</p>
             </div>
           ))}
         </div>
@@ -54,7 +54,7 @@ export default function PricingTable({
               ].map(({ key, label }) => (
                 <div key={key} className="card-accent p-4 text-center">
                   <p className="text-xs font-medium text-slate-500">{label}</p>
-                  <p className="mt-1 text-2xl font-bold text-[#0f766e]">${commercial[key]}</p>
+                  <p className="mt-1 text-2xl font-bold text-[#00a8bc]">${commercial[key]}</p>
                 </div>
               ))}
             </div>
@@ -70,7 +70,7 @@ export default function PricingTable({
               ].map(({ key, label }) => (
                 <div key={key} className="card-accent p-4 text-center">
                   <p className="text-xs font-medium text-slate-500">{label}</p>
-                  <p className="mt-1 text-2xl font-bold text-[#0f766e]">${post[key]}</p>
+                  <p className="mt-1 text-2xl font-bold text-[#00a8bc]">${post[key]}</p>
                 </div>
               ))}
             </div>
@@ -93,7 +93,7 @@ export default function PricingTable({
                 {config.addOns.map((addOn) => (
                   <li key={addOn.key} className="flex justify-between">
                     <span>{addOn.label}</span>
-                    <span className="font-semibold text-[#0f766e]">+${addOns[addOn.key]}</span>
+                    <span className="font-semibold text-[#00a8bc]">+${addOns[addOn.key]}</span>
                   </li>
                 ))}
               </ul>
@@ -105,7 +105,7 @@ export default function PricingTable({
       {compact && (
         <p className="text-center text-sm text-slate-600">
           Deep clean (+{deepUplift}%), move-in/out (+{moveUplift}%), and add-ons available.{" "}
-          <Link href="/pricing" className="font-semibold text-[#0f766e] hover:underline">See full pricing →</Link>
+          <Link href="/pricing" className="font-semibold text-[#00a8bc] hover:underline">See full pricing →</Link>
         </p>
       )}
     </div>

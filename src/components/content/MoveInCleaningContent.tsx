@@ -1,6 +1,6 @@
 export default function MoveInCleaningContent() {
   return (
-    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#0f766e]">
+    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#00a8bc]">
       <h2>Start Fresh in Your New Winter Haven Home</h2>
       <p>
         Moving into a new property — whether it&apos;s a lakefront home on the Chain of Lakes or a townhouse near downtown — deserves more than a quick wipe-down. Our move-in cleaning service sanitizes every surface so your family can unpack with confidence, knowing cabinets, closets, and bathrooms were professionally treated before your belongings arrived.

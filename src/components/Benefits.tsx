@@ -9,7 +9,7 @@ const benefits: { icon: IconName; title: string; desc: string }[] = [
 
 export default function Benefits() {
   return (
-    <section id="benefits" className="relative overflow-hidden bg-[#0f766e]/5 py-20 sm:py-24">
+    <section id="benefits" className="relative overflow-hidden bg-[var(--brand-wash)] py-20 sm:py-24">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(15,118,110,0.08),transparent_50%)]" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
@@ -20,7 +20,7 @@ export default function Benefits() {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((b) => (
             <div key={b.title} className="card card-hover p-6">
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#0f766e]/10 text-[#0f766e]">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#00a8bc]/10 text-[#00a8bc]">
                 <Icon name={b.icon} className="h-5 w-5" />
               </div>
               <h3 className="mt-4 text-base font-semibold text-slate-900">{b.title}</h3>

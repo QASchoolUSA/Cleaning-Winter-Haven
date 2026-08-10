@@ -46,7 +46,7 @@ export default async function PricingPage() {
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Transparent Cleaning Prices</h1>
         <p className="mt-4 text-lg text-slate-600">
           Know your estimate before you book. All prices below are starting rates for standard cleaning in Winter Haven — use our{" "}
-          <Link href="/#booking" className="font-semibold text-[#0f766e] hover:underline">online quote tool</Link> for your exact total.
+          <Link href="/#booking" className="font-semibold text-[#00a8bc] hover:underline">online quote tool</Link> for your exact total.
         </p>
       </header>
 

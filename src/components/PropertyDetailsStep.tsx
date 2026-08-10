@@ -40,8 +40,8 @@ function Pill({
       aria-pressed={selected}
       className={`min-w-[3rem] rounded-full px-3.5 py-2 text-sm font-medium transition ${
         selected
-          ? "bg-[#0f766e] text-white shadow-sm"
-          : "bg-slate-100 text-slate-600 hover:bg-[#0f766e]/10"
+          ? "bg-[#00a8bc] text-white shadow-sm"
+          : "bg-slate-100 text-slate-600 hover:bg-[#00a8bc]/10"
       }`}
     >
       {children}

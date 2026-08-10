@@ -1,6 +1,6 @@
 export default function PostConstructionCleaningContent() {
   return (
-    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#0f766e]">
+    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#00a8bc]">
       <h2>Post-Construction Cleaning in Three Phases</h2>
       <p>
         Renovations and new builds across Winter Haven leave behind fine drywall dust, adhesive residue, and debris that standard cleaning cannot handle. Our post-construction service follows a phased approach — from rough cleanup after trades finish to final handover detailing that makes your property move-in or listing ready.

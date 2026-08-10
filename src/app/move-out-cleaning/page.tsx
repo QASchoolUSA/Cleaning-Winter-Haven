@@ -74,7 +74,7 @@ export default function MoveOutCleaningPage() {
         <div>
           <div className="card-accent sticky top-24 p-6">
             <div className="flex items-center gap-3">
-              <Icon name="shield" className="h-8 w-8 text-[#0f766e]" />
+              <Icon name="shield" className="h-8 w-8 text-[#00a8bc]" />
               <div>
                 <h2 className="text-lg font-bold text-slate-900">Landlord checklist coverage</h2>
                 <p className="text-sm text-slate-600">We address what inspectors look for</p>
@@ -83,12 +83,12 @@ export default function MoveOutCleaningPage() {
             <ul className="mt-6 space-y-3">
               {checklist.map((item) => (
                 <li key={item.text} className="flex items-start gap-3 text-sm text-slate-700">
-                  <Icon name={item.icon} className="mt-0.5 h-4 w-4 shrink-0 text-[#0f766e]" />
+                  <Icon name={item.icon} className="mt-0.5 h-4 w-4 shrink-0 text-[#00a8bc]" />
                   {item.text}
                 </li>
               ))}
             </ul>
-            <div className="mt-6 rounded-lg bg-[#f59e0b]/10 p-4">
+            <div className="mt-6 rounded-lg bg-[#e38051]/10 p-4">
               <p className="text-sm font-semibold text-slate-900">Pro tip</p>
               <p className="mt-1 text-sm text-slate-600">Forward your landlord&apos;s move-out checklist when booking — we&apos;ll prioritize every item.</p>
             </div>

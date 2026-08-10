@@ -63,14 +63,14 @@ export default function MoveInCleaningPage() {
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold text-slate-900">Your move-in timeline</h2>
-        <div className="relative mt-8 space-y-8 before:absolute before:left-4 before:top-2 before:h-[calc(100%-2rem)] before:w-0.5 before:bg-[#0f766e]/20 sm:before:left-6">
+        <div className="relative mt-8 space-y-8 before:absolute before:left-4 before:top-2 before:h-[calc(100%-2rem)] before:w-0.5 before:bg-[#00a8bc]/20 sm:before:left-6">
           {timeline.map((item) => (
             <div key={item.phase} className="relative flex gap-6 pl-12 sm:pl-16">
-              <div className="absolute left-0 flex h-8 w-8 items-center justify-center rounded-full bg-[#0f766e] text-white sm:left-2 sm:h-10 sm:w-10">
+              <div className="absolute left-0 flex h-8 w-8 items-center justify-center rounded-full bg-[#00a8bc] text-white sm:left-2 sm:h-10 sm:w-10">
                 <Icon name={item.icon} className="h-4 w-4" />
               </div>
               <div className="card-accent flex-1 p-6">
-                <p className="text-xs font-semibold uppercase tracking-wide text-[#0f766e]">{item.phase}</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#00a8bc]">{item.phase}</p>
                 <h3 className="mt-1 text-lg font-semibold text-slate-900">{item.title}</h3>
                 <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
               </div>

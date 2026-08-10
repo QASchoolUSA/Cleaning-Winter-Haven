@@ -9,7 +9,13 @@ export default function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
             <Link href="/" className="inline-flex items-center">
-              <Image src="/logo.svg" alt={site.name} width={200} height={44} />
+              <Image
+                src="/logo.svg"
+                alt={site.name}
+                width={200}
+                height={80}
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600">
               Professional residential, commercial, and post-construction cleaning throughout Winter Haven and the Chain of Lakes region.
@@ -20,9 +26,9 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-900">Contact</h3>
             <ul className="mt-4 space-y-3 text-sm text-slate-600">
-              <li><a href={`mailto:${site.email}`} className="font-medium text-[#0f766e] hover:underline">{site.email}</a></li>
+              <li><a href={`mailto:${site.email}`} className="font-medium text-[#00a8bc] hover:underline">{site.email}</a></li>
               {site.phone && site.phoneTel ? (
-                <li><a href={`tel:${site.phoneTel}`} className="font-medium text-[#0f766e] hover:underline">{site.phone}</a></li>
+                <li><a href={`tel:${site.phoneTel}`} className="font-medium text-[#00a8bc] hover:underline">{site.phone}</a></li>
               ) : null}
               <li className="text-xs leading-relaxed text-slate-500">{site.serviceAreaPolicy}</li>
               <li>Hours: {site.hours}</li>
@@ -33,11 +39,11 @@ export default function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-900">Services</h3>
             <ul className="mt-4 space-y-2.5 text-sm">
               {SERVICE_LINKS.map((link) => (
-                <li key={link.href}><Link href={link.href} className="text-slate-600 transition hover:text-[#0f766e]">{link.label}</Link></li>
+                <li key={link.href}><Link href={link.href} className="text-slate-600 transition hover:text-[#00a8bc]">{link.label}</Link></li>
               ))}
-              <li><Link href="/pricing" className="text-slate-600 transition hover:text-[#0f766e]">Transparent Pricing</Link></li>
-              <li><Link href="/about" className="text-slate-600 transition hover:text-[#0f766e]">About Us</Link></li>
-              <li><Link href="/guides/how-much-does-house-cleaning-cost-winter-haven" className="text-slate-600 transition hover:text-[#0f766e]">House Cleaning Cost Guide</Link></li>
+              <li><Link href="/pricing" className="text-slate-600 transition hover:text-[#00a8bc]">Transparent Pricing</Link></li>
+              <li><Link href="/about" className="text-slate-600 transition hover:text-[#00a8bc]">About Us</Link></li>
+              <li><Link href="/guides/how-much-does-house-cleaning-cost-winter-haven" className="text-slate-600 transition hover:text-[#00a8bc]">House Cleaning Cost Guide</Link></li>
             </ul>
           </div>
 
@@ -46,13 +52,13 @@ export default function Footer() {
             <p className="mt-4 text-sm leading-relaxed text-slate-600">
               {site.areaServed.slice(0, 5).join(", ")}, and nearby Polk County communities.
             </p>
-            <Link href="/service-areas" className="mt-3 inline-block text-sm font-semibold text-[#0f766e] hover:underline">View all areas →</Link>
+            <Link href="/service-areas" className="mt-3 inline-block text-sm font-semibold text-[#00a8bc] hover:underline">View all areas →</Link>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-slate-200 pt-8 sm:flex-row">
           <p className="text-xs text-slate-500">© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-          <Link href="#booking" className="text-xs font-semibold text-[#0f766e] hover:underline">Book a cleaning →</Link>
+          <Link href="#booking" className="text-xs font-semibold text-[#00a8bc] hover:underline">Book a cleaning →</Link>
         </div>
       </div>
     </footer>

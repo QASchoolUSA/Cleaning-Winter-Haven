@@ -69,11 +69,11 @@ export default function ServiceAreasPage() {
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {site.neighborhoods.map((area) => (
           <div key={area.name} className="card-accent p-6">
-            <Icon name="map" className="h-6 w-6 text-[#0f766e]" />
+            <Icon name="map" className="h-6 w-6 text-[#00a8bc]" />
             <h2 className="mt-3 text-lg font-semibold text-slate-900">{area.name}</h2>
             <p className="mt-2 text-sm text-slate-600">{area.desc}</p>
             {areaLinks[area.name] && (
-              <Link href={areaLinks[area.name]} className="mt-4 inline-block text-sm font-semibold text-[#0f766e] hover:underline">
+              <Link href={areaLinks[area.name]} className="mt-4 inline-block text-sm font-semibold text-[#00a8bc] hover:underline">
                 View recommended service →
               </Link>
             )}
@@ -93,8 +93,8 @@ export default function ServiceAreasPage() {
         <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICE_LINKS.map((s) => (
             <li key={s.href}>
-              <Link href={s.href} className="card-hover flex items-center gap-3 p-4 text-sm font-medium text-slate-700 hover:text-[#0f766e]">
-                <Icon name={s.icon} className="h-5 w-5 text-[#0f766e]" />
+              <Link href={s.href} className="card-hover flex items-center gap-3 p-4 text-sm font-medium text-slate-700 hover:text-[#00a8bc]">
+                <Icon name={s.icon} className="h-5 w-5 text-[#00a8bc]" />
                 {s.label}
               </Link>
             </li>

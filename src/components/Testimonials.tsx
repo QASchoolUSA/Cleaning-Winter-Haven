@@ -18,7 +18,7 @@ const testimonials = [
 
 function Stars() {
   return (
-    <div className="flex gap-0.5 text-[#f59e0b]" aria-hidden>
+    <div className="flex gap-0.5 text-[#e38051]" aria-hidden>
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
           <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -42,7 +42,7 @@ export default function Testimonials() {
               <Stars />
               <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-slate-600">&ldquo;{t.quote}&rdquo;</blockquote>
               <figcaption className="mt-5 flex items-center gap-3 border-t border-slate-100 pt-5">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#0f766e] to-[#14b8a6] text-xs font-bold text-white">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#00a8bc] to-[#4dd1df] text-xs font-bold text-white">
                   {t.name.charAt(0)}
                 </div>
                 <div>

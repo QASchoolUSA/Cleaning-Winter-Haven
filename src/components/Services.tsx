@@ -69,9 +69,9 @@ export default function Services() {
                   </div>
                 ) : null}
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg font-semibold text-slate-900 transition group-hover:text-[#0f766e]">{s.label}</h3>
+                  <h3 className="text-lg font-semibold text-slate-900 transition group-hover:text-[#00a8bc]">{s.label}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">{descriptions[key] ?? ""}</p>
-                  <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-[#0f766e]">
+                  <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-[#00a8bc]">
                     Learn more
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition group-hover:translate-x-0.5"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                   </span>

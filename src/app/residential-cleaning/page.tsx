@@ -80,12 +80,12 @@ export default async function ResidentialCleaningPage() {
             className="mt-10"
           />
 
-          <div className="mt-10 rounded-xl bg-[#0f766e]/5 p-6">
+          <div className="mt-10 rounded-xl bg-[#00a8bc]/5 p-6">
             <h2 className="font-semibold text-slate-900">What&apos;s included</h2>
             <ul className="mt-4 space-y-3">
               {whatsIncluded.map((item) => (
                 <li key={item.text} className="flex items-start gap-3 text-sm text-slate-700">
-                  <Icon name={item.icon} className="mt-0.5 h-4 w-4 shrink-0 text-[#0f766e]" />
+                  <Icon name={item.icon} className="mt-0.5 h-4 w-4 shrink-0 text-[#00a8bc]" />
                   {item.text}
                 </li>
               ))}
@@ -97,7 +97,7 @@ export default async function ResidentialCleaningPage() {
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               {steps.map((s) => (
                 <div key={s.n} className="card-accent p-5">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0f766e] text-sm font-bold text-white">{s.n}</span>
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#00a8bc] text-sm font-bold text-white">{s.n}</span>
                   <h3 className="mt-3 font-semibold text-slate-900">{s.title}</h3>
                   <p className="mt-1 text-sm text-slate-600">{s.desc}</p>
                 </div>
@@ -120,12 +120,12 @@ export default async function ResidentialCleaningPage() {
               {Object.entries(prices).map(([key, price]) => (
                 <li key={key} className="flex justify-between text-sm">
                   <span className="text-slate-600">{key === "4plus" ? "4+ Bedroom" : key.replace("bed", " Bedroom").replace("studio", "Studio")}</span>
-                  <span className="font-bold text-[#0f766e]">${price}</span>
+                  <span className="font-bold text-[#00a8bc]">${price}</span>
                 </li>
               ))}
             </ul>
             <p className="mt-4 text-xs text-slate-500">{upliftSummary}</p>
-            <Link href="/pricing" className="mt-4 block text-sm font-semibold text-[#0f766e] hover:underline">Full pricing details →</Link>
+            <Link href="/pricing" className="mt-4 block text-sm font-semibold text-[#00a8bc] hover:underline">Full pricing details →</Link>
             <Link href="/#booking" className="btn-primary mt-6 w-full text-center">Book now</Link>
           </div>
         </aside>

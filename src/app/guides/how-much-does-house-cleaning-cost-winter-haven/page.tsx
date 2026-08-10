@@ -185,7 +185,7 @@ export default async function HouseCleaningCostGuidePage() {
         ]}
       />
 
-      <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#0f766e]">
+      <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#00a8bc]">
         <header>
           <p className="section-eyebrow not-prose">Winter Haven price guide · 2026</p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
@@ -204,7 +204,7 @@ export default async function HouseCleaningCostGuidePage() {
         />
 
         <h2>How Much Does House Cleaning Cost in Winter Haven?</h2>
-        <p className="ai-overview-target text-base leading-relaxed text-slate-800 not-prose border-l-4 border-[#0f766e] bg-slate-50 px-4 py-3 rounded-r-lg">
+        <p className="ai-overview-target text-base leading-relaxed text-slate-800 not-prose border-l-4 border-[#00a8bc] bg-slate-50 px-4 py-3 rounded-r-lg">
           {overviewParagraph(config)}
         </p>
 
@@ -219,9 +219,9 @@ export default async function HouseCleaningCostGuidePage() {
             <thead>
               <tr className="border-b border-slate-200 text-left">
                 <th className="pb-3 font-semibold text-slate-900">Home size</th>
-                <th className="pb-3 font-semibold text-[#0f766e]">Standard</th>
-                <th className="pb-3 font-semibold text-[#0f766e]">Deep (+{deepUplift}%)</th>
-                <th className="pb-3 font-semibold text-[#0f766e]">Move (+{moveUplift}%)</th>
+                <th className="pb-3 font-semibold text-[#00a8bc]">Standard</th>
+                <th className="pb-3 font-semibold text-[#00a8bc]">Deep (+{deepUplift}%)</th>
+                <th className="pb-3 font-semibold text-[#00a8bc]">Move (+{moveUplift}%)</th>
               </tr>
             </thead>
             <tbody>

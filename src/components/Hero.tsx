@@ -40,7 +40,7 @@ export default function Hero() {
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
               {TRUST_ITEMS.map((item) => (
                 <li key={item} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#0f766e]/10 text-[#0f766e]">
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#00a8bc]/10 text-[#00a8bc]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
                   </span>
                   {item}

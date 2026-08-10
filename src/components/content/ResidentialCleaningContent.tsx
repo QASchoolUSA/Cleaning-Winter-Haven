@@ -1,6 +1,6 @@
 export default function ResidentialCleaningContent() {
   return (
-    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#0f766e]">
+    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#00a8bc]">
       <h2>Recurring Home Cleaning Built for Winter Haven Lifestyles</h2>
       <p>
         Winter Haven homeowners juggle lake weekends, school schedules, and seasonal guests — leaving little time for deep household upkeep. Our residential cleaning service is designed around the rhythms of life in Polk County&apos;s Chain of Lakes region, whether you live in a downtown bungalow, a Cypress Gardens subdivision, or a lakefront retreat along Lake Howard.

@@ -1,6 +1,6 @@
 export default function CommercialCleaningContent() {
   return (
-    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#0f766e]">
+    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#00a8bc]">
       <h2>Commercial Cleaning for Winter Haven Businesses</h2>
       <p>
         First impressions matter — especially along Central Avenue and the commercial corridors connecting Winter Haven to the wider Polk County economy. Our commercial cleaning service keeps offices, retail spaces, medical suites, and shared workspaces professional, hygienic, and welcoming for employees and clients alike.

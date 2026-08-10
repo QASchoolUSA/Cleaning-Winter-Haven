@@ -178,7 +178,7 @@ export default function BookingWidget({
   if (booked) {
     return (
       <div className="card mx-auto w-full max-w-lg overflow-hidden p-0">
-        <div className="bg-gradient-to-br from-[#0f766e] to-[#115e59] px-6 py-8 text-center text-white">
+        <div className="bg-gradient-to-br from-[#00a8bc] to-[#0b3d8c] px-6 py-8 text-center text-white">
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white/20 backdrop-blur">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M20 6 9 17l-5-5" />
@@ -188,7 +188,7 @@ export default function BookingWidget({
           <p className="mt-2 text-sm text-white/90">We&apos;ll confirm your appointment shortly. Check your email for confirmation.</p>
         </div>
         <div className="space-y-4 p-6">
-          <div className="rounded-lg bg-[#0f766e]/10 p-4">
+          <div className="rounded-lg bg-[#00a8bc]/10 p-4">
             <p className="text-sm font-medium text-slate-900">Pay when we&apos;re done</p>
             <p className="mt-1 text-sm text-slate-600">
               No upfront payment required. Your estimated total of <strong>${quote.price}</strong> is due after your cleaning is complete.
@@ -199,12 +199,12 @@ export default function BookingWidget({
             {site.phone && site.phoneTel ? (
               <>
                 Call us at{" "}
-                <a href={`tel:${site.phoneTel}`} className="font-semibold text-[#0f766e] hover:underline">{site.phone}</a>
+                <a href={`tel:${site.phoneTel}`} className="font-semibold text-[#00a8bc] hover:underline">{site.phone}</a>
                 {" or "}
               </>
             ) : null}
             email{" "}
-            <a href={`mailto:${site.email}`} className="font-semibold text-[#0f766e] hover:underline">{site.email}</a>.
+            <a href={`mailto:${site.email}`} className="font-semibold text-[#00a8bc] hover:underline">{site.email}</a>.
           </p>
           <button type="button" className="btn-ghost w-full" onClick={() => { setBooked(false); setStep(0); setSubmitError(null); }}>
             Book another cleaning
@@ -215,8 +215,8 @@ export default function BookingWidget({
   }
 
   return (
-    <div className="card mx-auto w-full max-w-lg overflow-hidden p-0 shadow-lg shadow-[#0f766e]/5">
-      <div className="border-b border-slate-100 bg-gradient-to-r from-[#0f766e]/10 to-white px-6 py-5">
+    <div className="card mx-auto w-full max-w-lg overflow-hidden p-0 shadow-lg shadow-[#00a8bc]/5">
+      <div className="border-b border-slate-100 bg-gradient-to-r from-[#00a8bc]/10 to-white px-6 py-5">
         <div className="flex items-start justify-between gap-4">
           <div>
             <h2 className="text-lg font-bold text-slate-900">Book your cleaning</h2>
@@ -224,7 +224,7 @@ export default function BookingWidget({
           </div>
           <div className="shrink-0 rounded-lg bg-white px-3 py-2 text-right shadow-sm ring-1 ring-slate-100">
             <p className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Estimate</p>
-            <p className="text-lg font-bold text-[#0f766e]">${quote.price}</p>
+            <p className="text-lg font-bold text-[#00a8bc]">${quote.price}</p>
           </div>
         </div>
       </div>
@@ -234,14 +234,14 @@ export default function BookingWidget({
           {STEPS.map((label, i) => (
             <div key={label} className="flex flex-1 items-center">
               <div className="flex flex-col items-center gap-1">
-                <div className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold transition ${i <= step ? "bg-[#0f766e] text-white" : "bg-slate-100 text-slate-400"}`}>
+                <div className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold transition ${i <= step ? "bg-[#00a8bc] text-white" : "bg-slate-100 text-slate-400"}`}>
                   {i < step ? (
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
                   ) : i + 1}
                 </div>
-                <span className={`hidden text-[10px] font-medium sm:block ${i <= step ? "text-[#0f766e]" : "text-slate-400"}`}>{label}</span>
+                <span className={`hidden text-[10px] font-medium sm:block ${i <= step ? "text-[#00a8bc]" : "text-slate-400"}`}>{label}</span>
               </div>
-              {i < STEPS.length - 1 && <div className={`mx-1 mb-4 h-0.5 flex-1 rounded-full sm:mb-5 ${i < step ? "bg-[#0f766e]" : "bg-slate-100"}`} />}
+              {i < STEPS.length - 1 && <div className={`mx-1 mb-4 h-0.5 flex-1 rounded-full sm:mb-5 ${i < step ? "bg-[#00a8bc]" : "bg-slate-100"}`} />}
             </div>
           ))}
         </div>
@@ -258,13 +258,13 @@ export default function BookingWidget({
                     key={opt.value}
                     type="button"
                     onClick={() => setServiceType(opt.value)}
-                    className={`flex items-center justify-between rounded-lg border px-4 py-3 text-left transition ${serviceType === opt.value ? "border-[#0f766e] bg-[#0f766e]/5 ring-1 ring-[#0f766e]/30" : "border-slate-200 hover:border-[#14b8a6]/50 hover:bg-slate-50"}`}
+                    className={`flex items-center justify-between rounded-lg border px-4 py-3 text-left transition ${serviceType === opt.value ? "border-[#00a8bc] bg-[#00a8bc]/5 ring-1 ring-[#00a8bc]/30" : "border-slate-200 hover:border-[#4dd1df]/50 hover:bg-slate-50"}`}
                   >
                     <div>
                       <p className="text-sm font-semibold text-slate-900">{opt.label}</p>
                       <p className="text-xs text-slate-500">{opt.desc}</p>
                     </div>
-                    <div className={`h-4 w-4 shrink-0 rounded-full border-2 ${serviceType === opt.value ? "border-[#0f766e] bg-[#0f766e]" : "border-slate-300"}`} />
+                    <div className={`h-4 w-4 shrink-0 rounded-full border-2 ${serviceType === opt.value ? "border-[#00a8bc] bg-[#00a8bc]" : "border-slate-300"}`} />
                   </button>
                 ))}
               </div>
@@ -303,7 +303,7 @@ export default function BookingWidget({
                     key={key}
                     type="button"
                     onClick={() => setAddOns({ ...addOns, [key]: !addOns[key] })}
-                    className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition ${addOns[key] ? "bg-[#0f766e] text-white" : "bg-slate-100 text-slate-600 hover:bg-[#0f766e]/10"}`}
+                    className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition ${addOns[key] ? "bg-[#00a8bc] text-white" : "bg-slate-100 text-slate-600 hover:bg-[#00a8bc]/10"}`}
                   >
                     {labels[key]}
                   </button>
@@ -329,19 +329,19 @@ export default function BookingWidget({
 
         {step === CONTACT_STEP && (
           <div className="grid gap-4 sm:grid-cols-2">
-            <p className="sm:col-span-2 text-xs text-slate-500">Fields marked with <span className="text-[#0f766e]">*</span> are required.</p>
+            <p className="sm:col-span-2 text-xs text-slate-500">Fields marked with <span className="text-[#00a8bc]">*</span> are required.</p>
             <label className="block sm:col-span-2">
-              <span className="mb-2 block text-sm font-medium text-slate-700">Full name <span className="text-[#0f766e]">*</span></span>
+              <span className="mb-2 block text-sm font-medium text-slate-700">Full name <span className="text-[#00a8bc]">*</span></span>
               <input type="text" className={`input-field ${contactErrors.name ? "ring-2 ring-red-400" : ""}`} value={name} onChange={(e) => { setName(e.target.value); setContactErrors((p) => ({ ...p, name: undefined })); }} placeholder="Jane Smith" required autoComplete="name" />
               {contactErrors.name && <p className="mt-1 text-xs text-red-600">{contactErrors.name}</p>}
             </label>
             <label className="block">
-              <span className="mb-2 block text-sm font-medium text-slate-700">Email <span className="text-[#0f766e]">*</span></span>
+              <span className="mb-2 block text-sm font-medium text-slate-700">Email <span className="text-[#00a8bc]">*</span></span>
               <input type="email" className={`input-field ${contactErrors.email ? "ring-2 ring-red-400" : ""}`} value={email} onChange={(e) => { setEmail(e.target.value); setContactErrors((p) => ({ ...p, email: undefined })); }} placeholder="you@email.com" required autoComplete="email" />
               {contactErrors.email && <p className="mt-1 text-xs text-red-600">{contactErrors.email}</p>}
             </label>
             <label className="block">
-              <span className="mb-2 block text-sm font-medium text-slate-700">Phone <span className="text-[#0f766e]">*</span></span>
+              <span className="mb-2 block text-sm font-medium text-slate-700">Phone <span className="text-[#00a8bc]">*</span></span>
               <input
                 type="tel"
                 className={`input-field ${contactErrors.phone ? "ring-2 ring-red-400" : ""}`}
@@ -357,7 +357,7 @@ export default function BookingWidget({
               {contactErrors.phone && <p className="mt-1 text-xs text-red-600">{contactErrors.phone}</p>}
             </label>
             <label className="block sm:col-span-2">
-              <span className="mb-2 block text-sm font-medium text-slate-700">Service address <span className="text-[#0f766e]">*</span></span>
+              <span className="mb-2 block text-sm font-medium text-slate-700">Service address <span className="text-[#00a8bc]">*</span></span>
               <input type="text" className={`input-field ${contactErrors.address ? "ring-2 ring-red-400" : ""}`} value={address} onChange={(e) => { setAddress(e.target.value); setContactErrors((p) => ({ ...p, address: undefined })); }} placeholder="123 Lake Howard Dr, Winter Haven, FL" required autoComplete="street-address" />
               {contactErrors.address && <p className="mt-1 text-xs text-red-600">{contactErrors.address}</p>}
             </label>
@@ -377,7 +377,7 @@ export default function BookingWidget({
                 <div className="flex justify-between gap-4"><dt className="text-slate-500">Address</dt><dd className="text-right font-medium text-slate-900">{address}</dd></div>
               </dl>
             </div>
-            <div className="rounded-lg bg-[#0f766e]/10 p-4">
+            <div className="rounded-lg bg-[#00a8bc]/10 p-4">
               <p className="text-sm font-semibold text-slate-900">Estimated total: ${quote.price}</p>
               <p className="mt-0.5 text-xs text-slate-600">Range ${quote.range.low}–${quote.range.high} · Pay after completion</p>
             </div>

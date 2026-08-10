@@ -1,6 +1,6 @@
 export default function MoveOutCleaningContent() {
   return (
-    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#0f766e]">
+    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-[#00a8bc]">
       <h2>Move-Out Cleaning That Protects Your Deposit</h2>
       <p>
         Leaving a rental or selling a home in Winter Haven? Landlords and buyers expect vacancy-ready condition — and our move-out cleaning service is built to meet those standards. From Florence Villa apartments to single-family homes in the Cypress Gardens area, we know what property managers look for during final walkthroughs.

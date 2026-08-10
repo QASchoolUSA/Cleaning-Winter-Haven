@@ -83,10 +83,10 @@ export default async function PostConstructionCleaningPage() {
         <ol className="mt-6 grid gap-4 md:grid-cols-3">
           {phases.map((p) => (
             <li key={p.phase} className="card-accent flex flex-col p-6">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#f59e0b]">{p.phase}</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#e38051]">{p.phase}</span>
               <h3 className="mt-2 text-lg font-semibold text-slate-900">{p.name}</h3>
               <p className="mt-2 flex-1 text-sm text-slate-600">{p.desc}</p>
-              <p className="mt-4 text-sm font-semibold text-[#0f766e]">{p.price}</p>
+              <p className="mt-4 text-sm font-semibold text-[#00a8bc]">{p.price}</p>
             </li>
           ))}
         </ol>
@@ -96,7 +96,7 @@ export default async function PostConstructionCleaningPage() {
         {Object.entries(prices).map(([key, price]) => (
           <div key={key} className="card p-4 text-center">
             <p className="text-xs text-slate-500">{key === "under1k" ? "Under 1000 sqft" : key === "1k-2k" ? "1000–2000 sqft" : "2000+ sqft"}</p>
-            <p className="mt-1 text-2xl font-bold text-[#0f766e]">From ${price}</p>
+            <p className="mt-1 text-2xl font-bold text-[#00a8bc]">From ${price}</p>
           </div>
         ))}
       </div>

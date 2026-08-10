@@ -10,7 +10,7 @@ export function ServiceCTA({ title = "Ready to book?" }: { title?: string }) {
             <h2 className="text-xl font-bold text-white">{title}</h2>
             <p className="mt-1 text-sm text-white/85">Instant quote · No upfront payment</p>
           </div>
-          <Link href="/#booking" className="shrink-0 rounded-lg bg-[#f59e0b] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#d97706]">
+          <Link href="/#booking" className="shrink-0 rounded-lg bg-[#e38051] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#d06a3d]">
             Get a fast quote
           </Link>
         </div>
