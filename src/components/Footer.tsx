@@ -14,7 +14,7 @@ export default function Footer() {
                 alt={site.name}
                 width={200}
                 height={80}
-                className="h-12 w-auto"
+                className="h-12 w-auto object-contain"
               />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600">
