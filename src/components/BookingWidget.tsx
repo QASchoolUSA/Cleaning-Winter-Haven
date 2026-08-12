@@ -91,19 +91,76 @@ export default function BookingWidget({
   const addOnLines = selectedAddOnLines(addOns, config);
   const selectedAddOns = addOnLines.map((a) => a.label);
 
-  const mailto = useMemo(() => {
-    const subject = encodeURIComponent(`Cleaning Booking: ${serviceType} • ${sizeLabel} • ${date || "TBD"}`);
-    const body = encodeURIComponent(
-      `BOOKING REQUEST (Pay upon completion)\n\n` +
-        `Service: ${serviceType}\nSize: ${sizeLabel}\nLevel: ${effectiveLevel}\n` +
-        `Add-ons: ${selectedAddOns.join(", ") || "None"}\n\n` +
-        `Preferred Date/Time: ${date || "TBD"} ${time || ""}\n` +
-        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}\n\n` +
-        `Estimated Price: $${quote.price} (range $${quote.range.low}–$${quote.range.high})\n` +
-        `Payment: Due after cleaning is complete\n\nNotes:`
-    );
-    return `mailto:${site.email}?subject=${subject}&body=${body}`;
-  }, [serviceType, sizeLabel, effectiveLevel, selectedAddOns, date, time, name, email, phone, address, quote]);
+  function buildPayload(intent: "quote" | "book") {
+    return {
+      customer_name: name,
+      email,
+      phone,
+      address,
+      service_type: `${serviceLabel} — ${levelLabel}`,
+      preferred_date: date || undefined,
+      preferred_time: time || undefined,
+      intent,
+      property: {
+        bedrooms: serviceType === "residential" ? bedrooms : undefined,
+        bathrooms,
+        size_label: sqftBandLabel(sqftBand, config) ?? undefined,
+        home_type: serviceLabel,
+      },
+      quote: {
+        estimate: quote.price,
+        estimate_low: quote.range.low,
+        estimate_high: quote.range.high,
+        currency: "USD",
+        service_level: levelLabel,
+        add_ons: addOnLines,
+        payment_terms: "Due after cleaning is complete",
+      },
+    };
+  }
+
+  async function submitPayload(intent: "quote" | "book") {
+    const errors = validateContact(name, email, phone, address);
+    if (Object.keys(errors).length > 0) {
+      setContactErrors(errors);
+      setStep(CONTACT_STEP);
+      return;
+    }
+
+    setSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const res = await fetch("/api/book", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(buildPayload(intent)),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? "Request failed");
+      }
+
+      setBooked(true);
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again or call us.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  function handleBook() {
+    return submitPayload("book");
+  }
+
+  function handleQuoteRequest() {
+    return submitPayload("quote");
+  }
 
   function next() {
     if (step === CONTACT_STEP) {
@@ -119,60 +176,6 @@ export default function BookingWidget({
 
   function prev() {
     setStep((s) => Math.max(s - 1, 0));
-  }
-
-  async function handleBook() {
-    const errors = validateContact(name, email, phone, address);
-    if (Object.keys(errors).length > 0) {
-      setContactErrors(errors);
-      setStep(CONTACT_STEP);
-      return;
-    }
-
-    setSubmitting(true);
-    setSubmitError(null);
-
-    try {
-      const res = await fetch("/api/book", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          customer_name: name,
-          email,
-          phone,
-          address,
-          service_type: `${serviceLabel} — ${levelLabel}`,
-          preferred_date: date || undefined,
-          preferred_time: time || undefined,
-          property: {
-            bedrooms: serviceType === "residential" ? bedrooms : undefined,
-            bathrooms,
-            size_label: sqftBandLabel(sqftBand, config) ?? undefined,
-            home_type: serviceLabel,
-          },
-          quote: {
-            estimate: quote.price,
-            estimate_low: quote.range.low,
-            estimate_high: quote.range.high,
-            currency: "USD",
-            service_level: levelLabel,
-            add_ons: addOnLines,
-            payment_terms: "Due after cleaning is complete",
-          },
-        }),
-      });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error ?? "Booking failed");
-      }
-
-      setBooked(true);
-    } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : "Booking failed. Please try again or call us.");
-    } finally {
-      setSubmitting(false);
-    }
   }
 
   if (booked) {
@@ -392,8 +395,8 @@ export default function BookingWidget({
           <button type="button" className="btn-primary px-5 py-2.5" data-testid="booking-continue" onClick={next}>Continue</button>
         ) : (
           <div className="flex flex-wrap justify-end gap-2">
-            <button type="button" className="btn-ghost px-4 py-2.5 text-xs sm:text-sm" disabled={submitting} onClick={() => { const errors = validateContact(name, email, phone, address); if (Object.keys(errors).length > 0) { setContactErrors(errors); setStep(CONTACT_STEP); return; } window.location.href = mailto; }}>Email quote</button>
-            <button type="button" className="btn-primary px-4 py-2.5 text-xs sm:text-sm disabled:opacity-60" data-testid="booking-submit" onClick={handleBook} disabled={submitting}>{submitting ? "Sending…" : "Book cleaning"}</button>
+            <button type="button" className="btn-primary px-4 py-2.5 text-xs sm:text-sm disabled:opacity-60" disabled={submitting} onClick={handleQuoteRequest}>{submitting ? "Sending…" : "Request quote"}</button>
+            <button type="button" className="btn-ghost px-4 py-2.5 text-xs sm:text-sm disabled:opacity-60" data-testid="booking-submit" onClick={handleBook} disabled={submitting}>{submitting ? "Sending…" : "Book cleaning"}</button>
           </div>
         )}
       </div>

@@ -29,6 +29,7 @@ export type BookingPayload = {
   preferred_date?: string;
   preferred_time?: string;
   notes?: string;
+  intent?: "quote" | "book";
   property?: BookingProperty;
   quote?: BookingQuote;
 };
@@ -75,6 +76,8 @@ export function normalizeBookingPayload(input: Partial<BookingPayload>): Booking
     preferred_date: input.preferred_date?.trim() || undefined,
     preferred_time: input.preferred_time?.trim() || undefined,
     notes: input.notes?.trim() || undefined,
+    intent:
+      input.intent === "quote" || input.intent === "book" ? input.intent : undefined,
     property: input.property,
     quote: input.quote,
   };
