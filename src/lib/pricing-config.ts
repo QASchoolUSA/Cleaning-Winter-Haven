@@ -26,7 +26,7 @@ export async function getPricingConfig(): Promise<PricingConfig> {
   try {
     const res = await fetch(`${baseUrl}/api/pricing`, {
       headers: {
-        "X-Site-Slug": readEnv("BOOKING_BROOM_SITE_SLUG") ?? site.bookingSlug,
+        "X-Site-Slug": site.bookingSlug,
         "X-Api-Key": apiKey,
       },
       next: { revalidate: REVALIDATE_SECONDS },
