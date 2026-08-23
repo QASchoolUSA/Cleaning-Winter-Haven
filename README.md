@@ -33,7 +33,7 @@ Covers booking validation, `/api/book` request handling (with a mocked Booking B
 | `NEXT_PUBLIC_SITE_URL` | Production URL (e.g. https://cleaningwinterhaven.com) |
 | `NEXT_PUBLIC_PHONE` | Display phone number |
 | `NEXT_PUBLIC_EMAIL` | Contact email |
-| `BOOKING_BROOM_URL` | Booking Broom API base URL |
+| `BOOKING_BROOM_URL` | Optional; defaults to `https://app.bookingbroom.com` |
 | `BOOKING_BROOM_API_KEY` | API key for winter-haven site slug |
 
 ## Deploy to Cloudflare Workers
