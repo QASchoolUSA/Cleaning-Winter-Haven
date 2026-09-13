@@ -38,6 +38,10 @@ export async function POST(request: Request) {
     property: form.property,
     quote: form.quote,
     idempotency_key: idempotencyKey,
+    session_key:
+      typeof form.session_key === "string" && form.session_key.trim()
+        ? form.session_key.trim()
+        : undefined,
   };
 
   async function softFallback(lastError: string) {
