@@ -70,8 +70,8 @@ export default async function Home() {
         <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <div>
-              <h3 className="text-2xl font-bold text-white">Ready for a spotless space?</h3>
-              <p className="mt-2 text-sm text-white/85">Book now — pay only after your cleaning is complete.</p>
+              <h3 className="text-2xl font-bold text-white">Need a clean for your Winter Haven home?</h3>
+              <p className="mt-2 text-sm text-white/85">Get a quote now—pay after the cleaning is done.</p>
             </div>
             <a href="#booking" className="shrink-0 rounded-lg bg-[#e38051] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-[#d06a3d]">
               Get a quote

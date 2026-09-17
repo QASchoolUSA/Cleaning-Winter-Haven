@@ -20,15 +20,15 @@ const differentiators = [
   },
   {
     title: "Licensed & insured teams",
-    text: "Footer and service pages already state it because it matters: we operate as a licensed, insured cleaning business with a satisfaction guarantee.",
+    text: "We operate as a licensed, insured cleaning business, and we stand behind the work with a satisfaction guarantee.",
   },
   {
     title: "Service-specific checklists",
-    text: "Residential maintenance, move cleans, commercial janitorial, and post-construction each follow different standards so dust from a remodel is never treated like a weekly tidy-up.",
+    text: "Weekly residential visits, move cleans, commercial janitorial, and post-construction each follow different standards—remodel dust is never treated like a quick tidy-up.",
   },
   {
-    title: "Transparent booking",
-    text: "Instant quotes with no upfront payment required to get on the calendar. You know the scope before we arrive.",
+    title: "Clear booking",
+    text: "Get a quote and get on the calendar without paying upfront. You know the scope before we arrive.",
   },
 ];
 
@@ -63,23 +63,22 @@ export default function AboutPage() {
       <header className="max-w-3xl">
         <p className="section-eyebrow">Winter Haven · About us</p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Professional cleaning for Winter Haven and the Chain of Lakes
+          Cleaning for Winter Haven and the Chain of Lakes
         </h1>
         <p className="mt-4 text-lg text-slate-600">
-          {site.name} is a mobile cleaning company serving homes and small businesses across Winter
-          Haven and nearby Polk County. We focus on reliable schedules, clear scopes, and crews who
-          treat your property like a worksite—not a gig app assignment.
+          {site.name} is a mobile cleaning company for homes and small businesses across Winter Haven
+          and nearby Polk County. We keep schedules reliable, scopes clear, and crews focused on the
+          job—not on rushing through a gig-app checklist.
         </p>
       </header>
 
       <section className="mt-12 max-w-3xl space-y-5 text-slate-700 leading-relaxed">
-        <h2 className="text-2xl font-bold text-slate-900">Company overview</h2>
+        <h2 className="text-2xl font-bold text-slate-900">Who we clean for</h2>
         <p>
-          Winter Haven properties range from lakefront rentals to busy family homes near LEGOLAND and
-          downtown storefronts along Central Avenue. Those spaces need different cleaning cadences:
-          weekly maintenance for lived-in kitchens, turnover cleans between guests, and heavier
-          post-construction detailing after remodels. We built our service menu around those real
-          local needs instead of one vague “cleaning” package.
+          Winter Haven runs from lakefront rentals to busy family homes near LEGOLAND and storefronts
+          on Central Avenue. Those places need different rhythms: weekly kitchen and bath maintenance,
+          turnover cleans between guests, and heavier detailing after a remodel. Our menu follows
+          those local needs instead of one vague “cleaning” package.
         </p>
         <p>
           You can reach us at{" "}
@@ -115,8 +114,8 @@ export default function AboutPage() {
             included; the team works room by room to the agreed scope.
           </li>
           <li>
-            <strong className="text-slate-900">You pay after service.</strong> No upfront payment wall
-            just to get on the calendar—see our booking CTA for the current quote flow.
+            <strong className="text-slate-900">You pay after service.</strong> No upfront payment just
+            to get on the calendar—request a quote when you are ready.
           </li>
         </ol>
       </section>

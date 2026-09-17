@@ -31,10 +31,12 @@ export default function Hero() {
           <div className="max-w-xl fade-up lg:col-span-2 lg:pt-4">
             <p className="section-eyebrow">Winter Haven, FL · Chain of Lakes</p>
             <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[3rem] lg:leading-[1.1]">
-              Winter Haven&apos;s Trusted Cleaning Professionals
+              Local cleaning for Winter Haven and the Chain of Lakes
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-slate-600">
-              From lakefront homes to downtown offices, <strong className="font-semibold text-slate-800">Cleaning Winter Haven</strong> delivers spotless results with upfront pricing and flexible scheduling across Polk County.
+              From lakefront homes to downtown offices,{" "}
+              <strong className="font-semibold text-slate-800">Cleaning Winter Haven</strong>{" "}
+              cleans with clear prices and schedules that work around lake weekends and busy Polk County weeks.
             </p>
 
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">

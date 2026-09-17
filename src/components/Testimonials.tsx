@@ -2,17 +2,17 @@ const testimonials = [
   {
     name: "Karen L.",
     area: "Chain of Lakes",
-    quote: "Our lake house gets heavy weekend traffic. Cleaning Winter Haven keeps it guest-ready every time — thorough and always on schedule.",
+    quote: "Our lake house gets heavy weekend traffic. Cleaning Winter Haven keeps it ready for guests—thorough, and they show up when they say they will.",
   },
   {
     name: "David M.",
     area: "Downtown Winter Haven",
-    quote: "We switched our office cleaning to them six months ago. The team is professional, discreet, and our workspace has never looked better.",
+    quote: "We switched our office cleaning to them six months ago. The team is quiet, reliable, and the space looks better than it used to.",
   },
   {
     name: "Angela T.",
     area: "Cypress Gardens Area",
-    quote: "Move-out clean was flawless. Landlord returned our full deposit and commented on how spotless the kitchen and bathrooms were.",
+    quote: "Move-out clean went well. Our landlord returned the full deposit and specifically mentioned the kitchen and bathrooms.",
   },
 ];
 
@@ -34,7 +34,7 @@ export default function Testimonials() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="section-eyebrow">Client stories</p>
-          <h2 className="section-title mt-2">Trusted by Winter Haven Neighbors</h2>
+          <h2 className="section-title mt-2">What neighbors say</h2>
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t) => (

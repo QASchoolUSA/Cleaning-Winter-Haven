@@ -57,11 +57,10 @@ function overviewParagraph(config: PricingConfig) {
     Math.round((levelMultiplier(config, key) - 1) * 100);
 
   return (
-    `House cleaning in Winter Haven, FL starts at $${prices.studio} for a studio and scales by bedroom count: ` +
-    `$${prices["1bed"]} for one bedroom, $${prices["2bed"]} for two bedrooms, $${prices["3bed"]} for three bedrooms, ` +
-    `and $${prices["4plus"]} for four-or-more bedrooms. Deep cleaning adds ${uplift("deep")} percent. ` +
-    `Move-in and move-out cleaning adds ${uplift("move")} percent. Cleaning Winter Haven publishes fixed totals ` +
-    `with no upfront payment required.`
+    `In Winter Haven, FL, house cleaning starts at $${prices.studio} for a studio. One-bedroom homes start at ` +
+    `$${prices["1bed"]}, two-bedrooms at $${prices["2bed"]}, three-bedrooms at $${prices["3bed"]}, and four-or-more ` +
+    `bedrooms at $${prices["4plus"]}. Deep cleaning adds about ${uplift("deep")}%, and move-in or move-out cleaning ` +
+    `adds about ${uplift("move")}%. Cleaning Winter Haven posts fixed totals and does not require payment until after the visit.`
   );
 }
 

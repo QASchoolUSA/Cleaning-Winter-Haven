@@ -24,7 +24,7 @@ export const metadata = {
 const phases = [
   { phase: "Phase 1", name: "Rough clean", desc: "Debris removal, floor sweeping, and surface dust knockdown after trades finish.", price: "Included" },
   { phase: "Phase 2", name: "Detail clean", desc: "Fine dust removal from cabinets, fixtures, HVAC vents, and all installed finishes.", price: "Included" },
-  { phase: "Phase 3", name: "Final handover", desc: "White-glove pass for move-in or listing photography. Windows, floors, and fixtures perfected.", price: "Included" },
+  { phase: "Phase 3", name: "Final handover", desc: "Last pass for move-in or listing photos — windows, floors, and fixtures.", price: "Included" },
 ];
 
 const faqs = [
@@ -73,7 +73,7 @@ export default async function PostConstructionCleaningPage() {
       <SectionImage
         src={PAGE_IMAGE}
         alt="Newly renovated kitchen completely dust-free after post-construction cleaning"
-        caption="White-glove handover cleans remove fine dust so renovations are move-in or listing ready."
+        caption="Final handover cleans remove fine dust so renovations are ready for move-in or listing photos."
         priority
         className="mt-10"
       />
