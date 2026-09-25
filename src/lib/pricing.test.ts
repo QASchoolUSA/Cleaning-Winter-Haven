@@ -7,6 +7,7 @@ import {
   minimumBase,
   residentialPrices,
   selectedAddOnLines,
+  type AddonId,
   type PricingConfig,
 } from "@/lib/pricing";
 
@@ -16,7 +17,7 @@ const standardTwoBed = {
   bathrooms: 1,
   sqft: 1000,
   frequency: "one-time" as const,
-  addons: [] as const,
+  addons: [] as AddonId[],
 };
 
 describe("calculatePrice / computeQuote with a remote config", () => {
@@ -49,7 +50,7 @@ describe("calculatePrice / computeQuote with a remote config", () => {
       ),
     };
 
-    const input = { ...standardTwoBed, addons: ["fridge" as const] };
+    const input = { ...standardTwoBed, addons: ["fridge"] as AddonId[] };
     expect(computeQuote(input, dearerFridge).price).toBe(204);
     expect(selectedAddOnLines(input.addons, dearerFridge)).toEqual([
       { label: "Refrigerator interior", price: 45 },
@@ -69,7 +70,7 @@ describe("calculatePrice / computeQuote with a remote config", () => {
       bathrooms: 2,
       sqft: 1000,
       frequency: "one-time" as const,
-      addons: ["fridge" as const],
+      addons: ["fridge"] as AddonId[],
     };
     expect(calculatePrice(input).total).toBe(computeQuote(input).price);
     // 110 + 28 + 42 + 35 = 215
