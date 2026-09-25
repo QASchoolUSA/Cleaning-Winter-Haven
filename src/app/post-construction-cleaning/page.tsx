@@ -11,12 +11,12 @@ const PAGE_IMAGE = "/images/services/service-post-construction.jpg";
 
 export const metadata = {
   title: "Post-Construction Cleaning in Winter Haven",
-  description: "Post-construction and renovation cleanup in Winter Haven, FL. Dust removal, detailing, and handover-ready finishing cleans from $299.",
+  description: "Post-construction and renovation cleanup in Winter Haven, FL. Dust removal, detailing, and handover-ready finishing cleans from $187.",
   alternates: { canonical: "/post-construction-cleaning" },
   keywords: ["post construction cleaning winter haven", "renovation cleanup fl", "construction dust removal polk county", "builder final clean"],
   openGraph: {
     title: "Post-Construction Cleaning in Winter Haven, FL",
-    description: "Phased renovation cleanup in Winter Haven — rough, detail, and final handover cleans from $299.",
+    description: "Phased renovation cleanup in Winter Haven — rough, detail, and final handover cleans from $187.",
     images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Dust-free renovated kitchen after post-construction cleaning" }],
   },
 };
@@ -30,7 +30,7 @@ const phases = [
 const faqs = [
   { q: "When should post-construction cleaning happen?", a: "Schedule rough clean after trades finish, detail clean after finishes are installed, and final handover before occupancy or listing." },
   { q: "Do you work with builders and contractors?", a: "Yes. We coordinate directly with GCs and project managers on multi-phase Winter Haven renovations." },
-  { q: "How much does post-construction cleaning cost?", a: "From $299 for spaces under 1000 sqft, $449 for 1000–2000 sqft, and $649 for 2000+ sqft." },
+  { q: "How much does post-construction cleaning cost?", a: "Post-construction starts from $187 before square footage and bathrooms. Larger renovations scale with size — use the online quote tool for an exact estimate." },
   { q: "Can you handle drywall dust in HVAC systems?", a: "We clean vent covers and surrounding areas. HVAC duct cleaning requires a specialized contractor." },
 ];
 

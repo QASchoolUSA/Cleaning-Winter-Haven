@@ -10,12 +10,12 @@ const PAGE_IMAGE = "/images/services/service-house-cleaning.jpg";
 
 export const metadata = {
   title: "House Cleaning in Winter Haven",
-  description: "Professional house cleaning in Winter Haven, FL. Standard and deep cleaning for homes across the Chain of Lakes. Instant online quotes from $99.",
+  description: "Professional house cleaning in Winter Haven, FL. Standard and deep cleaning for homes across the Chain of Lakes. Instant online quotes from $97.",
   alternates: { canonical: "/house-cleaning" },
   keywords: ["house cleaning winter haven", "deep cleaning winter haven fl", "maid service near me", "one time house cleaning polk county"],
   openGraph: {
     title: "House Cleaning in Winter Haven, FL",
-    description: "Standard and deep house cleaning across the Chain of Lakes. Instant online quotes from $99.",
+    description: "Standard and deep house cleaning across the Chain of Lakes. Instant online quotes from $97.",
     images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Freshly cleaned Winter Haven living room" }],
   },
 };
@@ -38,7 +38,7 @@ const benefits = [
 ];
 
 const faqs = [
-  { q: "How much does house cleaning cost in Winter Haven?", a: "Studios start at $99; 2-bedroom homes start at $139. Deep cleaning adds 40% and move cleaning adds 20%. See the full Winter Haven house cleaning cost guide for the complete price table." },
+  { q: "How much does house cleaning cost in Winter Haven?", a: "House cleaning starts from $97 before bedrooms, bathrooms, and square footage. Deep cleans start from $149 and move-in/out from $142. Use the online quote tool or see the full Winter Haven house cleaning cost guide." },
   { q: "How long does a house cleaning take?", a: "A standard 2-bedroom home typically takes 2–3 hours. Deep cleans may take 4–5 hours depending on size and condition." },
   { q: "What's the difference between standard and deep?", a: "Standard maintains tidy homes. Deep cleaning adds baseboards, fixtures, detailed grout work, and neglected areas." },
   { q: "Do you clean lake houses and vacation rentals?", a: "Yes. We regularly service properties along Lake Howard, Lake Cannon, and throughout the Chain of Lakes." },
