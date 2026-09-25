@@ -12,12 +12,12 @@ const PAGE_IMAGE = "/images/services/service-residential.jpg";
 
 export const metadata = {
   title: "Residential Cleaning in Winter Haven",
-  description: "Recurring residential cleaning in Winter Haven, FL. Weekly, bi-weekly, and monthly home maintenance by local professionals. Transparent pricing from $99.",
+  description: "Recurring residential cleaning in Winter Haven, FL. Weekly, bi-weekly, and monthly home maintenance by local professionals. Transparent pricing from $97.",
   alternates: { canonical: "/residential-cleaning" },
   keywords: ["residential cleaning winter haven", "maid service winter haven", "recurring house cleaning", "apartment cleaning winter haven fl", "home cleaning chain of lakes"],
   openGraph: {
     title: "Residential Cleaning in Winter Haven, FL",
-    description: "Recurring residential cleaning in Winter Haven — weekly, bi-weekly, and monthly plans from $99.",
+    description: "Recurring residential cleaning in Winter Haven — weekly, bi-weekly, and monthly plans from $97.",
     images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Spotless kitchen after residential cleaning" }],
   },
 };

@@ -4,6 +4,8 @@ import { BreadcrumbJsonLd, FAQSection, ServiceCTA } from "@/components/ServicePa
 import { site } from "@/lib/site";
 import {
   addOnPrices,
+  calculatePrice,
+  minimumBase,
   residentialPrices,
   type PricingConfig,
 } from "@/lib/pricing";
@@ -15,7 +17,7 @@ const HERO_IMAGE = "/images/guides/guide-hero-winter-haven-home.jpg";
 export const metadata = {
   title: "House Cleaning Cost in Winter Haven, FL (2026 Price Guide)",
   description:
-    "How much does house cleaning cost in Winter Haven? Studio from $99, 2-bed from $139. Deep cleaning +40%, move-in/out +20%. Transparent local pricing from Cleaning Winter Haven.",
+    "How much does house cleaning cost in Winter Haven? House cleaning from $97, deep from $149, move-in/out from $142. Transparent local pricing from Cleaning Winter Haven.",
   alternates: { canonical: GUIDE_PATH },
   keywords: [
     "how much does house cleaning cost in winter haven",
@@ -27,40 +29,49 @@ export const metadata = {
   openGraph: {
     title: "House Cleaning Cost in Winter Haven, FL (2026 Price Guide)",
     description:
-      "Studio from $99, 2-bed from $139. Deep cleaning +40%, move-in/out +20%. Transparent local pricing from Cleaning Winter Haven.",
+      "House cleaning from $97, deep from $149, move-in/out from $142. Transparent local pricing from Cleaning Winter Haven.",
     url: GUIDE_PATH,
     images: [{ url: HERO_IMAGE, width: 1536, height: 1024, alt: "Freshly cleaned Winter Haven living room with lake light" }],
   },
 };
 
 const sizeRows = [
-  { label: "Studio", key: "studio" as const },
-  { label: "1 bedroom", key: "1bed" as const },
-  { label: "2 bedrooms", key: "2bed" as const },
-  { label: "3 bedrooms", key: "3bed" as const },
-  { label: "4+ bedrooms", key: "4plus" as const },
+  { label: "Studio", bedrooms: 0 },
+  { label: "1 bedroom", bedrooms: 1 },
+  { label: "2 bedrooms", bedrooms: 2 },
+  { label: "3 bedrooms", bedrooms: 3 },
+  { label: "4+ bedrooms", bedrooms: 4 },
 ];
 
-function atLevel(base: number, multiplier: number, roundTo: number) {
-  const step = roundTo > 0 ? roundTo : 1;
-  return Math.round((base * multiplier) / step) * step;
-}
-
-function levelMultiplier(config: PricingConfig, key: "deep" | "move") {
-  return config.levelMultipliers.find((l) => l.key === key)?.multiplier ?? 1;
+function sampleQuote(
+  config: PricingConfig,
+  serviceType: "house" | "deep" | "move",
+  bedrooms: number
+) {
+  return calculatePrice(
+    {
+      serviceType,
+      bedrooms,
+      bathrooms: 1,
+      sqft: 1000,
+      frequency: "one-time",
+      addons: [],
+    },
+    config
+  ).total;
 }
 
 /** The paragraph AI answer engines quote, kept in step with the live prices. */
 function overviewParagraph(config: PricingConfig) {
+  const floors = minimumBase(config);
   const prices = residentialPrices(config);
-  const uplift = (key: "deep" | "move") =>
-    Math.round((levelMultiplier(config, key) - 1) * 100);
 
   return (
-    `In Winter Haven, FL, house cleaning starts at $${prices.studio} for a studio. One-bedroom homes start at ` +
-    `$${prices["1bed"]}, two-bedrooms at $${prices["2bed"]}, three-bedrooms at $${prices["3bed"]}, and four-or-more ` +
-    `bedrooms at $${prices["4plus"]}. Deep cleaning adds about ${uplift("deep")}%, and move-in or move-out cleaning ` +
-    `adds about ${uplift("move")}%. Cleaning Winter Haven posts fixed totals and does not require payment until after the visit.`
+    `In Winter Haven, FL, house cleaning starts from $${floors.house}. Approximate one-bath quotes for a ~1,000 sq ft home run about ` +
+    `$${prices.studio} for a studio, $${prices["1bed"]} for one bedroom, $${prices["2bed"]} for two bedrooms, ` +
+    `$${prices["3bed"]} for three bedrooms, and $${prices["4plus"]} for four-or-more bedrooms before add-ons. ` +
+    `Deep cleaning starts from $${floors.deep} and move-in or move-out from $${floors.move}. ` +
+    `Cleaning Winter Haven posts transparent estimates and does not require payment until after the visit.`
   );
 }
 
@@ -117,10 +128,8 @@ function GuideFigure({
 
 export default async function HouseCleaningCostGuidePage() {
   const config = await getPricingConfig();
-  const prices = residentialPrices(config);
+  const floors = minimumBase(config);
   const addOns = addOnPrices(config);
-  const deepUplift = Math.round((levelMultiplier(config, "deep") - 1) * 100);
-  const moveUplift = Math.round((levelMultiplier(config, "move") - 1) * 100);
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -209,7 +218,8 @@ export default async function HouseCleaningCostGuidePage() {
 
         <h3>Winter Haven House Cleaning Price Table by Home Size</h3>
         <p>
-          Cleaning Winter Haven prices residential jobs by bedroom count, not vague hourly ranges. The table below matches the live quote engine on{" "}
+          Cleaning Winter Haven prices by square footage, bedrooms, and bathrooms. The sample table below assumes ~1,000 sq ft
+          and one bathroom — matching the live quote engine on{" "}
           <Link href="/pricing">our pricing page</Link>.
         </p>
 
@@ -218,46 +228,45 @@ export default async function HouseCleaningCostGuidePage() {
             <thead>
               <tr className="border-b border-slate-200 text-left">
                 <th className="pb-3 font-semibold text-slate-900">Home size</th>
-                <th className="pb-3 font-semibold text-[#00a8bc]">Standard</th>
-                <th className="pb-3 font-semibold text-[#00a8bc]">Deep (+{deepUplift}%)</th>
-                <th className="pb-3 font-semibold text-[#00a8bc]">Move (+{moveUplift}%)</th>
+                <th className="pb-3 font-semibold text-[#00a8bc]">House (from ${floors.house})</th>
+                <th className="pb-3 font-semibold text-[#00a8bc]">Deep (from ${floors.deep})</th>
+                <th className="pb-3 font-semibold text-[#00a8bc]">Move (from ${floors.move})</th>
               </tr>
             </thead>
             <tbody>
-              {sizeRows.map((row) => {
-                const base = prices[row.key];
-                return (
-                  <tr key={row.key} className="border-b border-slate-100">
-                    <td className="py-3 text-slate-700">{row.label}</td>
-                    <td className="py-3 font-medium text-slate-900">${base}</td>
-                    <td className="py-3 text-slate-700">
-                      ${atLevel(base, levelMultiplier(config, "deep"), config.roundToNearest)}
-                    </td>
-                    <td className="py-3 text-slate-700">
-                      ${atLevel(base, levelMultiplier(config, "move"), config.roundToNearest)}
-                    </td>
-                  </tr>
-                );
-              })}
+              {sizeRows.map((row) => (
+                <tr key={row.label} className="border-b border-slate-100">
+                  <td className="py-3 text-slate-700">{row.label}</td>
+                  <td className="py-3 font-medium text-slate-900">
+                    ${sampleQuote(config, "house", row.bedrooms)}
+                  </td>
+                  <td className="py-3 text-slate-700">
+                    ${sampleQuote(config, "deep", row.bedrooms)}
+                  </td>
+                  <td className="py-3 text-slate-700">
+                    ${sampleQuote(config, "move", row.bedrooms)}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
 
         <p className="mt-6">
-          Optional add-ons: fridge ${addOns.fridge}, oven ${addOns.oven}, interior windows ${addOns.windows}, inside cabinets $
-          {addOns.cabinets}, detailed baseboards ${addOns.baseboards}.
+          Optional add-ons: fridge ${addOns.fridge}, oven ${addOns.oven}, interior windows $
+          {addOns["windows-interior"]}, inside cabinets ${addOns.cabinets}.
         </p>
 
         <h3>Standard vs Deep vs Move Cleaning: What Changes the Price</h3>
         <GuideFigure
           src="/images/guides/guide-kitchen-after-clean.jpg"
           alt="Spotless modern kitchen with gleaming counters and appliances after standard house cleaning"
-          caption="Standard cleaning keeps kitchens guest-ready — counters, appliance fronts, sinks, and floors. Deep and move levels add interior and detail work beyond this baseline."
+          caption="Standard cleaning keeps kitchens guest-ready — counters, appliance fronts, sinks, and floors. Deep and move services use higher per-sqft rates beyond this baseline."
         />
         <p>
-          <strong>Standard house cleaning</strong> maintains already-tidy Winter Haven homes: surfaces, floors, bathrooms, and kitchen fronts.{" "}
-          <strong>Deep cleaning</strong> adds baseboards, light fixtures, fans, and detailed grout work at a fixed +40% multiplier.{" "}
-          <strong>Move-in and move-out cleaning</strong> uses a vacancy protocol (appliance interiors, closets, landlord walkthrough items) at +20% — not the same scope as deep cleaning.
+          <strong>House cleaning</strong> maintains already-tidy Winter Haven homes: surfaces, floors, bathrooms, and kitchen fronts.{" "}
+          <strong>Deep cleaning</strong> adds baseboards, light fixtures, fans, and detailed grout work at a higher rate (from ${floors.deep}).{" "}
+          <strong>Move-in and move-out cleaning</strong> uses a vacancy protocol (appliance interiors, closets, landlord walkthrough items) from ${floors.move} — not the same scope as deep cleaning.
         </p>
         <p>
           See the full feature comparison on our <Link href="/house-cleaning">house cleaning service page</Link> and deposit-focused details on{" "}

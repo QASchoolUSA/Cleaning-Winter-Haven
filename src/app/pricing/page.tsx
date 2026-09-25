@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 
 export const metadata = {
   title: "Cleaning Prices in Winter Haven",
-  description: "Transparent cleaning prices in Winter Haven, FL. Residential from $99, commercial from $149, post-construction from $299. No hidden fees.",
+  description: "Transparent cleaning prices in Winter Haven, FL. House cleaning from $97, apartments from $74, post-construction from $187. No hidden fees.",
   alternates: { canonical: "/pricing" },
   keywords: ["cleaning prices winter haven", "house cleaning cost fl", "maid service rates polk county", "how much does cleaning cost"],
   openGraph: {
@@ -34,7 +34,6 @@ const pricingFaqs = [
 
 export default async function PricingPage() {
   const config = await getPricingConfig();
-  const rangePercent = Math.round(config.rangeSpread * 100);
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -57,8 +56,8 @@ export default async function PricingPage() {
       <div className="mt-12 card p-6">
         <h2 className="text-lg font-semibold text-slate-900">How pricing works</h2>
         <p className="mt-3 text-sm leading-relaxed text-slate-600">
-          Your final quote combines a base price (by home or business size), a cleaning level multiplier, and any optional add-ons.
-          Estimates are rounded to the nearest ${config.roundToNearest} and shown as a range (±{rangePercent}%). Payment is due after your cleaning is complete — no upfront charge to book.
+          Your quote is max(minimum base, square footage × per-sqft rate), plus ${config.bedroomRate} per bedroom and ${config.bathroomRate} per bathroom,
+          then adjusted for frequency and add-ons. Payment is due after your cleaning is complete — no upfront charge to book.
         </p>
       </div>
 

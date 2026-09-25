@@ -12,12 +12,12 @@ const PAGE_IMAGE = "/images/services/service-commercial-office.jpg";
 
 export const metadata = {
   title: "Commercial Cleaning in Winter Haven",
-  description: "Commercial and office cleaning in Winter Haven, FL. Professional janitorial service for offices, retail, and medical spaces. From $149.",
+  description: "Commercial and office cleaning in Winter Haven, FL. Professional janitorial service for offices, retail, and medical spaces. Instant online quotes.",
   alternates: { canonical: "/commercial-cleaning" },
   keywords: ["commercial cleaning winter haven", "office cleaning polk county", "janitorial service winter haven fl", "retail cleaning"],
   openGraph: {
     title: "Commercial Cleaning in Winter Haven, FL",
-    description: "Office, retail, and medical janitorial cleaning in Winter Haven from $149.",
+    description: "Office, retail, and medical janitorial cleaning in Winter Haven — get an instant online quote.",
     images: [{ url: PAGE_IMAGE, width: 1536, height: 1024, alt: "Polished office after commercial cleaning" }],
   },
 };
@@ -31,7 +31,7 @@ const industries = [
 const faqs = [
   { q: "Do you clean after business hours?", a: "Yes. Most commercial clients in Winter Haven prefer evening or early morning service to avoid disrupting operations." },
   { q: "Can you provide proof of insurance?", a: "Absolutely. We provide certificates of insurance for property managers and commercial landlords upon request." },
-  { q: "How is commercial pricing calculated?", a: "Based on square footage: small (≤1000 sqft) from $149, medium (1000–3000) from $249, large (3000+) from $399." },
+  { q: "How is commercial pricing calculated?", a: "Quotes use square footage, restrooms, and service type. Small spaces often start near apartment rates; use the online quote tool for an exact estimate." },
   { q: "Will we get the same cleaning team?", a: "Yes. We assign consistent crews who learn your layout, access codes, and facility requirements." },
 ];
 

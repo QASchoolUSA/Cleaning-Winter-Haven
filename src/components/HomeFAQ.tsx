@@ -6,7 +6,7 @@ const faqs = [
     q: "How much does house cleaning cost in Winter Haven?",
     a: (
       <>
-        Standard residential cleaning starts at $99 for a studio and scales by bedroom count ($119–$199). Deep cleans add 40%, and move-in/out services add 20%. See our{" "}
+        House cleaning starts from $97, with apartments from $74 and deep cleans from $149. Quotes use square footage, bedrooms, and bathrooms — recurring plans save up to 15%. See our{" "}
         <Link href="/guides/how-much-does-house-cleaning-cost-winter-haven" className="font-medium text-[#00a8bc] hover:underline">
           full Winter Haven price guide
         </Link>{" "}
@@ -14,7 +14,7 @@ const faqs = [
       </>
     ),
     schemaText:
-      "Standard residential cleaning starts at $99 for a studio and scales by bedroom count ($119–$199). Deep cleans add 40%, and move-in/out services add 20%. See our full Winter Haven price guide or use the online quote tool for an instant estimate.",
+      "House cleaning starts from $97, with apartments from $74 and deep cleans from $149. Quotes use square footage, bedrooms, and bathrooms — recurring plans save up to 15%. See our full Winter Haven price guide or use the online quote tool for an instant estimate.",
   },
   {
     q: "Do I need to be home during the cleaning?",

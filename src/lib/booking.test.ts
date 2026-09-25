@@ -26,7 +26,7 @@ describe("validateBookingPayload", () => {
       email: "not-an-email",
       phone: "555",
       address: "123 Lake Howard Dr",
-      service_type: "Residential — Standard (2 Bedroom)",
+      service_type: "House Cleaning — One-time",
     });
     expect(errors.email).toMatch(/valid email/i);
     expect(errors.phone).toMatch(/10-digit/i);
@@ -40,7 +40,7 @@ describe("normalizeBookingPayload", () => {
       email: " demo@example.com ",
       phone: " (863) 555-0199 ",
       address: " 123 Main St ",
-      service_type: " Residential ",
+      service_type: " House Cleaning ",
       preferred_date: "  ",
       preferred_time: "10:00",
       notes: "",
@@ -53,47 +53,46 @@ describe("normalizeBookingPayload", () => {
 });
 
 describe("demo booking quote", () => {
-  it("matches the residential 2-bed standard + fridge estimate used in UI tests", () => {
+  it("matches the house 2-bed / 2-bath + fridge estimate used in UI tests", () => {
     const base = computeQuote({
-      serviceType: "residential",
-      bedrooms: 2,
-      bathrooms: 1,
-      sqftBand: "1000-1500",
-      level: "standard",
-      addOns: {},
-    });
-    expect(base.price).toBe(140);
-
-    const quote = computeQuote({
-      serviceType: "residential",
-      bedrooms: 2,
-      bathrooms: 1,
-      sqftBand: "1000-1500",
-      level: "standard",
-      addOns: { fridge: true },
-    });
-    expect(quote.price).toBe(165);
-    expect(quote.range.low).toBe(149);
-    expect(quote.range.high).toBe(182);
-  });
-
-  it("charges for each bathroom past the first", () => {
-    const oneBath = computeQuote({
-      serviceType: "residential",
-      bedrooms: 2,
-      bathrooms: 1,
-      sqftBand: "1000-1500",
-      level: "standard",
-      addOns: {},
-    });
-    const twoBath = computeQuote({
-      serviceType: "residential",
+      serviceType: "house",
       bedrooms: 2,
       bathrooms: 2,
-      sqftBand: "1000-1500",
-      level: "standard",
-      addOns: {},
+      sqft: 1000,
+      frequency: "one-time",
+      addons: [],
     });
-    expect(twoBath.price - oneBath.price).toBe(20);
+    // max(97, 110) + 28 + 42 = 180
+    expect(base.price).toBe(180);
+
+    const quote = computeQuote({
+      serviceType: "house",
+      bedrooms: 2,
+      bathrooms: 2,
+      sqft: 1000,
+      frequency: "one-time",
+      addons: ["fridge"],
+    });
+    expect(quote.price).toBe(215);
+  });
+
+  it("charges bathroomRate for each bathroom", () => {
+    const oneBath = computeQuote({
+      serviceType: "house",
+      bedrooms: 2,
+      bathrooms: 1,
+      sqft: 1000,
+      frequency: "one-time",
+      addons: [],
+    });
+    const twoBath = computeQuote({
+      serviceType: "house",
+      bedrooms: 2,
+      bathrooms: 2,
+      sqft: 1000,
+      frequency: "one-time",
+      addons: [],
+    });
+    expect(twoBath.price - oneBath.price).toBe(21);
   });
 });

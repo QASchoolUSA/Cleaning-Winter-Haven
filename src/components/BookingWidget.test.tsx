@@ -25,15 +25,15 @@ describe("BookingWidget demo booking flow", () => {
     render(<BookingWidget />);
 
     expect(screen.getByRole("heading", { name: /book your cleaning/i })).toBeInTheDocument();
-    // Defaults to a 2 bed / 2 bath home of average size.
-    expect(screen.getByText("$160")).toBeInTheDocument();
+    // Defaults: house, 2 bed / 2 bath / 1000 sqft / one-time → $180
+    expect(screen.getByText("$180")).toBeInTheDocument();
 
     clickContinue();
     expect(screen.getByText(/how many bathrooms/i)).toBeInTheDocument();
     clickContinue();
 
-    fireEvent.click(screen.getByRole("button", { name: /inside fridge/i }));
-    expect(screen.getByText("$185")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /fridge cleaning/i }));
+    expect(screen.getByText("$215")).toBeInTheDocument();
     clickContinue();
 
     fireEvent.change(screen.getByLabelText(/preferred date/i), { target: { value: "2026-07-20" } });
@@ -46,7 +46,6 @@ describe("BookingWidget demo booking flow", () => {
     fireEvent.change(screen.getByPlaceholderText("you@email.com"), {
       target: { value: DEMO_BOOKING_PAYLOAD.email },
     });
-    // Phone input formats as the user types; feed raw digits like the browser test.
     fireEvent.change(screen.getByPlaceholderText("(863) 555-0123"), {
       target: { value: "8635550199" },
     });
@@ -83,11 +82,11 @@ describe("BookingWidget demo booking flow", () => {
     expect(body.email).toBe(DEMO_BOOKING_PAYLOAD.email);
     expect(body.phone).toBe("(863) 555-0199");
     expect(body.address).toBe(DEMO_BOOKING_PAYLOAD.address);
-    expect(body.service_type).toContain("Residential");
+    expect(body.service_type).toContain("House Cleaning");
     expect(body.preferred_date).toBe("2026-07-20");
     expect(body.property).toMatchObject({ bedrooms: 2, bathrooms: 2 });
-    expect(body.quote.estimate).toBe(185);
-    expect(body.quote.add_ons).toEqual([{ label: "Inside fridge", price: 25 }]);
+    expect(body.quote.estimate).toBe(215);
+    expect(body.quote.add_ons).toEqual([{ label: "Fridge cleaning", price: 35 }]);
     expect(body.quote.payment_terms).toBe("Due after cleaning is complete");
   });
 
